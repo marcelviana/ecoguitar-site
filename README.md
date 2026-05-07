@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Eco Guitar — Site
 
-## Getting Started
+Site institucional da Eco Guitar, luthieria do Pedro Machado em Vila Madalena, São Paulo.
 
-First, run the development server:
+## Stack
+- Next.js 16 (static export) + TypeScript + React 19
+- Tailwind CSS
+- Sanity CMS v5 (schemas em /sanity/schemas/)
+- Formspree (formulário de contato)
+- Vercel (deploy)
 
+## Variáveis de ambiente
+Copie `.env.example` para `.env.local` e preencha os valores.
+Nunca commite `.env.local`.
+
+## Desenvolvimento local
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # Next.js em localhost:3000
+npx sanity dev       # Sanity Studio em localhost:3333
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura de páginas (planejada)
+- / → Home
+- /servicos → Regulagem e manutenção
+- /cursos → Cursos (Express, Intensivo, Extensivo)
+- /workshops → Agenda de workshops
+- /galeria → Instrumentos construídos
+- /clube → Clube do Luthier
+- /contato → Formulário de contato
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Conteúdo gerenciável (Sanity)
+Pedro Machado acessa o Studio para editar:
+- Preços e descrições dos cursos
+- Agenda de workshops
+- Galeria de instrumentos
+- Depoimentos de alunos
+- Itens e preços do Clube do Luthier
+- Dados de contato globais
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Sanity Project ID
+4z7u83vm
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Estado atual
+- [x] Setup inicial Next.js 16 + Tailwind + React 19
+- [x] Schemas do Sanity criados
+- [ ] Design system (tokens, componentes base)
+- [ ] Páginas de conteúdo
+- [ ] Galeria com Instagram feed
+- [ ] Formulário de contato (Formspree)
+- [ ] Deploy Vercel
