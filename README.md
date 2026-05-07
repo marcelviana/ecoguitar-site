@@ -38,9 +38,6 @@ Pedro Machado acessa o Studio para editar:
 - Itens e preços do Clube do Luthier
 - Dados de contato globais
 
-## Sanity Project ID
-4z7u83vm
-
 ## Estado atual
 - [x] Setup inicial Next.js 16 + Tailwind + React 19
 - [x] Schemas do Sanity criados
