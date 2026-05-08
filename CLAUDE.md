@@ -3,9 +3,16 @@
 # Instruções para o Claude Code
 
 ## Regras de Git
-- Sempre trabalhar diretamente no branch `main`
-- Nunca criar worktrees ou branches temporários
-- Commitar ao final de cada sessão com mensagem descritiva
+- Pode trabalhar em worktrees ou branches temporários durante a sessão
+- Commitar as alterações com mensagens descritivas em português
+- ⚠️ OBRIGATÓRIO ao final de cada sessão: perguntar ao usuário "Deseja fazer o merge das alterações para o branch `main`?" e aguardar confirmação antes de executar
+
+## Checklist de fim de sessão
+Antes de encerrar qualquer sessão, executar nesta ordem:
+1. Rodar `npm run build` e confirmar que não há erros
+2. Commitar todas as alterações pendentes com mensagem descritiva
+3. Perguntar ao usuário: "Deseja fazer o merge das alterações para o branch `main`?"
+4. Aguardar confirmação antes de fazer o merge
 
 ## Stack
 - Next.js 16 + TypeScript + React 19
