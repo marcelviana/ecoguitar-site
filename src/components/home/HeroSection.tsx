@@ -52,7 +52,7 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-eco-cream leading-[1.05] tracking-[-0.02em] mb-6">
             Instrumentos feitos com alma, madeira e tempo
           </h1>
-          <p className="font-sans text-body-lg text-eco-muted max-w-xl mb-10">
+          <p className="font-sans text-body-lg text-eco-cream/75 max-w-xl mb-10">
             Guitarras e violões artesanais criados por Pedro Machado em São Paulo. Cada instrumento é único, do projeto ao acabamento.
           </p>
           <div className="flex flex-wrap gap-4">
