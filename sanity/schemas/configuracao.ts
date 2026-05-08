@@ -31,5 +31,19 @@ export default defineType({
       title: 'YouTube',
       type: 'url',
     }),
+    defineField({
+      name: 'heroBannerImagem',
+      title: 'Imagem de Fundo do Hero',
+      type: 'image',
+      description: 'Imagem de fundo exibida na seção hero da home (tela inicial).',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'fotoPedro',
+      title: 'Foto do Pedro',
+      type: 'image',
+      description: 'Retrato do Pedro Machado exibido na seção "Sobre" da home.',
+      options: { hotspot: true },
+    }),
   ],
 })

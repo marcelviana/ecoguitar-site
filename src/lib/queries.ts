@@ -1,5 +1,31 @@
 import { client } from './sanity'
 
+export interface Configuracao {
+  endereco?: string
+  whatsapp?: string
+  email?: string
+  instagram?: string
+  youtube?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerImagem?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fotoPedro?: any
+}
+
+const configuracaoQuery = `*[_type == "configuracao"][0]{
+  endereco, whatsapp, email, instagram, youtube,
+  heroBannerImagem, fotoPedro
+}`
+
+export async function getConfiguracao(): Promise<Configuracao | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<Configuracao | null>(configuracaoQuery)
+  } catch {
+    return null
+  }
+}
+
 export interface Instrumento {
   _id: string
   nome: string

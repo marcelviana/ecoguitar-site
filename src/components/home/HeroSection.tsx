@@ -1,6 +1,15 @@
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
+import { urlFor } from '@/lib/sanity'
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerImagem?: any
+}
+
+export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
+  const imageUrl = heroBannerImagem ? urlFor(heroBannerImagem)?.url() : null
+
   return (
     <section className="relative min-h-screen flex items-center bg-eco-charcoal overflow-hidden">
       {/* Noise texture overlay */}
@@ -16,11 +25,21 @@ export default function HeroSection() {
         <rect width="100%" height="100%" filter="url(#noise)" />
       </svg>
 
-      {/* Gradient background placeholder */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-eco-charcoal via-eco-charcoal to-eco-wood-dark opacity-90"
-      />
+      {imageUrl ? (
+        <Image
+          src={imageUrl}
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          aria-hidden="true"
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-br from-eco-charcoal via-eco-charcoal to-eco-wood-dark opacity-90"
+        />
+      )}
 
       {/* Dark overlay */}
       <div aria-hidden="true" className="absolute inset-0 bg-eco-charcoal/60" />
