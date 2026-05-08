@@ -13,6 +13,7 @@ Antes de encerrar qualquer sessão, executar nesta ordem:
 2. Commitar todas as alterações pendentes com mensagem descritiva
 3. Perguntar ao usuário: "Deseja fazer o merge das alterações para o branch `main`?"
 4. Aguardar confirmação antes de fazer o merge
+5. ⚠️ APÓS O MERGE: verificar se os arquivos alterados no diretório raiz `/Users/marcelviana/projects/ecoguitar-site/` refletem as mudanças — o merge pode retornar "Already up to date" sem atualizar os arquivos físicos do diretório principal. Se não baterem, copiar manualmente com `cp <worktree>/arquivo /projeto-principal/arquivo` e commitar.
 
 ## Stack
 - Next.js 16 + TypeScript + React 19
