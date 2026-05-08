@@ -15,7 +15,21 @@ export default defineType({
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
-      options: { source: 'nome', maxLength: 96 },
+      options: {
+        source: 'nome',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        slugify: (input: string, _type: unknown, context: any) => {
+          const base = input
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[̀-ͯ]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '')
+          const rawId = (context?.document?._id ?? '').replace('drafts.', '')
+          const suffix = rawId.slice(-6)
+          return suffix ? `${base}-${suffix}` : base
+        },
+      },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
