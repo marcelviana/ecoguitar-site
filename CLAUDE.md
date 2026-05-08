@@ -25,3 +25,6 @@ Antes de encerrar qualquer sessão, executar nesta ordem:
 - Componentes em `src/components/`, nomeados em PascalCase
 - Páginas em `src/app/` seguindo App Router do Next.js
 - Imports com alias `@/`
+
+## Linguagem e terminologia
+- Usar sempre **Luteria** (não "Luthieria" nem "Lutheria")
