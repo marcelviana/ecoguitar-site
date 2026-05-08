@@ -13,6 +13,8 @@ export interface Curso {
   descricao?: string
   preco?: string
   modalidade?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  imagem?: any
 }
 
 export interface Depoimento {
@@ -28,7 +30,7 @@ const instrumentosDestaqueQuery = `*[_type == "instrumento" && destaque == true]
 }`
 
 const cursosDestaqueQuery = `*[_type == "curso" && ativo == true][0..2]{
-  _id, titulo, descricao, preco, modalidade
+  _id, titulo, descricao, preco, modalidade, imagem
 }`
 
 const depoimentosQuery = `*[_type == "depoimento" && ativo == true][0..2]{
@@ -78,7 +80,7 @@ export interface Workshop {
 }
 
 const cursosTodosQuery = `*[_type == "curso" && ativo == true] | order(_createdAt asc){
-  _id, titulo, descricao, preco, modalidade, duracao, horarios
+  _id, titulo, descricao, preco, modalidade, duracao, horarios, imagem
 }`
 
 const workshopsQuery = `*[_type == "workshop" && ativo == true] | order(data asc){
