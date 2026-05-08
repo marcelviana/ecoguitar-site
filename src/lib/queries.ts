@@ -61,3 +61,44 @@ export async function getDepoimentos(): Promise<Depoimento[]> {
     return []
   }
 }
+
+export interface CursoCompleto extends Curso {
+  duracao?: string
+  horarios?: string
+}
+
+export interface Workshop {
+  _id: string
+  titulo: string
+  descricao?: string
+  data?: string
+  vagas?: number
+  preco?: string
+  linkInscricao?: string
+}
+
+const cursosTodosQuery = `*[_type == "curso" && ativo == true] | order(_createdAt asc){
+  _id, titulo, descricao, preco, modalidade, duracao, horarios
+}`
+
+const workshopsQuery = `*[_type == "workshop" && ativo == true] | order(data asc){
+  _id, titulo, descricao, data, vagas, preco, linkInscricao
+}`
+
+export async function getCursosTodos(): Promise<CursoCompleto[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<CursoCompleto[]>(cursosTodosQuery)
+  } catch {
+    return []
+  }
+}
+
+export async function getWorkshops(): Promise<Workshop[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<Workshop[]>(workshopsQuery)
+  } catch {
+    return []
+  }
+}
