@@ -2,43 +2,33 @@ const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
 interface PrecoCardProps {
   preco?: string
-  precoNumerico?: number
   precoIndividual?: number
   maxAlunos?: number
   duracao?: string
-  horario?: string
+  horarios?: string
   oQueEstaIncluido?: string[]
   oQueNaoEstaIncluido?: string[]
 }
 
-function precoDisplay(preco?: string, precoNumerico?: number): string | null {
-  if (precoNumerico) return `R$ ${precoNumerico.toLocaleString('pt-BR')}`
-  if (preco) return preco
-  return null
-}
-
 export default function PrecoCard({
   preco,
-  precoNumerico,
   precoIndividual,
   maxAlunos,
   duracao,
-  horario,
+  horarios,
   oQueEstaIncluido = [],
   oQueNaoEstaIncluido = [],
 }: PrecoCardProps) {
-  const valorPrincipal = precoDisplay(preco, precoNumerico)
-
   return (
     <div className="bg-eco-charcoal rounded-2xl overflow-hidden">
       <div className="p-8 lg:p-10">
-        {valorPrincipal && (
+        {preco && (
           <div className="mb-6">
             <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-1">
               Investimento
             </p>
             <p className="font-mono text-display text-eco-white leading-none">
-              {valorPrincipal}
+              {preco}
             </p>
             <p className="font-sans text-small text-eco-muted mt-1">turma compartilhada</p>
             {precoIndividual && (
@@ -56,10 +46,10 @@ export default function PrecoCard({
               <dd className="font-sans text-small text-eco-white mt-0.5">{duracao}</dd>
             </div>
           )}
-          {horario && (
+          {horarios && (
             <div>
               <dt className="font-mono text-label uppercase tracking-widest text-eco-muted">Horário</dt>
-              <dd className="font-sans text-small text-eco-white mt-0.5">{horario}</dd>
+              <dd className="font-sans text-small text-eco-white mt-0.5">{horarios}</dd>
             </div>
           )}
           {maxAlunos && (

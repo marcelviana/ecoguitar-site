@@ -87,12 +87,6 @@ export default defineType({
       description: 'Ex: WAiTIwQ3dQM (só o ID, não a URL completa)',
     }),
     defineField({
-      name: 'horario',
-      title: 'Horário',
-      type: 'string',
-      description: 'Ex: "Seg a Sáb, 13h às 19h" ou "Terças 19h–22h ou Sábados 9h–13h"',
-    }),
-    defineField({
       name: 'maxAlunosPorProfessor',
       title: 'Máx. alunos por professor',
       type: 'number',
@@ -102,12 +96,6 @@ export default defineType({
       title: 'Para quem é indicado',
       type: 'text',
       rows: 3,
-    }),
-    defineField({
-      name: 'precoNumerico',
-      title: 'Preço numérico (R$)',
-      type: 'number',
-      description: 'Valor base da turma compartilhada',
     }),
     defineField({
       name: 'precoIndividual',

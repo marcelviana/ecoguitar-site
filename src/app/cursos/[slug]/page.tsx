@@ -151,12 +151,12 @@ function CoursePageLayout({
                     <dd className="font-sans text-body text-eco-charcoal mt-0.5">{curso.duracao}</dd>
                   </div>
                 )}
-                {curso.horario && (
+                {curso.horarios && (
                   <div>
                     <dt className="font-mono text-label uppercase tracking-widest text-eco-muted">
                       Horário
                     </dt>
-                    <dd className="font-sans text-body text-eco-charcoal mt-0.5">{curso.horario}</dd>
+                    <dd className="font-sans text-body text-eco-charcoal mt-0.5">{curso.horarios}</dd>
                   </div>
                 )}
                 {curso.maxAlunosPorProfessor && (
@@ -204,7 +204,7 @@ function CoursePageLayout({
       )}
 
       {/* Seção 6 — Preço */}
-      {(curso.preco || curso.precoNumerico) && (
+      {curso.preco && (
         <section className="bg-eco-paper py-section border-t border-eco-border">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <h2 className="font-serif text-headline text-eco-charcoal mb-10">
@@ -212,11 +212,10 @@ function CoursePageLayout({
             </h2>
             <PrecoCard
               preco={curso.preco}
-              precoNumerico={curso.precoNumerico}
               precoIndividual={curso.precoIndividual}
               maxAlunos={curso.maxAlunosPorProfessor}
               duracao={curso.duracao}
-              horario={curso.horario}
+              horarios={curso.horarioss}
               oQueEstaIncluido={curso.oQueEstaIncluido}
               oQueNaoEstaIncluido={curso.oQueNaoEstaIncluido}
             />

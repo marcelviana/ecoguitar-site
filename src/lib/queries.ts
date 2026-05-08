@@ -228,7 +228,7 @@ export interface CursoListagem {
   paraQuem?: string
   preco?: string
   duracao?: string
-  horario?: string
+  horarios?: string
   maxAlunosPorProfessor?: number
   imagemCapa?: string
 }
@@ -241,10 +241,9 @@ export interface CursoDetalhe {
   modalidade?: string
   paraQuem?: string
   duracao?: string
-  horario?: string
+  horarios?: string
   maxAlunosPorProfessor?: number
   preco?: string
-  precoNumerico?: number
   precoIndividual?: number
   oQueEstaIncluido?: string[]
   oQueNaoEstaIncluido?: string[]
@@ -268,7 +267,7 @@ export const cursosListagemQuery = groq`
     paraQuem,
     preco,
     duracao,
-    "horario": coalesce(horario, horarios),
+    horarios,
     maxAlunosPorProfessor,
     "imagemCapa": imagemCapa.asset->url,
   }
@@ -283,10 +282,9 @@ export const cursoBySlugQuery = groq`
     modalidade,
     paraQuem,
     duracao,
-    "horario": coalesce(horario, horarios),
+    horarios,
     maxAlunosPorProfessor,
     preco,
-    precoNumerico,
     precoIndividual,
     oQueEstaIncluido,
     oQueNaoEstaIncluido,

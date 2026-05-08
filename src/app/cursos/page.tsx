@@ -59,7 +59,7 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     subtitulo: 'Para quem quer se aventurar sem fazer todas as etapas',
     modalidade: 'Express',
     duracao: '5 sábados',
-    horario: 'Sábados, 9h às 13h',
+    horarios:'Sábados, 9h às 13h',
     paraQuem: 'Retífica de trastes, shape de braço, montagem e regulagem.',
   },
   {
@@ -69,7 +69,7 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     subtitulo: 'Para quem quer aproveitar o curso sem tanto tempo disponível',
     modalidade: 'Intensivo',
     duracao: '5 a 6 dias',
-    horario: 'Seg a Sáb, 13h às 19h',
+    horarios:'Seg a Sáb, 13h às 19h',
     paraQuem: 'Ideal para quem vem de fora de SP.',
   },
   {
@@ -79,7 +79,7 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     subtitulo: 'Para quem quer o instrumento mais personalizado possível',
     modalidade: 'Extensivo',
     duracao: 'Processo contínuo',
-    horario: 'Terças 19h–22h ou Sábados 9h–13h',
+    horarios:'Terças 19h–22h ou Sábados 9h–13h',
     paraQuem: 'São mais de 100 modelos para escolher.',
   },
 ]

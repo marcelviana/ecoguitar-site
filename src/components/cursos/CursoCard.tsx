@@ -60,7 +60,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
             <p className="font-sans text-small text-eco-charcoal mt-1">{curso.paraQuem}</p>
           )}
 
-          {(curso.duracao || curso.horario) && (
+          {(curso.duracao || curso.horarios) && (
             <dl className="mt-3 flex flex-col gap-1.5 border-t border-eco-border pt-3">
               {curso.duracao && (
                 <div className="flex gap-3">
@@ -70,12 +70,12 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
                   <dd className="font-sans text-small text-eco-charcoal">{curso.duracao}</dd>
                 </div>
               )}
-              {curso.horario && (
+              {curso.horarios && (
                 <div className="flex gap-3">
                   <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-20 flex-shrink-0">
                     Horário
                   </dt>
-                  <dd className="font-sans text-small text-eco-charcoal">{curso.horario}</dd>
+                  <dd className="font-sans text-small text-eco-charcoal">{curso.horarios}</dd>
                 </div>
               )}
               {curso.preco && (
