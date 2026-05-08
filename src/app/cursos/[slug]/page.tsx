@@ -103,27 +103,7 @@ function CoursePageLayout({
         </div>
       </section>
 
-      {/* Seção 2 — Sobre o Pedro */}
-      <section className="bg-eco-paper py-section border-t border-eco-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl">
-            <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
-              Seu instrutor
-            </p>
-            <h2 className="font-serif text-title text-eco-charcoal mb-4">
-              Pedro Henrique
-            </h2>
-            <p className="font-sans text-body text-eco-muted">
-              Olá, sou Pedro Henrique, fundador da Eco Guitar. A Eco Guitar nasceu pensando em
-              como transformar, de forma sustentável, madeiras brasileiras em instrumentos
-              musicais. A história da marca começou em 2014 quando decidi unir minha paixão por
-              guitarras, minha experiência na indústria de áudio e a proposta sustentável.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção 3 — Descritivo do curso */}
+      {/* Seção 2 — Descritivo do curso */}
       <section className="bg-eco-cream py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
