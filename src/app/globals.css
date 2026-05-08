@@ -55,6 +55,10 @@
   letter-spacing: 0.08em;
 }
 
+.blueprint-sepia {
+  filter: sepia(1) brightness(0.9) saturate(1.4);
+}
+
 /* CSS variables for use outside Tailwind */
 :root {
   --eco-cream:    #F5F0E8;

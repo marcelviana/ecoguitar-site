@@ -5,14 +5,14 @@ import { getInstrumentosDestaque, type Instrumento } from '@/lib/queries'
 
 function InstrumentoCard({ instrumento }: { instrumento: Instrumento }) {
   return (
-    <div className="flex flex-col bg-eco-cream border border-eco-border rounded-xl overflow-hidden">
-      <div className="relative aspect-[4/3] bg-eco-wood/20">
+    <div className="flex flex-col bg-eco-charcoal border border-eco-border rounded-xl overflow-hidden">
+      <div className="relative aspect-[16/7] bg-eco-wood/20 overflow-hidden">
         {instrumento.imagemUrl ? (
           <Image
             src={instrumento.imagemUrl}
             alt={instrumento.nome}
             fill
-            className="object-cover"
+            className="object-cover blueprint-sepia"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
