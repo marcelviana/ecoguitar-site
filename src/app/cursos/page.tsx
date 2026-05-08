@@ -1,160 +1,179 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import PageLayout from '@/components/layout/PageLayout'
-import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
-import { getCursosTodos, type CursoCompleto } from '@/lib/queries'
-import { urlFor } from '@/lib/sanity-image'
+import CursoCard from '@/components/cursos/CursoCard'
+import { getCursosListagem, type CursoListagem } from '@/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Cursos de Luteria — Eco Guitar',
-  description: 'Aprenda a construir guitarras e violões com Pedro Machado na Eco Guitar. Cursos Express, Intensivo e Extensivo em São Paulo.',
+  description:
+    'Aprenda a construir guitarras e violões com Pedro Henrique na Eco Guitar. Cursos Express, Intensivo e Extensivo em São Paulo.',
 }
 
-function ModalidadeBadge({ modalidade }: { modalidade: string }) {
-  const cores: Record<string, string> = {
-    Express: 'bg-eco-wood/10 text-eco-wood-dark',
-    Intensivo: 'bg-eco-charcoal/10 text-eco-charcoal',
-    Extensivo: 'bg-eco-paper border border-eco-border text-eco-muted',
-  }
-  const classe = cores[modalidade] ?? 'bg-eco-paper text-eco-muted'
-  return (
-    <span className={`inline-block font-mono text-label uppercase tracking-widest px-3 py-1 rounded-full ${classe}`}>
-      {modalidade}
-    </span>
-  )
-}
+const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
-function CursoCard({ curso }: { curso: CursoCompleto }) {
-  const imageUrl = curso.imagem
-    ? urlFor(curso.imagem)?.width(600).height(400).fit('crop').url()
-    : null
+const RAZOES = [
+  {
+    num: '01',
+    titulo: 'Satisfação e Conexão Emocional',
+    texto:
+      'Finalizar a construção traz uma grande sensação de realização e orgulho, criando uma conexão emocional mais forte com o instrumento.',
+  },
+  {
+    num: '02',
+    titulo: 'Economia de Custos',
+    texto:
+      'Embora exija um investimento inicial, a construção do próprio instrumento pode ser mais econômica a longo prazo do que comprar modelos de marca.',
+  },
+  {
+    num: '03',
+    titulo: 'Compreensão Profunda e Aprendizado',
+    texto:
+      'O processo de construção oferece uma compreensão mais profunda dos princípios acústicos e mecânicos, ao mesmo tempo que ensina habilidades práticas valiosas.',
+  },
+  {
+    num: '04',
+    titulo: 'Personalização e Criatividade',
+    texto:
+      'Construir seu próprio instrumento permite total liberdade de personalização, seguindo seu estilo e preferências, além de estimular sua criatividade.',
+  },
+  {
+    num: '05',
+    titulo: 'Inovação e Compartilhamento',
+    texto:
+      'Ao projetar e experimentar novas ideias, você cria algo único e inovador, além de poder compartilhar suas experiências e técnicas com outros.',
+  },
+  {
+    num: '06',
+    titulo: 'Desenvolvimento Pessoal',
+    texto:
+      'O processo ensina paciência e perseverança, contribuindo para o seu crescimento pessoal e habilidades musicais, enquanto o instrumento se torna uma herança pessoal.',
+  },
+]
 
-  return (
-    <article className="flex flex-col bg-eco-paper border border-eco-border rounded-2xl overflow-hidden">
-      <div className="relative aspect-[16/7] bg-eco-wood/10">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={curso.titulo}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <svg aria-hidden="true" className="w-16 h-16 text-eco-wood/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}
-                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-        )}
-      </div>
-
-      <div className="flex flex-col gap-4 p-6 lg:p-8 flex-1">
-        <div className="flex-1 flex flex-col gap-3">
-          {curso.modalidade && <ModalidadeBadge modalidade={curso.modalidade} />}
-          <h2 className="font-serif text-title text-eco-charcoal">{curso.titulo}</h2>
-          {curso.descricao && (
-            <p className="font-sans text-body text-eco-muted">{curso.descricao}</p>
-          )}
-
-          {(curso.duracao || curso.horarios || curso.preco) && (
-            <dl className="mt-2 flex flex-col gap-2 border-t border-eco-border pt-4">
-              {curso.duracao && (
-                <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-24 flex-shrink-0">Duração</dt>
-                  <dd className="font-sans text-small text-eco-charcoal">{curso.duracao}</dd>
-                </div>
-              )}
-              {curso.horarios && (
-                <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-24 flex-shrink-0">Horários</dt>
-                  <dd className="font-sans text-small text-eco-charcoal">{curso.horarios}</dd>
-                </div>
-              )}
-              {curso.preco && (
-                <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-24 flex-shrink-0">Investimento</dt>
-                  <dd className="font-mono text-small text-eco-wood font-medium">{curso.preco}</dd>
-                </div>
-              )}
-            </dl>
-          )}
-        </div>
-
-        <Button href="/contato" variant="primary" size="sm">
-          Quero me inscrever
-        </Button>
-      </div>
-    </article>
-  )
-}
-
-function CursosVazios() {
-  return (
-    <div className="col-span-full flex flex-col items-center gap-4 py-20 text-center">
-      <svg aria-hidden="true" className="w-16 h-16 text-eco-wood/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}
-          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-      <p className="font-sans text-body text-eco-muted max-w-sm">
-        Nenhum curso disponível no momento. Entre em contato para saber das próximas turmas.
-      </p>
-      <Button href="/contato" variant="secondary" size="md">
-        Entrar em contato
-      </Button>
-    </div>
-  )
-}
+const CURSOS_FALLBACK: CursoListagem[] = [
+  {
+    _id: 'express',
+    slug: 'express',
+    titulo: 'Curso Express',
+    subtitulo: 'Para quem quer se aventurar sem fazer todas as etapas',
+    modalidade: 'Express',
+    duracao: '5 sábados',
+    horario: 'Sábados, 9h às 13h',
+    paraQuem: 'Retífica de trastes, shape de braço, montagem e regulagem.',
+  },
+  {
+    _id: 'intensivo',
+    slug: 'intensivo',
+    titulo: 'Curso Intensivo',
+    subtitulo: 'Para quem quer aproveitar o curso sem tanto tempo disponível',
+    modalidade: 'Intensivo',
+    duracao: '5 a 6 dias',
+    horario: 'Seg a Sáb, 13h às 19h',
+    paraQuem: 'Ideal para quem vem de fora de SP.',
+  },
+  {
+    _id: 'extensivo',
+    slug: 'extensivo',
+    titulo: 'Curso Extensivo',
+    subtitulo: 'Para quem quer o instrumento mais personalizado possível',
+    modalidade: 'Extensivo',
+    duracao: 'Processo contínuo',
+    horario: 'Terças 19h–22h ou Sábados 9h–13h',
+    paraQuem: 'São mais de 100 modelos para escolher.',
+  },
+]
 
 export default async function CursosPage() {
-  const cursos = await getCursosTodos()
+  const cursosDb = await getCursosListagem()
+  const cursos = cursosDb.length > 0 ? cursosDb : CURSOS_FALLBACK
 
   return (
     <PageLayout>
-      {/* Hero da página */}
-      <section className="bg-eco-charcoal py-section-sm">
+      {/* Hero */}
+      <section className="bg-eco-charcoal py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-wood">Aprenda Luteria</SectionLabel>
-          <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
-            Cursos de construção de guitarras e violões
+          <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
+            Luteria artesanal em São Paulo
+          </p>
+          <h1 className="font-serif text-display text-eco-white max-w-2xl">
+            Construa o instrumento dos seus sonhos
           </h1>
-          <p className="font-sans text-body-lg text-eco-muted mt-4 max-w-xl">
-            Do zero ao instrumento finalizado. Aprenda com Pedro Machado no ateliê da Eco Guitar,
-            em São Paulo, com turmas pequenas e acompanhamento personalizado.
+          <p className="font-sans text-body-lg text-eco-muted mt-6 max-w-xl">
+            Com mais de 15 anos de experiência em construção, manutenção, cursos e workshops,
+            vamos extrair o máximo do seu instrumento.
+          </p>
+          <div className="mt-8">
+            <Button href={WHATSAPP_URL} variant="primary" size="lg">
+              Quero construir o meu instrumento
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Por quê construir o SEU instrumento? */}
+      <section className="bg-eco-cream py-section">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h2 className="font-serif text-headline text-eco-charcoal mb-12 max-w-xl">
+            Por quê construir o{' '}
+            <em className="not-italic text-eco-wood">SEU</em>{' '}
+            instrumento?
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {RAZOES.map((r) => (
+              <div key={r.num} className="flex flex-col gap-3">
+                <span className="font-serif text-display text-eco-wood/20 leading-none select-none">
+                  {r.num}
+                </span>
+                <h3 className="font-serif text-title text-eco-charcoal">{r.titulo}</h3>
+                <p className="font-sans text-body text-eco-muted">{r.texto}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cards dos cursos */}
+      <section className="bg-eco-paper py-section border-t border-eco-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h2 className="font-serif text-headline text-eco-charcoal mb-4">
+            Qual curso combina mais com você?
+          </h2>
+          <p className="font-sans text-body text-eco-muted mb-10 max-w-lg">
+            Escolha a modalidade que encaixa na sua rotina e venha construir com a gente.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {cursos.map((curso) => (
+              <CursoCard key={curso._id} curso={curso} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nota sobre turmas de fora de SP */}
+      <section className="bg-eco-charcoal py-section-sm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 max-w-2xl">
+          <p className="font-sans text-body-lg text-eco-white">
+            Se você é de fora de São Paulo, também temos o módulo intensivo — em 5-6 dias você
+            sai com o instrumento tocando! Turmas de no máximo 4 pessoas para toda a atenção
+            merecida.
           </p>
         </div>
       </section>
 
-      {/* Listagem */}
-      <section className="bg-eco-cream py-section">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          {cursos.length === 0 ? (
-            <div className="grid grid-cols-1">
-              <CursosVazios />
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {cursos.map((curso) => (
-                <CursoCard key={curso._id} curso={curso} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-eco-paper border-t border-eco-border py-section-sm">
+      {/* CTA final */}
+      <section className="bg-eco-cream py-section-sm border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="font-serif text-title text-eco-charcoal">Ainda com dúvidas?</h2>
+            <h2 className="font-serif text-title text-eco-charcoal">
+              Pronto para começar?
+            </h2>
             <p className="font-sans text-body text-eco-muted mt-1">
               Fale com Pedro e descubra qual curso é ideal para você.
             </p>
           </div>
-          <Button href="/contato" variant="primary" size="md">
-            Entrar em contato
+          <Button href={WHATSAPP_URL} variant="primary" size="md">
+            Falar no WhatsApp
           </Button>
         </div>
       </section>
