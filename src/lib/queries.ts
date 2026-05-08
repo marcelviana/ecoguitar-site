@@ -174,3 +174,28 @@ export async function getClube(): Promise<Clube | null> {
     return null
   }
 }
+
+export interface Sobre {
+  titulo?: string
+  subtitulo?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  bio?: any[]
+  curiosidades?: { icone?: string; texto: string }[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fotoPrincipal?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fotosAtelier?: any[]
+}
+
+const sobreQuery = `*[_type == "sobre"][0]{
+  titulo, subtitulo, bio, curiosidades, fotoPrincipal, fotosAtelier
+}`
+
+export async function getSobre(): Promise<Sobre | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<Sobre | null>(sobreQuery)
+  } catch {
+    return null
+  }
+}

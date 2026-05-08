@@ -24,16 +24,49 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Eco Guitar | Lutheria em São Paulo',
-  description:
-    'Instrumentos artesanais únicos, cursos e workshops de lutheria com Pedro Machado em São Paulo.',
-  openGraph: {
-    title: 'Eco Guitar | Lutheria em São Paulo',
-    description:
-      'Instrumentos artesanais únicos, cursos e workshops de lutheria com Pedro Machado em São Paulo.',
-    locale: 'pt_BR',
-    type: 'website',
+  metadataBase: new URL('https://ecoguitar.com.br'),
+  title: {
+    default: 'Eco Guitar | Lutheria artesanal em São Paulo',
+    template: '%s — Eco Guitar',
   },
+  description:
+    'Lutheria artesanal com Pedro Machado em São Paulo. Construção e restauração de violões e guitarras sob medida. Cursos e workshops presenciais.',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://ecoguitar.com.br',
+    siteName: 'Eco Guitar',
+    title: 'Eco Guitar | Lutheria artesanal em São Paulo',
+    description:
+      'Lutheria artesanal com Pedro Machado em São Paulo. Construção e restauração de violões e guitarras sob medida. Cursos e workshops presenciais.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Eco Guitar | Lutheria artesanal em São Paulo',
+    description:
+      'Lutheria artesanal com Pedro Machado em São Paulo. Construção e restauração de violões e guitarras sob medida.',
+  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://ecoguitar.com.br' },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Eco Guitar',
+  description:
+    'Lutheria artesanal com Pedro Machado em São Paulo. Construção e restauração de violões e guitarras sob medida.',
+  url: 'https://ecoguitar.com.br',
+  logo: 'https://ecoguitar.com.br/og-image.jpg',
+  image: 'https://ecoguitar.com.br/og-image.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+  sameAs: ['https://instagram.com/ecoguitar'],
 }
 
 export default function RootLayout({
@@ -46,6 +79,12 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${inter.variable} ${dmSerif.variable} ${dmMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-eco-cream text-eco-charcoal font-sans">
         {children}
       </body>
