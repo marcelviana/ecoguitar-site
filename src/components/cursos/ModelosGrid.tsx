@@ -33,14 +33,14 @@ function GuitarSilhouette() {
 function ModeloCard({ modelo }: { modelo: ModeloInstrumento }) {
   return (
     <div className="flex flex-col items-center gap-2 p-3 bg-eco-cream rounded-xl border border-eco-border hover:border-eco-wood/30 transition-colors duration-150">
-      <div className="relative w-full aspect-square bg-eco-paper rounded-lg overflow-hidden flex items-center justify-center">
+      <div className="relative w-full aspect-square bg-eco-charcoal rounded-lg overflow-hidden flex items-center justify-center">
         {modelo.imagem ? (
           <Image
             src={modelo.imagem}
             alt={modelo.nome}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-            className="object-cover"
+            className="object-cover blueprint-sepia"
           />
         ) : (
           <div className="w-12 h-16">
