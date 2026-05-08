@@ -40,8 +40,7 @@ export interface Curso {
   descricao?: string
   preco?: string
   modalidade?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  imagem?: any
+  imagemCapa?: string
 }
 
 export interface Depoimento {
@@ -57,7 +56,7 @@ const instrumentosDestaqueQuery = `*[_type == "instrumento" && destaque == true]
 }`
 
 const cursosDestaqueQuery = `*[_type == "curso" && ativo == true][0..2]{
-  _id, titulo, descricao, preco, modalidade, imagem
+  _id, titulo, descricao, preco, modalidade, "imagemCapa": imagemCapa.asset->url
 }`
 
 const depoimentosQuery = `*[_type == "depoimento" && ativo == true][0..2]{
@@ -91,11 +90,6 @@ export async function getDepoimentos(): Promise<Depoimento[]> {
   }
 }
 
-export interface CursoCompleto extends Curso {
-  duracao?: string
-  horarios?: string
-}
-
 export interface Workshop {
   _id: string
   titulo: string
@@ -106,22 +100,9 @@ export interface Workshop {
   linkInscricao?: string
 }
 
-const cursosTodosQuery = `*[_type == "curso" && ativo == true] | order(_createdAt asc){
-  _id, titulo, descricao, preco, modalidade, duracao, horarios, imagem
-}`
-
 const workshopsQuery = `*[_type == "workshop" && ativo == true] | order(data asc){
   _id, titulo, descricao, data, vagas, preco, linkInscricao
 }`
-
-export async function getCursosTodos(): Promise<CursoCompleto[]> {
-  if (!client) return []
-  try {
-    return await client.fetch<CursoCompleto[]>(cursosTodosQuery)
-  } catch {
-    return []
-  }
-}
 
 export async function getWorkshops(): Promise<Workshop[]> {
   if (!client) return []

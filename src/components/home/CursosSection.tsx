@@ -3,19 +3,14 @@ import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
 import { getCursosDestaque, type Curso } from '@/lib/queries'
-import { urlFor } from '@/lib/sanity-image'
 
 function CursoCard({ curso }: { curso: Curso }) {
-  const imageUrl = curso.imagem
-    ? urlFor(curso.imagem)?.width(600).height(400).fit('crop').url()
-    : null
-
   return (
     <div className="flex flex-col bg-eco-paper border border-eco-border rounded-xl overflow-hidden">
       <div className="relative aspect-[4/3] bg-eco-wood/20">
-        {imageUrl ? (
+        {curso.imagemCapa ? (
           <Image
-            src={imageUrl}
+            src={curso.imagemCapa}
             alt={curso.titulo}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
