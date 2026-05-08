@@ -16,9 +16,11 @@ export default function PrecoCard({
   maxAlunos,
   duracao,
   horarios,
-  oQueEstaIncluido = [],
-  oQueNaoEstaIncluido = [],
+  oQueEstaIncluido,
+  oQueNaoEstaIncluido,
 }: PrecoCardProps) {
+  const incluidos = oQueEstaIncluido ?? []
+  const naoIncluidos = oQueNaoEstaIncluido ?? []
   return (
     <div className="bg-eco-charcoal rounded-2xl overflow-hidden">
       <div className="p-8 lg:p-10">
@@ -60,13 +62,13 @@ export default function PrecoCard({
           )}
         </dl>
 
-        {oQueEstaIncluido.length > 0 && (
+        {incluidos.length > 0 && (
           <div className="mb-6">
             <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
               Incluso
             </p>
             <ul className="flex flex-col gap-2">
-              {oQueEstaIncluido.map((item, i) => (
+              {incluidos.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <svg
                     className="w-4 h-4 text-eco-wood flex-shrink-0 mt-0.5"
@@ -84,13 +86,13 @@ export default function PrecoCard({
           </div>
         )}
 
-        {oQueNaoEstaIncluido.length > 0 && (
+        {naoIncluidos.length > 0 && (
           <div className="mb-8">
             <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
               Não incluso
             </p>
             <ul className="flex flex-col gap-2">
-              {oQueNaoEstaIncluido.map((item, i) => (
+              {naoIncluidos.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <svg
                     className="w-4 h-4 text-eco-muted flex-shrink-0 mt-0.5"
