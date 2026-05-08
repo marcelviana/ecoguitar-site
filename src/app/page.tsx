@@ -8,12 +8,15 @@ import DepoimentosSection from '@/components/home/DepoimentosSection'
 import ClubeSection from '@/components/home/ClubeSection'
 import GaleriaSection from '@/components/home/GaleriaSection'
 import ContatoCTASection from '@/components/home/ContatoCTASection'
+import { getConfiguracao } from '@/lib/queries'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const config = await getConfiguracao()
+
   return (
     <PageLayout>
-      <HeroSection />
-      <SobreSection />
+      <HeroSection heroBannerImagem={config?.heroBannerImagem} />
+      <SobreSection fotoPedro={config?.fotoPedro} />
       <ServicosSection />
       <InstrumentosSection />
       <CursosSection />
