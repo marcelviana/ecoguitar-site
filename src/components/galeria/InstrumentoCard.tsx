@@ -1,19 +1,17 @@
 import Image from 'next/image'
-import { urlFor } from '@/lib/sanity-image'
+import Link from 'next/link'
 import type { InstrumentoGaleria } from '@/lib/queries'
 
 export default function InstrumentoCard({ instrumento }: { instrumento: InstrumentoGaleria }) {
-  const imageUrl = instrumento.foto
-    ? urlFor(instrumento.foto)?.width(800).height(640).url()
-    : null
-
   return (
-    <article className="group flex flex-col bg-eco-paper border border-eco-border rounded-2xl overflow-hidden">
-      {/* Image */}
+    <Link
+      href={`/galeria/${instrumento.slug}`}
+      className="group flex flex-col bg-eco-paper border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200"
+    >
       <div className="relative aspect-[5/4] bg-eco-wood/10 overflow-hidden">
-        {imageUrl ? (
+        {instrumento.fotoUrl ? (
           <Image
-            src={imageUrl}
+            src={instrumento.fotoUrl}
             alt={instrumento.nome}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -44,25 +42,21 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col gap-3 p-5 flex-1">
-        <h3 className="font-serif text-title text-eco-charcoal">{instrumento.nome}</h3>
-        {instrumento.descricao && (
-          <p className="font-sans text-body text-eco-muted line-clamp-3">{instrumento.descricao}</p>
+      <div className="flex flex-col gap-2 p-5">
+        <h3 className="font-serif text-title text-eco-charcoal group-hover:text-eco-wood transition-colors duration-200">
+          {instrumento.nome}
+        </h3>
+        {instrumento.modeloBase && (
+          <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+            {instrumento.modeloBase.nome}
+          </p>
         )}
-        {instrumento.materiais && instrumento.materiais.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-auto pt-2">
-            {instrumento.materiais.map((material) => (
-              <span
-                key={material}
-                className="font-mono text-xs bg-eco-cream border border-eco-border px-2 py-1 text-eco-muted"
-              >
-                {material}
-              </span>
-            ))}
-          </div>
+        {instrumento.descricao && (
+          <p className="font-sans text-small text-eco-muted line-clamp-2 mt-1">
+            {instrumento.descricao}
+          </p>
         )}
       </div>
-    </article>
+    </Link>
   )
 }

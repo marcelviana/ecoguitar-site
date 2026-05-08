@@ -113,14 +113,36 @@ export async function getWorkshops(): Promise<Workshop[]> {
   }
 }
 
+export interface SpecExtra {
+  label: string
+  valor: string
+}
+
 export interface InstrumentoGaleria {
   _id: string
   nome: string
+  slug: string
   descricao?: string
   destaque?: boolean
-  materiais?: string[]
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  foto?: any
+  fotoUrl?: string
+  modeloBase?: { nome: string; categoria: string }
+}
+
+export interface InstrumentoDetalhe {
+  _id: string
+  nome: string
+  slug: string
+  descricao?: string
+  destaque?: boolean
+  fotos: string[]
+  modeloBase?: { nome: string; categoria: string }
+  corpo?: string
+  braco?: string
+  escala?: string
+  tarraxas?: string
+  ferragens?: string
+  captacao?: string
+  specsExtras?: SpecExtra[]
 }
 
 export interface Clube {
@@ -133,9 +155,36 @@ export interface Clube {
   vagas?: number
 }
 
-const instrumentosTodosQuery = `*[_type == "instrumento"] | order(_createdAt desc){
-  _id, nome, descricao, destaque, materiais, "foto": fotos[0]
-}`
+const instrumentosTodosQuery = groq`
+  *[_type == "instrumento" && ativo == true] | order(_createdAt desc) {
+    _id,
+    nome,
+    "slug": slug.current,
+    descricao,
+    destaque,
+    "fotoUrl": fotos[0].asset->url,
+    "modeloBase": modeloBase->{ nome, categoria },
+  }
+`
+
+const instrumentoBySlugQuery = groq`
+  *[_type == "instrumento" && slug.current == $slug && ativo == true][0] {
+    _id,
+    nome,
+    "slug": slug.current,
+    descricao,
+    destaque,
+    "fotos": fotos[].asset->url,
+    "modeloBase": modeloBase->{ nome, categoria },
+    corpo,
+    braco,
+    escala,
+    tarraxas,
+    ferragens,
+    captacao,
+    specsExtras,
+  }
+`
 
 const clubeQuery = `*[_type == "clube"][0]`
 
@@ -145,6 +194,15 @@ export async function getAllInstrumentos(): Promise<InstrumentoGaleria[]> {
     return await client.fetch<InstrumentoGaleria[]>(instrumentosTodosQuery)
   } catch {
     return []
+  }
+}
+
+export async function getInstrumentoBySlug(slug: string): Promise<InstrumentoDetalhe | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<InstrumentoDetalhe | null>(instrumentoBySlugQuery, { slug })
+  } catch {
+    return null
   }
 }
 
