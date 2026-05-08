@@ -40,7 +40,7 @@ function ModeloCard({ modelo }: { modelo: ModeloInstrumento }) {
             alt={modelo.nome}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-            className="object-cover blueprint-sepia"
+            className="object-contain [filter:sepia(1)_brightness(0.9)_saturate(1.4)]"
           />
         ) : (
           <div className="w-12 h-16">

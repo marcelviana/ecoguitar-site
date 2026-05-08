@@ -12,7 +12,7 @@ function InstrumentoCard({ instrumento }: { instrumento: Instrumento }) {
             src={instrumento.imagemUrl}
             alt={instrumento.nome}
             fill
-            className="object-cover blueprint-sepia"
+            className="object-cover [filter:sepia(1)_brightness(0.9)_saturate(1.4)]"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
