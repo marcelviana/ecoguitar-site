@@ -27,4 +27,5 @@ Antes de encerrar qualquer sessão, executar nesta ordem:
 - Imports com alias `@/`
 
 ## Linguagem e terminologia
-- Usar sempre **Luteria** (não "Luthieria" nem "Lutheria")
+- Usar sempre **Luteria** (não "Luthieria" nem "Lutheria") ao se referir à arte/ofício
+- **Luthier** é correto apenas quando se referir ao profissional ou em nomes próprios (ex: "Clube do Luthier")
