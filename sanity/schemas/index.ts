@@ -5,6 +5,7 @@ import instrumento from './instrumento'
 import depoimento from './depoimento'
 import configuracao from './configuracao'
 import sobre from './sobre'
+import modeloInstrumento from './modeloInstrumento'
 
 export const schemaTypes = [
   curso,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   depoimento,
   configuracao,
   sobre,
+  modeloInstrumento,
 ]

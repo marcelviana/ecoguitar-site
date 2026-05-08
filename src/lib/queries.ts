@@ -1,3 +1,4 @@
+import { groq } from 'next-sanity'
 import { client } from './sanity'
 
 export interface Configuracao {
@@ -197,5 +198,150 @@ export async function getSobre(): Promise<Sobre | null> {
     return await client.fetch<Sobre | null>(sobreQuery)
   } catch {
     return null
+  }
+}
+
+// ── Cursos dinâmicos (páginas /cursos e /cursos/[slug]) ──
+
+export interface PerguntaResposta {
+  pergunta: string
+  resposta: string
+}
+
+export interface ModeloInstrumento {
+  _id: string
+  nome: string
+  categoria: string
+  imagem?: string
+  disponivel: boolean
+  destaque: boolean
+  observacao?: string
+}
+
+export interface CursoListagem {
+  _id: string
+  titulo: string
+  slug: string
+  subtitulo?: string
+  modalidade?: string
+  ordem?: number
+  paraQuem?: string
+  preco?: string
+  duracao?: string
+  horario?: string
+  maxAlunosPorProfessor?: number
+  imagemCapa?: string
+}
+
+export interface CursoDetalhe {
+  _id: string
+  titulo: string
+  slug: string
+  subtitulo?: string
+  modalidade?: string
+  paraQuem?: string
+  duracao?: string
+  horario?: string
+  maxAlunosPorProfessor?: number
+  preco?: string
+  precoNumerico?: number
+  precoIndividual?: number
+  oQueEstaIncluido?: string[]
+  oQueNaoEstaIncluido?: string[]
+  faq?: PerguntaResposta[]
+  videoYoutubeId?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  descricaoCompleta?: any[]
+  imagemCapa?: string
+  galeria?: string[]
+  modelosDisponiveis?: ModeloInstrumento[]
+}
+
+export const cursosListagemQuery = groq`
+  *[_type == "curso" && ativo == true] | order(ordem asc, titulo asc) {
+    _id,
+    titulo,
+    "slug": slug.current,
+    subtitulo,
+    modalidade,
+    ordem,
+    paraQuem,
+    preco,
+    duracao,
+    "horario": coalesce(horario, horarios),
+    maxAlunosPorProfessor,
+    "imagemCapa": imagemCapa.asset->url,
+  }
+`
+
+export const cursoBySlugQuery = groq`
+  *[_type == "curso" && slug.current == $slug && ativo == true][0] {
+    _id,
+    titulo,
+    "slug": slug.current,
+    subtitulo,
+    modalidade,
+    paraQuem,
+    duracao,
+    "horario": coalesce(horario, horarios),
+    maxAlunosPorProfessor,
+    preco,
+    precoNumerico,
+    precoIndividual,
+    oQueEstaIncluido,
+    oQueNaoEstaIncluido,
+    faq,
+    videoYoutubeId,
+    descricaoCompleta,
+    "imagemCapa": imagemCapa.asset->url,
+    "galeria": galeria[].asset->url,
+    "modelosDisponiveis": modelosDisponiveis[]->{
+      _id,
+      nome,
+      categoria,
+      disponivel,
+      destaque,
+      observacao,
+      "imagem": imagem.asset->url,
+    },
+  }
+`
+
+export const modelosQuery = groq`
+  *[_type == "modeloInstrumento" && disponivel == true] | order(categoria asc, nome asc) {
+    _id,
+    nome,
+    categoria,
+    disponivel,
+    destaque,
+    observacao,
+    "imagem": imagem.asset->url,
+  }
+`
+
+export async function getCursosListagem(): Promise<CursoListagem[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<CursoListagem[]>(cursosListagemQuery)
+  } catch {
+    return []
+  }
+}
+
+export async function getCursoBySlug(slug: string): Promise<CursoDetalhe | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<CursoDetalhe | null>(cursoBySlugQuery, { slug })
+  } catch {
+    return null
+  }
+}
+
+export async function getModelos(): Promise<ModeloInstrumento[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<ModeloInstrumento[]>(modelosQuery)
+  } catch {
+    return []
   }
 }
