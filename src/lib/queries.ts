@@ -102,3 +102,47 @@ export async function getWorkshops(): Promise<Workshop[]> {
     return []
   }
 }
+
+export interface InstrumentoGaleria {
+  _id: string
+  nome: string
+  descricao?: string
+  destaque?: boolean
+  materiais?: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  foto?: any
+}
+
+export interface Clube {
+  _id: string
+  titulo: string
+  descricao?: string
+  beneficios?: string[]
+  preco?: string
+  periodo?: string
+  vagas?: number
+}
+
+const instrumentosTodosQuery = `*[_type == "instrumento"] | order(_createdAt desc){
+  _id, nome, descricao, destaque, materiais, "foto": fotos[0]
+}`
+
+const clubeQuery = `*[_type == "clube"][0]`
+
+export async function getAllInstrumentos(): Promise<InstrumentoGaleria[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<InstrumentoGaleria[]>(instrumentosTodosQuery)
+  } catch {
+    return []
+  }
+}
+
+export async function getClube(): Promise<Clube | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<Clube | null>(clubeQuery)
+  } catch {
+    return null
+  }
+}
