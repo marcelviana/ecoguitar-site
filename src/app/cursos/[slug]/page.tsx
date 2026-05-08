@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
 import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import YoutubeEmbed from '@/components/cursos/YoutubeEmbed'
 import ModelosGrid from '@/components/cursos/ModelosGrid'
 import GaleriaCurso from '@/components/cursos/GaleriaCurso'
-import PrecoCard from '@/components/cursos/PrecoCard'
 import FaqAccordion from '@/components/cursos/FaqAccordion'
 import {
   getCursoBySlug,
@@ -19,10 +19,10 @@ import {
 
 const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
-const MODALIDADE_STYLES: Record<string, string> = {
-  Express: 'bg-eco-wood/10 text-eco-wood-dark',
-  Intensivo: 'bg-eco-charcoal/10 text-eco-charcoal',
-  Extensivo: 'bg-eco-paper border border-eco-border text-eco-muted',
+const MODALIDADE_BADGE: Record<string, string> = {
+  Express: 'bg-eco-wood/20 text-eco-white border border-eco-wood/40',
+  Intensivo: 'bg-white/10 text-eco-white border border-white/20',
+  Extensivo: 'bg-white/10 text-eco-white border border-white/20',
 }
 
 const SLUGS_FALLBACK = ['express', 'intensivo', 'extensivo']
@@ -56,106 +56,104 @@ function CoursePageLayout({
   modelos: ModeloInstrumento[]
 }) {
   const badgeClass =
-    MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-paper text-eco-muted'
+    MODALIDADE_BADGE[curso.modalidade ?? ''] ?? 'bg-white/10 text-eco-white border border-white/20'
 
   return (
     <PageLayout>
-      {/* Seção 1 — Hero */}
-      <section className="bg-eco-charcoal py-section">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col gap-6">
-              {curso.modalidade && (
-                <span
-                  className={`self-start font-mono text-label uppercase tracking-widest px-3 py-1 rounded-full ${badgeClass}`}
-                >
+      {/* ── Hero full-bleed ── */}
+      <div className="relative h-[480px] lg:h-[560px] overflow-hidden bg-eco-charcoal">
+        {curso.imagemCapa && (
+          <Image
+            src={curso.imagemCapa}
+            alt={curso.titulo}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        )}
+
+        {/* Gradiente esquerda → direita */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(28,25,23,0.90) 0%, rgba(28,25,23,0.60) 55%, transparent 100%)',
+          }}
+        />
+
+        {/* Conteúdo */}
+        <div className="absolute inset-0 flex flex-col justify-end px-6 lg:px-12 pb-12 max-w-7xl mx-auto w-full">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 mb-4">
+            <Link
+              href="/cursos"
+              className="font-mono text-label uppercase tracking-widest text-eco-white/60 hover:text-eco-white transition-colors"
+            >
+              Cursos
+            </Link>
+            {curso.modalidade && (
+              <>
+                <span className="text-eco-white/40 text-label">·</span>
+                <span className="font-mono text-label uppercase tracking-widest text-eco-white/60">
                   {curso.modalidade}
                 </span>
-              )}
-              <h1 className="font-serif text-headline text-eco-white">
-                {curso.titulo}
-              </h1>
-              {curso.subtitulo && (
-                <p className="font-sans text-body-lg text-eco-muted">{curso.subtitulo}</p>
-              )}
-              <Button href={WHATSAPP_URL} variant="primary" size="lg">
-                Quero construir meu instrumento
-              </Button>
-            </div>
+              </>
+            )}
+          </nav>
 
-            {/* Vídeo ou imagem de capa */}
-            <div>
-              {curso.videoYoutubeId ? (
-                <YoutubeEmbed videoId={curso.videoYoutubeId} titulo={curso.titulo} />
-              ) : curso.imagemCapa ? (
-                <div className="relative aspect-video rounded-xl overflow-hidden">
-                  <Image
-                    src={curso.imagemCapa}
-                    alt={curso.titulo}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              ) : null}
-            </div>
+          {curso.modalidade && (
+            <span
+              className={`self-start font-mono text-label uppercase tracking-widest px-3 py-1 rounded-full mb-4 ${badgeClass}`}
+            >
+              {curso.modalidade}
+            </span>
+          )}
+
+          <h1 className="font-serif text-headline text-eco-white max-w-xl mb-3">
+            {curso.titulo}
+          </h1>
+
+          {curso.subtitulo && (
+            <p className="font-sans text-body text-eco-white/70 max-w-lg mb-6">
+              {curso.subtitulo}
+            </p>
+          )}
+
+          <div>
+            <Button href={WHATSAPP_URL} variant="primary" size="lg">
+              Quero construir meu instrumento
+            </Button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Seção 2 — Descritivo do curso */}
+      {/* ── Vídeo (abaixo do hero, se existir) ── */}
+      {curso.videoYoutubeId && (
+        <section className="bg-eco-charcoal py-8">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <YoutubeEmbed videoId={curso.videoYoutubeId} titulo={curso.titulo} />
+          </div>
+        </section>
+      )}
+
+      {/* ── Descritivo do curso ── */}
       <section className="bg-eco-cream py-section">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2 flex flex-col gap-6">
-              {curso.paraQuem && (
-                <div className="bg-eco-wood/10 border-l-4 border-eco-wood rounded-r-xl px-6 py-4">
-                  <p className="font-sans text-body-lg text-eco-charcoal">{curso.paraQuem}</p>
-                </div>
-              )}
-              {curso.descricaoCompleta && curso.descricaoCompleta.length > 0 && (
-                <div className="prose prose-stone max-w-none font-sans text-eco-charcoal">
-                  <PortableText value={curso.descricaoCompleta} />
-                </div>
-              )}
+        <div className="max-w-3xl mx-auto px-6 lg:px-12 flex flex-col gap-6">
+          {curso.paraQuem && (
+            <div className="bg-eco-wood/10 border-l-4 border-eco-wood rounded-r-xl px-6 py-4">
+              <p className="font-sans text-body-lg text-eco-charcoal">{curso.paraQuem}</p>
             </div>
-
-            {/* Info rápida */}
-            <div className="flex flex-col gap-4">
-              <div className="bg-eco-paper border border-eco-border rounded-xl p-6 flex flex-col gap-4">
-                {curso.duracao && (
-                  <div>
-                    <dt className="font-mono text-label uppercase tracking-widest text-eco-muted">
-                      Duração
-                    </dt>
-                    <dd className="font-sans text-body text-eco-charcoal mt-0.5">{curso.duracao}</dd>
-                  </div>
-                )}
-                {curso.horarios && (
-                  <div>
-                    <dt className="font-mono text-label uppercase tracking-widest text-eco-muted">
-                      Horário
-                    </dt>
-                    <dd className="font-sans text-body text-eco-charcoal mt-0.5">{curso.horarios}</dd>
-                  </div>
-                )}
-                {curso.maxAlunosPorProfessor && (
-                  <div>
-                    <dt className="font-mono text-label uppercase tracking-widest text-eco-muted">
-                      Turma
-                    </dt>
-                    <dd className="font-sans text-body text-eco-charcoal mt-0.5">
-                      Máx. {curso.maxAlunosPorProfessor} alunos/professor
-                    </dd>
-                  </div>
-                )}
-              </div>
+          )}
+          {curso.descricaoCompleta && curso.descricaoCompleta.length > 0 && (
+            <div className="prose prose-stone max-w-none font-sans text-eco-charcoal">
+              <PortableText value={curso.descricaoCompleta} />
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Seção 4 — Modelos */}
+      {/* ── Modelos ── */}
       {modelos.length > 0 && (
         <section className="bg-eco-paper py-section border-t border-eco-border">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -171,7 +169,7 @@ function CoursePageLayout({
         </section>
       )}
 
-      {/* Seção 5 — Galeria */}
+      {/* ── Galeria ── */}
       {curso.galeria && curso.galeria.length > 0 && (
         <section className="bg-eco-cream py-section border-t border-eco-border">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -183,52 +181,137 @@ function CoursePageLayout({
         </section>
       )}
 
-      {/* Seção 6 — Preço */}
-      {curso.preco && (
-        <section className="bg-eco-paper py-section border-t border-eco-border">
-          <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <h2 className="font-serif text-headline text-eco-charcoal mb-10">
-              Investimento
-            </h2>
-            <PrecoCard
-              preco={curso.preco}
-              precoIndividual={curso.precoIndividual}
-              maxAlunos={curso.maxAlunosPorProfessor}
-              duracao={curso.duracao}
-              horarios={curso.horarioss}
-              oQueEstaIncluido={curso.oQueEstaIncluido}
-              oQueNaoEstaIncluido={curso.oQueNaoEstaIncluido}
-            />
-
-            {curso.faq && curso.faq.length > 0 && (
-              <div className="mt-12">
-                <h3 className="font-serif text-title text-eco-charcoal mb-6">
-                  Perguntas frequentes
-                </h3>
-                <FaqAccordion items={curso.faq} />
+      {/* ── Investimento + CTA ── */}
+      <section className="bg-eco-paper py-section border-t border-eco-border">
+        <div className="max-w-3xl mx-auto px-6 lg:px-12">
+          {/* Card de investimento */}
+          <div className="bg-eco-charcoal rounded-2xl overflow-hidden">
+            {/* Corpo: duas colunas */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+              {/* Esquerda — preço */}
+              <div className="p-8">
+                <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                  Investimento
+                </p>
+                {curso.preco ? (
+                  <>
+                    <p className="font-mono text-3xl text-eco-white leading-none">
+                      {curso.preco}
+                    </p>
+                    {curso.precoIndividual && (
+                      <p className="font-sans text-small text-eco-muted mt-2">
+                        Individual: R$ {curso.precoIndividual.toLocaleString('pt-BR')}
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <p className="font-sans text-body text-eco-muted">
+                    Consulte via WhatsApp
+                  </p>
+                )}
+                {curso.modalidade && (
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-wood mt-3">
+                    {curso.modalidade}
+                  </p>
+                )}
               </div>
-            )}
-          </div>
-        </section>
-      )}
 
-      {/* Seção 7 — CTA Final */}
-      <section className="bg-eco-charcoal py-section">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h2 className="font-serif text-headline text-eco-white">
-              Vamos agendar?
-            </h2>
-            <p className="font-sans text-body text-eco-muted mt-2 max-w-md">
-              Fale com Pedro e tire todas as suas dúvidas sobre o curso.
-            </p>
-            <p className="font-mono text-small text-eco-wood mt-2">
-              +55 11 97694-7027
-            </p>
+              {/* Direita — logística */}
+              <div className="p-8 flex flex-col gap-4">
+                {curso.duracao && (
+                  <div>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                      Duração
+                    </p>
+                    <p className="font-sans text-body text-eco-white mt-0.5">{curso.duracao}</p>
+                  </div>
+                )}
+                {curso.horarios && (
+                  <div>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                      Horário
+                    </p>
+                    <p className="font-sans text-body text-eco-white mt-0.5">{curso.horarios}</p>
+                  </div>
+                )}
+                {curso.maxAlunosPorProfessor && (
+                  <div>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                      Turma
+                    </p>
+                    <p className="font-sans text-body text-eco-white mt-0.5">
+                      Máx. {curso.maxAlunosPorProfessor} alunos/professor
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Rodapé — benefício + CTA */}
+            <div className="border-t border-white/10 px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <p className="font-sans text-small text-eco-muted max-w-sm">
+                Você leva o instrumento pronto para casa. Material incluso.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-wood text-white hover:bg-eco-wood-dark px-6 py-3 text-body"
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
           </div>
-          <Button href={WHATSAPP_URL} variant="primary" size="lg">
-            Falar no WhatsApp
-          </Button>
+
+          {/* Inclusos / não inclusos */}
+          {(curso.oQueEstaIncluido?.length || curso.oQueNaoEstaIncluido?.length) ? (
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {(curso.oQueEstaIncluido ?? []).length > 0 && (
+                <div>
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                    Incluso
+                  </p>
+                  <ul className="flex flex-col gap-2">
+                    {(curso.oQueEstaIncluido ?? []).map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <svg className="w-4 h-4 text-eco-wood flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="font-sans text-small text-eco-charcoal">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {(curso.oQueNaoEstaIncluido ?? []).length > 0 && (
+                <div>
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                    Não incluso
+                  </p>
+                  <ul className="flex flex-col gap-2">
+                    {(curso.oQueNaoEstaIncluido ?? []).map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <svg className="w-4 h-4 text-eco-muted flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span className="font-sans text-small text-eco-muted">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : null}
+
+          {/* FAQ */}
+          {curso.faq && curso.faq.length > 0 && (
+            <div className="mt-12">
+              <h3 className="font-serif text-title text-eco-charcoal mb-6">
+                Perguntas frequentes
+              </h3>
+              <FaqAccordion items={curso.faq} />
+            </div>
+          )}
         </div>
       </section>
     </PageLayout>
