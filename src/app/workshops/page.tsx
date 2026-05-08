@@ -6,7 +6,7 @@ import { getWorkshops, type Workshop } from '@/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Workshops — Eco Guitar',
-  description: 'Workshops de luteria e lutheria com Pedro Machado. Encontros práticos e intensivos em São Paulo.',
+  description: 'Workshops de luteria com Pedro Machado. Encontros práticos e intensivos em São Paulo.',
 }
 
 function formatarData(iso: string): string {
