@@ -2,13 +2,18 @@ import type { Metadata } from 'next'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import ContatoForm from '@/components/contato/ContatoForm'
+import { getConfiguracao } from '@/lib/queries'
 
 export const metadata: Metadata = {
   title: 'Contato — Eco Guitar',
   description: 'Entre em contato com a Eco Guitar para tirar dúvidas, agendar uma visita ou se inscrever em um curso.',
 }
 
-export default function ContatoPage() {
+export default async function ContatoPage() {
+  const config = await getConfiguracao()
+  const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : 'https://wa.me/5511999999999'
+  const igHandle = config?.instagram ? config.instagram.replace(/^@/, '') : 'ecoguitar'
+  const igUrl = `https://instagram.com/${igHandle}`
   return (
     <PageLayout>
       <section className="bg-eco-cream py-section">
@@ -51,12 +56,12 @@ export default function ContatoPage() {
                   <div>
                     <p className="font-mono text-label uppercase tracking-widest text-eco-muted">Instagram</p>
                     <a
-                      href="https://instagram.com/ecoguitar"
+                      href={igUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-sans text-body text-eco-wood hover:underline underline-offset-4 mt-1 inline-block"
                     >
-                      @ecoguitar
+                      @{igHandle}
                     </a>
                   </div>
                 </div>
@@ -71,7 +76,7 @@ export default function ContatoPage() {
                   <div>
                     <p className="font-mono text-label uppercase tracking-widest text-eco-muted">WhatsApp</p>
                     <a
-                      href="https://wa.me/5511999999999"
+                      href={waLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-sans text-body text-eco-wood hover:underline underline-offset-4 mt-1 inline-block"

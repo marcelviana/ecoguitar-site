@@ -3,7 +3,7 @@ import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import InstrumentoCard from '@/components/galeria/InstrumentoCard'
 import Button from '@/components/ui/Button'
-import { getAllInstrumentos } from '@/lib/queries'
+import { getAllInstrumentos, getConfiguracao } from '@/lib/queries'
 
 export const revalidate = 3600
 
@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 }
 
 export default async function GaleriaPage() {
-  const instrumentos = await getAllInstrumentos()
+  const [instrumentos, config] = await Promise.all([getAllInstrumentos(), getConfiguracao()])
+  const igHandle = config?.instagram ? config.instagram.replace(/^@/, '') : 'ecoguitar'
+  const igUrl = `https://instagram.com/${igHandle}`
 
   const destaques = instrumentos.filter((i) => i.destaque)
   const demais = instrumentos.filter((i) => !i.destaque)
@@ -129,13 +131,13 @@ export default async function GaleriaPage() {
             </p>
           </div>
           <a
-            href="https://instagram.com/ecoguitar"
+            href={igUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 border border-eco-cream/30 text-eco-cream font-sans font-medium text-body px-6 py-3 hover:bg-eco-cream/10 transition-colors flex-shrink-0"
           >
             <InstagramIcon />
-            @ecoguitar
+            @{igHandle}
           </a>
         </div>
       </section>

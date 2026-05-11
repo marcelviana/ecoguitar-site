@@ -4,7 +4,7 @@ import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
-import { getSobre } from '@/lib/queries'
+import { getSobre, getConfiguracao } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import { sanityImg } from '@/lib/sanity-image'
 
@@ -43,7 +43,8 @@ function bioToText(bio: unknown[]): string[] {
 }
 
 export default async function SobrePage() {
-  const sobre = await getSobre()
+  const [sobre, config] = await Promise.all([getSobre(), getConfiguracao()])
+  const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : 'https://wa.me/5511999999999'
 
   const titulo = sobre?.titulo ?? 'Conheça Pedro Machado'
   const subtitulo = sobre?.subtitulo ?? 'Luteria artesanal'
@@ -195,7 +196,7 @@ export default async function SobrePage() {
               Entrar em contato
             </Button>
             <Link
-              href="https://wa.me/55XXXXXXXXXXX"
+              href={waLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-white/40 text-white font-sans font-medium text-body px-6 py-3 hover:bg-white/10 transition-colors"

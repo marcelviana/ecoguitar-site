@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { getConfiguracao } from '@/lib/queries'
 
 const navLinks = [
   { label: 'Início', href: '/' },
@@ -11,10 +12,14 @@ const navLinks = [
   { label: 'Contato', href: '/contato' },
 ]
 
-const WA_LINK = 'https://wa.me/55XXXXXXXXXXX'
-const EMAIL = 'contato@ecoguitar.com.br'
+const EMAIL_FALLBACK = 'contato@ecoguitar.com.br'
 
-export default function Footer() {
+export default async function Footer() {
+  const config = await getConfiguracao()
+  const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : null
+  const email = config?.email ?? EMAIL_FALLBACK
+  const igUrl = config?.instagram ? `https://instagram.com/${config.instagram.replace(/^@/, '')}` : null
+  const ytUrl = config?.youtube ?? null
   return (
     <footer className="bg-eco-charcoal text-eco-cream">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-section-sm lg:py-16">
@@ -33,24 +38,28 @@ export default function Footer() {
               A sua guitarra é tão única quanto o som que você faz.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Eco Guitar no Instagram"
-                className="text-eco-muted hover:text-eco-cream transition-colors"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Eco Guitar no YouTube"
-                className="text-eco-muted hover:text-eco-cream transition-colors"
-              >
-                <YouTubeIcon />
-              </a>
+              {igUrl && (
+                <a
+                  href={igUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Eco Guitar no Instagram"
+                  className="text-eco-muted hover:text-eco-cream transition-colors"
+                >
+                  <InstagramIcon />
+                </a>
+              )}
+              {ytUrl && (
+                <a
+                  href={ytUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Eco Guitar no YouTube"
+                  className="text-eco-muted hover:text-eco-cream transition-colors"
+                >
+                  <YouTubeIcon />
+                </a>
+              )}
             </div>
           </div>
 
@@ -81,26 +90,29 @@ export default function Footer() {
               Contato
             </span>
             <ul className="flex flex-col gap-3 text-eco-muted">
-              <li className="font-sans text-small leading-relaxed">
-                Rua Cerro Corá, 2317<br />
-                São Paulo — SP
-              </li>
+              {config?.endereco && (
+                <li className="font-sans text-small leading-relaxed">
+                  {config.endereco}
+                </li>
+              )}
+              {waLink && (
+                <li>
+                  <a
+                    href={waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-small hover:text-eco-cream transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+              )}
               <li>
                 <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${email}`}
                   className="font-sans text-small hover:text-eco-cream transition-colors"
                 >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="font-sans text-small hover:text-eco-cream transition-colors"
-                >
-                  {EMAIL}
+                  {email}
                 </a>
               </li>
             </ul>
