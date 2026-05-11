@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Início', href: '/' },
@@ -44,30 +45,15 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-mono text-label tracking-[0.2em] uppercase text-eco-charcoal hover:text-eco-wood transition-colors"
-            aria-label="Eco Guitar — página inicial"
-          >
-            <svg
-              width="140"
-              height="24"
-              viewBox="0 0 140 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <text
-                x="0"
-                y="18"
-                fontFamily="var(--font-dm-mono, monospace)"
-                fontSize="14"
-                letterSpacing="3"
-                fill="currentColor"
-                fontWeight="500"
-              >
-                ECO GUITAR
-              </text>
-            </svg>
+          <Link href="/" aria-label="Eco Guitar — página inicial">
+            <Image
+              src="/logo.png"
+              alt="Eco Guitar"
+              width={54}
+              height={40}
+              priority
+              className="[mix-blend-mode:multiply]"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -127,9 +113,13 @@ export default function Header() {
         aria-label="Menu de navegação"
       >
         <div className="flex items-center justify-between px-6 h-18 border-b border-eco-border">
-          <span className="font-mono text-label tracking-[0.2em] uppercase text-eco-charcoal">
-            ECO GUITAR
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Eco Guitar"
+            width={54}
+            height={40}
+            className="[mix-blend-mode:multiply]"
+          />
           <button
             type="button"
             onClick={() => setMenuOpen(false)}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { InstrumentoGaleria } from '@/lib/queries'
+import { sanityImg } from '@/lib/sanity-image'
 
 export default function InstrumentoCard({ instrumento }: { instrumento: InstrumentoGaleria }) {
   return (
@@ -11,7 +12,7 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
       <div className="relative aspect-[5/4] bg-eco-wood/10 overflow-hidden">
         {instrumento.fotoUrl ? (
           <Image
-            src={instrumento.fotoUrl}
+            src={sanityImg(instrumento.fotoUrl, 600)}
             alt={instrumento.nome}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

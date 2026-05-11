@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { sanityImg } from '@/lib/sanity-image'
 
 export default function GaleriaCurso({ fotos }: { fotos: string[] }) {
   if (!fotos.length) return null
@@ -11,7 +12,7 @@ export default function GaleriaCurso({ fotos }: { fotos: string[] }) {
       {fotos.map((url, i) => (
         <div key={i} className="break-inside-avoid mb-3 relative overflow-hidden rounded-lg">
           <Image
-            src={url}
+            src={sanityImg(url, 600)}
             alt={`Instrumento de aluno ${i + 1}`}
             width={400}
             height={300}

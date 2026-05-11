@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { CursoListagem } from '@/lib/queries'
+import { sanityImg } from '@/lib/sanity-image'
 
 const MODALIDADE_STYLES: Record<string, string> = {
   Express: 'bg-eco-wood/10 text-eco-wood-dark',
@@ -17,7 +18,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
       <div className="relative aspect-[16/9] bg-eco-wood/10">
         {curso.imagemCapa ? (
           <Image
-            src={curso.imagemCapa}
+            src={sanityImg(curso.imagemCapa, 600)}
             alt={curso.titulo}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

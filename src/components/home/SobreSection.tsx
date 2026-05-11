@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 const sobre = {
   titulo: 'Pedro Machado',
@@ -46,7 +47,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
             <div className="relative w-full max-w-md aspect-square bg-eco-wood/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
               {imageUrl ? (
                 <Image
-                  src={imageUrl}
+                  src={sanityImg(imageUrl, 900)}
                   alt="Pedro Machado"
                   fill
                   className="object-cover"

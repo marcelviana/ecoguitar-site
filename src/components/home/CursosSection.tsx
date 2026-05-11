@@ -3,6 +3,7 @@ import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
 import { getCursosDestaque, type Curso } from '@/lib/queries'
+import { sanityImg } from '@/lib/sanity-image'
 
 function CursoCard({ curso }: { curso: Curso }) {
   return (
@@ -10,7 +11,7 @@ function CursoCard({ curso }: { curso: Curso }) {
       <div className="relative aspect-[4/3] bg-eco-wood/20">
         {curso.imagemCapa ? (
           <Image
-            src={curso.imagemCapa}
+            src={sanityImg(curso.imagemCapa, 600)}
             alt={curso.titulo}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

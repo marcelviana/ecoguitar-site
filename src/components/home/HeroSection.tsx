@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 interface HeroSectionProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,7 +28,7 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
 
       {imageUrl ? (
         <Image
-          src={imageUrl}
+          src={sanityImg(imageUrl, 1600)}
           alt=""
           fill
           className="object-cover"

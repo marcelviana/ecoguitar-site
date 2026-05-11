@@ -6,6 +6,7 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
 import { getSobre } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 export const revalidate = 3600
 
@@ -81,7 +82,7 @@ export default async function SobrePage() {
               <div className="relative w-full max-w-md aspect-square bg-eco-wood/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
                 {fotoPrincipalUrl ? (
                   <Image
-                    src={fotoPrincipalUrl}
+                    src={sanityImg(fotoPrincipalUrl, 900)}
                     alt="Pedro Machado"
                     fill
                     className="object-cover"
@@ -156,7 +157,7 @@ export default async function SobrePage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {fotosAtelier.map((foto, i) => {
-                const fotoUrl = urlFor(foto)?.url()
+                const fotoUrl = sanityImg(urlFor(foto)?.url(), 600)
                 if (!fotoUrl) return null
                 return (
                   <div

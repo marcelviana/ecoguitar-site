@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { getInstrumentosDestaque, type Instrumento } from '@/lib/queries'
+import { sanityImg } from '@/lib/sanity-image'
 
 function InstrumentoCard({ instrumento }: { instrumento: Instrumento }) {
   return (
@@ -9,7 +10,7 @@ function InstrumentoCard({ instrumento }: { instrumento: Instrumento }) {
       <div className="relative aspect-[16/7] bg-eco-wood/20 overflow-hidden">
         {instrumento.imagemUrl ? (
           <Image
-            src={instrumento.imagemUrl}
+            src={sanityImg(instrumento.imagemUrl, 600)}
             alt={instrumento.nome}
             fill
             className="object-cover [filter:sepia(1)_brightness(0.9)_saturate(1.4)]"

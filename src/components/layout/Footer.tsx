@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Início', href: '/' },
@@ -21,9 +22,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Col 1 — Brand */}
           <div className="flex flex-col gap-6">
-            <span className="font-mono text-label tracking-[0.2em] uppercase text-eco-cream">
-              ECO GUITAR
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Eco Guitar"
+              width={54}
+              height={40}
+              className="[filter:invert(1)] [mix-blend-mode:screen]"
+            />
             <p className="font-serif text-body-lg text-eco-muted leading-relaxed">
               A sua guitarra é tão única quanto o som que você faz.
             </p>

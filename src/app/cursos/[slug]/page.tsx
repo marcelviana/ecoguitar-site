@@ -16,6 +16,7 @@ import {
   type CursoDetalhe,
   type ModeloInstrumento,
 } from '@/lib/queries'
+import { sanityImg } from '@/lib/sanity-image'
 
 const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
@@ -64,7 +65,7 @@ function CoursePageLayout({
       <div className="relative h-[480px] lg:h-[560px] overflow-hidden bg-eco-charcoal">
         {curso.imagemCapa && (
           <Image
-            src={curso.imagemCapa}
+            src={sanityImg(curso.imagemCapa, 1600)}
             alt={curso.titulo}
             fill
             priority
