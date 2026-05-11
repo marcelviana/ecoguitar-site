@@ -8,6 +8,7 @@ export default defineConfig({
   title: 'Eco Guitar',
   projectId: '4z7u83vm',
   dataset: 'production',
+  basePath: '/studio',
   plugins: [
     structureTool(),
     visionTool(),
