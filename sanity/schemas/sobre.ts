@@ -4,7 +4,6 @@ export default defineType({
   name: 'sobre',
   title: 'Sobre Pedro Machado',
   type: 'document',
-  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({
       name: 'titulo',
