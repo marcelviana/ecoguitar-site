@@ -57,7 +57,7 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
             Guitarras e violões artesanais criados por Pedro Machado em São Paulo. Cada instrumento é único, do projeto ao acabamento.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button href="/instrumentos" variant="primary" size="lg">
+            <Button href="/galeria" variant="primary" size="lg">
               Ver instrumentos
             </Button>
             <Button
