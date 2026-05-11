@@ -12,6 +12,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'imagem',
+      title: 'Imagem do curso',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'modalidade',
       title: 'Modalidade',
       type: 'string',
