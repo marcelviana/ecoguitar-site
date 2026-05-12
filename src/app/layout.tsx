@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, DM_Serif_Display, DM_Mono } from 'next/font/google'
+import { Inter, DM_Serif_Display, DM_Mono, Josefin_Sans } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -20,6 +20,13 @@ const dmMono = DM_Mono({
   weight: ['300', '400', '500'],
   subsets: ['latin'],
   variable: '--font-dm-mono',
+  display: 'swap',
+})
+
+const josefinSans = Josefin_Sans({
+  weight: ['300'],
+  subsets: ['latin'],
+  variable: '--font-josefin',
   display: 'swap',
 })
 
@@ -77,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${dmSerif.variable} ${dmMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${dmSerif.variable} ${dmMono.variable} ${josefinSans.variable} h-full antialiased`}
     >
       <head>
         <script
