@@ -1,19 +1,30 @@
 @AGENTS.md
 
-# Instruções para o Claude Code
+# ⚠️ LEIA ISTO PRIMEIRO — ANTES DE QUALQUER AÇÃO
+
+## Confirmação obrigatória de início
+ANTES de começar qualquer tarefa, responda exatamente:
+"Li o CLAUDE.md. Confirmo que executarei o checklist de fim de sessão antes de encerrar."
+
+---
+
+# ⚠️ CHECKLIST DE FIM DE SESSÃO — NUNCA PULE ESTA ETAPA
+
+OBRIGATÓRIO executar nesta ordem antes de encerrar:
+
+1. Rodar `npm run build` — NUNCA encerre com erros de build
+2. Commitar todas as alterações pendentes com mensagem descritiva em português
+3. Perguntar ao usuário: "Deseja fazer o merge das alterações para o branch `main`?"
+4. AGUARDAR confirmação antes de fazer o merge
+5. APÓS O MERGE: verificar se os arquivos em `/Users/marcelviana/projects/ecoguitar-site/` refletem as mudanças — o merge pode retornar "Already up to date" sem atualizar os arquivos físicos. Se não baterem, copiar manualmente com `cp <worktree>/arquivo /projeto-principal/arquivo` e commitar novamente.
+
+---
+
+# Instruções gerais
 
 ## Regras de Git
 - Pode trabalhar em worktrees ou branches temporários durante a sessão
-- Commitar as alterações com mensagens descritivas em português
-- ⚠️ OBRIGATÓRIO ao final de cada sessão: perguntar ao usuário "Deseja fazer o merge das alterações para o branch `main`?" e aguardar confirmação antes de executar
-
-## Checklist de fim de sessão
-Antes de encerrar qualquer sessão, executar nesta ordem:
-1. Rodar `npm run build` e confirmar que não há erros
-2. Commitar todas as alterações pendentes com mensagem descritiva
-3. Perguntar ao usuário: "Deseja fazer o merge das alterações para o branch `main`?"
-4. Aguardar confirmação antes de fazer o merge
-5. ⚠️ APÓS O MERGE: verificar se os arquivos alterados no diretório raiz `/Users/marcelviana/projects/ecoguitar-site/` refletem as mudanças — o merge pode retornar "Already up to date" sem atualizar os arquivos físicos do diretório principal. Se não baterem, copiar manualmente com `cp <worktree>/arquivo /projeto-principal/arquivo` e commitar.
+- Commitar com mensagens descritivas em português
 
 ## Stack
 - Next.js 16 + TypeScript + React 19
