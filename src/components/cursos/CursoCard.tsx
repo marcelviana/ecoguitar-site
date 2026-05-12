@@ -57,11 +57,6 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
           {curso.subtitulo && (
             <p className="font-sans text-small text-eco-muted">{curso.subtitulo}</p>
           )}
-          {curso.paraQuem && curso.paraQuem.length > 0 && (
-            <p className="font-sans text-small text-eco-charcoal mt-1">
-              {curso.paraQuem[0]}
-            </p>
-          )}
 
           {(curso.duracao || curso.horarios) && (
             <dl className="mt-3 flex flex-col gap-1.5 border-t border-eco-border pt-3">
