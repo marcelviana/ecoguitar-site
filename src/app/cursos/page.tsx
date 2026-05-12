@@ -154,7 +154,7 @@ export default async function CursosPage() {
       <QuizCurso cursos={cursos} />
 
       {/* Cards dos cursos */}
-      <section className="bg-eco-paper py-section border-t border-eco-border">
+      <section className="bg-eco-cream py-section border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-headline text-eco-charcoal mb-4">
             Qual curso combina mais com você?
@@ -170,25 +170,14 @@ export default async function CursosPage() {
         </div>
       </section>
 
-      {/* Nota sobre turmas de fora de SP */}
-      <section className="bg-eco-charcoal py-section-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 max-w-2xl">
-          <p className="font-sans text-body-lg text-eco-white">
-            Se você é de fora de São Paulo, também temos o módulo intensivo — em 5-6 dias você
-            sai com o instrumento tocando! Turmas de no máximo 4 pessoas para toda a atenção
-            merecida.
-          </p>
-        </div>
-      </section>
-
       {/* CTA final */}
-      <section className="bg-eco-cream py-section-sm border-t border-eco-border">
+      <section className="bg-eco-wood py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="font-serif text-title text-eco-charcoal">
+            <h2 className="font-serif text-title text-white">
               Pronto para começar?
             </h2>
-            <p className="font-sans text-body text-eco-muted mt-1">
+            <p className="font-sans text-body text-eco-cream/70 mt-1">
               Fale com Pedro e descubra qual curso é ideal para você.
             </p>
           </div>

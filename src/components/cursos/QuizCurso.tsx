@@ -106,7 +106,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
   const pergunta = PERGUNTAS[step]
 
   return (
-    <section className="bg-eco-cream py-section border-t border-eco-border">
+    <section className="bg-eco-white py-section border-t border-eco-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
