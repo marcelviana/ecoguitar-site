@@ -95,14 +95,6 @@ function CoursePageLayout({
             >
               Cursos
             </Link>
-            {curso.modalidade && (
-              <>
-                <span className="text-eco-white/40 text-label">·</span>
-                <span className="font-mono text-label uppercase tracking-widest text-eco-white/60">
-                  {curso.modalidade}
-                </span>
-              </>
-            )}
           </nav>
 
           {curso.modalidade && (
