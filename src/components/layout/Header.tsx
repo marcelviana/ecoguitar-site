@@ -15,9 +15,7 @@ const navLinks = [
   { label: 'Contato', href: '/contato' },
 ]
 
-const WA_LINK = 'https://wa.me/55XXXXXXXXXXX'
-
-export default function Header() {
+export default function Header({ waLink }: { waLink: string }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -78,7 +76,7 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <a
-            href={WA_LINK}
+            href={waLink}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden lg:inline-flex items-center gap-2 bg-eco-orange text-white text-small font-medium px-5 py-2.5 hover:bg-eco-orange/90 transition-colors"
@@ -157,7 +155,7 @@ export default function Header() {
 
         <div className="px-6 pb-8">
           <a
-            href={WA_LINK}
+            href={waLink}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
