@@ -64,7 +64,7 @@ function CoursePageLayout({
   return (
     <PageLayout>
       {/* ── Hero full-bleed ── */}
-      <div className="relative h-[480px] lg:h-[560px] overflow-hidden bg-eco-charcoal">
+      <div className="relative h-[300px] lg:h-[340px] overflow-hidden bg-eco-charcoal">
         {curso.imagemCapa && (
           <Image
             src={sanityImg(curso.imagemCapa, 1600)}
@@ -142,20 +142,20 @@ function CoursePageLayout({
 
       {/* ── Para quem é este curso ── */}
       {Array.isArray(curso.paraQuem) && curso.paraQuem.length > 0 && (
-        <section className="bg-eco-paper py-section border-t border-eco-border">
+        <section className="bg-eco-wood py-section">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
+            <h2 className="font-serif text-headline text-eco-white mb-8">
               Para quem é este curso?
-            </p>
-            <ul className="flex flex-col gap-3">
+            </h2>
+            <ul className="flex flex-col gap-4">
               {curso.paraQuem.map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <span
-                    className="flex-shrink-0 w-8 h-8 rounded-full bg-eco-wood/10 flex items-center justify-center mt-0.5"
+                    className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mt-0.5"
                     aria-hidden="true"
                   >
                     <svg
-                      className="w-4 h-4 text-eco-wood"
+                      className="w-4 h-4 text-eco-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -168,7 +168,7 @@ function CoursePageLayout({
                       />
                     </svg>
                   </span>
-                  <p className="font-sans text-body text-eco-charcoal leading-relaxed pt-1">
+                  <p className="font-sans text-body-lg text-eco-white/90 leading-relaxed pt-1">
                     {item}
                   </p>
                 </li>
@@ -207,9 +207,9 @@ function CoursePageLayout({
 
       {/* ── Galeria ── */}
       {curso.galeria && curso.galeria.length > 0 && (
-        <section className="bg-eco-cream py-section border-t border-eco-border">
+        <section className="bg-eco-charcoal py-section border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="font-serif text-headline text-eco-charcoal mb-10">
+            <h2 className="font-serif text-headline text-eco-white mb-10">
               Instrumentos dos nossos alunos
             </h2>
             <GaleriaCurso fotos={curso.galeria} />
@@ -218,7 +218,7 @@ function CoursePageLayout({
       )}
 
       {/* ── Investimento + CTA ── */}
-      <section className="bg-eco-paper py-section border-t border-eco-border">
+      <section className="bg-eco-cream py-section border-t border-eco-border">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           {/* Card de investimento */}
           <div className="bg-eco-charcoal rounded-2xl overflow-hidden">
@@ -339,17 +339,20 @@ function CoursePageLayout({
             </div>
           ) : null}
 
-          {/* FAQ */}
-          {curso.faq && curso.faq.length > 0 && (
-            <div className="mt-12">
-              <h3 className="font-serif text-title text-eco-charcoal mb-6">
-                Perguntas frequentes
-              </h3>
-              <FaqAccordion items={curso.faq} />
-            </div>
-          )}
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      {curso.faq && curso.faq.length > 0 && (
+        <section className="bg-eco-paper py-section border-t border-eco-border">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <h2 className="font-serif text-headline text-eco-charcoal mb-8">
+              Perguntas frequentes
+            </h2>
+            <FaqAccordion items={curso.faq} />
+          </div>
+        </section>
+      )}
     </PageLayout>
   )
 }
