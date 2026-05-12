@@ -94,8 +94,9 @@ export default defineType({
     defineField({
       name: 'paraQuem',
       title: 'Para quem é indicado',
-      type: 'text',
-      rows: 3,
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Adicione um perfil por linha. Ex: "Quem tem pouco tempo mas quer o processo completo"',
     }),
     defineField({
       name: 'precoIndividual',

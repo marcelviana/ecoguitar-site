@@ -61,7 +61,11 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     modalidade: 'Express',
     duracao: '5 sábados',
     horarios:'Sábados, 9h às 13h',
-    paraQuem: 'Retífica de trastes, shape de braço, montagem e regulagem.',
+    paraQuem: [
+      'Quem quer vivenciar a luthieria sem passar pelo processo inteiro',
+      'Quem busca uma experiência prática e pontual',
+      'Quem já tem algum conhecimento e quer aprofundar uma etapa específica',
+    ],
   },
   {
     _id: 'intensivo',
@@ -71,7 +75,11 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     modalidade: 'Intensivo',
     duracao: '5 a 6 dias',
     horarios:'Seg a Sáb, 13h às 19h',
-    paraQuem: 'Ideal para quem vem de fora de SP.',
+    paraQuem: [
+      'Quem tem uma semana de férias e quer aproveitá-la ao máximo',
+      'Músicos que buscam uma experiência única e memorável',
+      'Quem vem de fora de SP e prefere imersão total',
+    ],
   },
   {
     _id: 'extensivo',
@@ -81,7 +89,13 @@ const CURSOS_FALLBACK: CursoListagem[] = [
     modalidade: 'Extensivo',
     duracao: 'Processo contínuo',
     horarios:'Terças 19h–22h ou Sábados 9h–13h',
-    paraQuem: 'São mais de 100 modelos para escolher.',
+    paraQuem: [
+      'Hobbystas e apreciadores de marcenaria',
+      'Músicos que querem entender profundamente o instrumento que tocam',
+      'Quem busca um hobby significativo e antistress',
+      'Quem valoriza o processo artesanal e foge do produto industrializado',
+      'Quem gosta de criar laços e histórias ao longo do caminho',
+    ],
   },
 ]
 

@@ -45,7 +45,7 @@ export async function generateMetadata({
   if (!curso) return {}
   return {
     title: `${curso.titulo} | Eco Guitar`,
-    description: curso.paraQuem ?? curso.subtitulo,
+    description: curso.paraQuem?.[0] ?? curso.subtitulo,
   }
 }
 
@@ -138,21 +138,54 @@ function CoursePageLayout({
         </section>
       )}
 
+      {/* ── Para quem é este curso ── */}
+      {curso.paraQuem && curso.paraQuem.length > 0 && (
+        <section className="bg-eco-paper py-section border-t border-eco-border">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
+            <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
+              Para quem é este curso?
+            </p>
+            <ul className="flex flex-col gap-3">
+              {curso.paraQuem.map((item, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span
+                    className="flex-shrink-0 w-8 h-8 rounded-full bg-eco-wood/10 flex items-center justify-center mt-0.5"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      className="w-4 h-4 text-eco-wood"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </span>
+                  <p className="font-sans text-body text-eco-charcoal leading-relaxed pt-1">
+                    {item}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* ── Descritivo do curso ── */}
-      <section className="bg-eco-cream py-section">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12 flex flex-col gap-6">
-          {curso.paraQuem && (
-            <div className="bg-eco-wood/10 border-l-4 border-eco-wood rounded-r-xl px-6 py-4">
-              <p className="font-sans text-body-lg text-eco-charcoal">{curso.paraQuem}</p>
-            </div>
-          )}
-          {curso.descricaoCompleta && curso.descricaoCompleta.length > 0 && (
+      {curso.descricaoCompleta && curso.descricaoCompleta.length > 0 && (
+        <section className="bg-eco-cream py-section border-t border-eco-border">
+          <div className="max-w-3xl mx-auto px-6 lg:px-12">
             <div className="prose prose-stone max-w-none font-sans text-eco-charcoal">
               <PortableText value={curso.descricaoCompleta} />
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {/* ── Modelos ── */}
       {modelos.length > 0 && (
