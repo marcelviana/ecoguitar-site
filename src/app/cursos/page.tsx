@@ -5,6 +5,8 @@ import CursoCard from '@/components/cursos/CursoCard'
 import QuizCurso from '@/components/cursos/QuizCurso'
 import { getCursosListagem, type CursoListagem } from '@/lib/queries'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Cursos de Luteria — Eco Guitar',
   description:

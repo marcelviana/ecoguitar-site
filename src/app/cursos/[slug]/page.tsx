@@ -18,6 +18,8 @@ import {
 } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
 
+export const revalidate = 60
+
 const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
 const MODALIDADE_BADGE: Record<string, string> = {
