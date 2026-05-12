@@ -12,6 +12,7 @@ const colors = [
   { name: 'eco-wood-dark', hex: '#6B4423', bg: 'bg-eco-wood-dark', dark: true },
   { name: 'eco-border', hex: '#D6CFC4', bg: 'bg-eco-border', dark: false },
   { name: 'eco-white', hex: '#FDFAF6', bg: 'bg-eco-white', dark: false },
+  { name: 'eco-orange', hex: '#E8552E', bg: 'bg-eco-orange', dark: true },
 ]
 
 const typeScale = [
@@ -22,6 +23,7 @@ const typeScale = [
   { label: 'Body', className: 'font-sans text-body', sample: 'Cada instrumento conta uma história única, moldada pelas mãos do luthier.' },
   { label: 'Small', className: 'font-sans text-small', sample: 'Cada instrumento conta uma história única, moldada pelas mãos do luthier.' },
   { label: 'Label', className: 'font-mono text-label uppercase tracking-widest', sample: 'NOSSOS CURSOS' },
+  { label: 'Josefin', className: 'font-josefin text-title uppercase tracking-widest', sample: 'Eco Guitar' },
 ]
 
 export default function DesignPage() {
@@ -131,11 +133,23 @@ export default function DesignPage() {
           <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
             05 — Section Label
           </h2>
-          <div className="flex flex-col gap-4">
-            <SectionLabel>NOSSOS CURSOS</SectionLabel>
-            <SectionLabel>GALERIA</SectionLabel>
-            <SectionLabel>DEPOIMENTOS</SectionLabel>
-            <SectionLabel>CLUBE DO LUTHIER</SectionLabel>
+          <div className="flex flex-col gap-6">
+            <div>
+              <span className="font-mono text-label text-eco-muted block mb-4">Sobre fundo claro (eco-cream)</span>
+              <div className="bg-eco-cream px-8 py-6 flex flex-col gap-3 border border-eco-border">
+                <SectionLabel>NOSSOS CURSOS</SectionLabel>
+                <SectionLabel>GALERIA</SectionLabel>
+                <SectionLabel>DEPOIMENTOS</SectionLabel>
+              </div>
+            </div>
+            <div>
+              <span className="font-mono text-label text-eco-muted block mb-4">Sobre fundo escuro (eco-charcoal)</span>
+              <div className="bg-eco-charcoal px-8 py-6 flex flex-col gap-3">
+                <SectionLabel>CLUBE DO LUTHIER</SectionLabel>
+                <SectionLabel>CURSOS E WORKSHOPS</SectionLabel>
+                <SectionLabel>SOBRE O PROJETO</SectionLabel>
+              </div>
+            </div>
           </div>
         </section>
 

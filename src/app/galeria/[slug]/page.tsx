@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout'
+import Button from '@/components/ui/Button'
 import FotoViewer from '@/components/galeria/FotoViewer'
 import { getAllInstrumentos, getInstrumentoBySlug } from '@/lib/queries'
 
@@ -145,14 +146,9 @@ export default async function InstrumentoPage({
 
               {/* CTA */}
               <div className="pt-2">
-                <a
-                  href="https://wa.me/5511976947027"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-wood text-white hover:bg-eco-wood-dark px-6 py-3 text-body"
-                >
+                <Button href="https://wa.me/5511976947027" variant="primary" size="md" target="_blank" rel="noopener noreferrer">
                   Quero construir um igual
-                </a>
+                </Button>
               </div>
             </div>
           </div>
