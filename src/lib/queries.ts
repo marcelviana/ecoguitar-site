@@ -264,7 +264,7 @@ export interface CursoListagem {
   subtitulo?: string
   modalidade?: string
   ordem?: number
-  paraQuem?: string
+  paraQuem?: string[]
   preco?: string
   duracao?: string
   horarios?: string
@@ -279,7 +279,7 @@ export interface CursoDetalhe {
   slug: string
   subtitulo?: string
   modalidade?: string
-  paraQuem?: string
+  paraQuem?: string[]
   duracao?: string
   horarios?: string
   maxAlunosPorProfessor?: number
