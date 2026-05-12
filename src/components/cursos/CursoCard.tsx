@@ -4,9 +4,9 @@ import type { CursoListagem } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
 
 const MODALIDADE_STYLES: Record<string, string> = {
-  Express: 'bg-eco-wood/10 text-eco-wood-dark',
-  Intensivo: 'bg-eco-charcoal/10 text-eco-charcoal',
-  Extensivo: 'bg-eco-paper border border-eco-border text-eco-muted',
+  Express: 'bg-eco-wood text-white',
+  Intensivo: 'bg-eco-charcoal text-white',
+  Extensivo: 'bg-eco-charcoal/80 text-white backdrop-blur-sm',
 }
 
 export default function CursoCard({ curso }: { curso: CursoListagem }) {
