@@ -80,6 +80,39 @@ const servicos = [
       </svg>
     ),
   },
+  {
+    titulo: 'Regulagem Delivery',
+    detalhes: ['Coleta e entrega na sua localidade', 'Setup completo na oficina', 'Prazo combinado no agendamento', 'Área de cobertura: Grande São Paulo'],
+    prazo: 'Combinar no agendamento',
+    icon: (
+      <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
+          d="M8 7H5a2 2 0 00-2 2v9m5-11h8M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2m0 0h3a2 2 0 012 2v6m0 0v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2m16-2h-3m-13 0H3m5 0a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z" />
+      </svg>
+    ),
+  },
+  {
+    titulo: 'Atendimento In Loco',
+    detalhes: ['Pedro vai até você', 'Ideal para escolas e estúdios', 'Regulagem e manutenção no local', 'Múltiplos instrumentos no mesmo atendimento'],
+    prazo: 'Combinar no agendamento',
+    icon: (
+      <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  },
+  {
+    titulo: 'Peças & Componentes',
+    detalhes: ['Braços artesanais', 'Corpos em madeiras brasileiras', 'Componentes avulsos', 'Sob encomenda conforme especificação'],
+    prazo: 'Sob consulta',
+    icon: (
+      <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
+          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
+  },
 ]
 
 const etapas = [
