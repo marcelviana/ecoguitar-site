@@ -47,14 +47,14 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-32">
         <div className="max-w-3xl">
-          <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-6">
-            Lutheria Artesanal
+          <p className="font-mono text-label uppercase tracking-widest text-eco-cream mb-6 inline-flex items-center gap-2 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+            Luteria Artesanal
           </p>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-eco-cream leading-[1.05] tracking-[-0.02em] mb-6">
-            Instrumentos feitos com alma, madeira e tempo
+            A sua guitarra é tão única quanto o som que você faz.
           </h1>
           <p className="font-sans text-body-lg text-eco-cream/75 max-w-xl mb-10">
-            Guitarras e violões artesanais criados por Pedro Machado em São Paulo. Cada instrumento é único, do projeto ao acabamento.
+            Instrumentos construídos sob medida por Pedro Machado em São Paulo. Do projeto ao acabamento, cada peça carrega a identidade de quem vai tocá-la.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button href="/galeria" variant="primary" size="lg">
