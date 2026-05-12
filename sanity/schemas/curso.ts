@@ -139,12 +139,16 @@ export default defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'modeloInstrumento' }] }],
       description: 'Deixe vazio para exibir todos os modelos cadastrados',
+      options: {
+        modal: { type: 'popover' },
+      },
     }),
     defineField({
       name: 'galeria',
       title: 'Galeria de instrumentos dos alunos',
       type: 'array',
       of: [{ type: 'image', options: { hotspot: true } }],
+      validation: (Rule) => Rule.max(20),
     }),
     defineField({
       name: 'imagemCapa',
