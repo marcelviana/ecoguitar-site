@@ -74,7 +74,7 @@ export default function Header() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:inline-flex items-center gap-2 bg-eco-wood text-white text-small font-medium px-5 py-2.5 hover:bg-eco-wood-dark transition-colors"
+            className="hidden lg:inline-flex items-center gap-2 bg-eco-orange text-white text-small font-medium px-5 py-2.5 hover:bg-eco-orange/90 transition-colors"
           >
             <WhatsAppIcon />
             Fale pelo WhatsApp
@@ -149,7 +149,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="flex items-center justify-center gap-2 w-full bg-eco-wood text-white text-small font-medium px-5 py-3 hover:bg-eco-wood-dark transition-colors"
+            className="flex items-center justify-center gap-2 w-full bg-eco-orange text-white text-small font-medium px-5 py-3 hover:bg-eco-orange/90 transition-colors"
           >
             <WhatsAppIcon />
             Fale pelo WhatsApp
