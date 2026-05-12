@@ -71,7 +71,7 @@ const servicos = [
 
 export default function ServicosSection() {
   return (
-    <section className="bg-eco-cream py-section">
+    <section className="bg-eco-white py-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
           <SectionLabel>O que fazemos</SectionLabel>

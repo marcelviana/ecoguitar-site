@@ -59,7 +59,7 @@ export default async function CursosSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
           <SectionLabel>Aprenda Luteria</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3">Cursos</h2>
+          <h2 className="font-serif text-display text-eco-charcoal mt-3">Cursos</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

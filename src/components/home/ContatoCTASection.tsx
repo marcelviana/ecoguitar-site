@@ -3,13 +3,13 @@ import Button from '@/components/ui/Button'
 
 export default function ContatoCTASection() {
   return (
-    <section className="bg-eco-charcoal py-section">
+    <section className="bg-eco-wood py-section">
       <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <SectionLabel className="text-eco-wood">Fale conosco</SectionLabel>
-        <h2 className="font-serif text-headline text-eco-cream mt-3 mb-4">
+        <SectionLabel className="text-eco-cream/60">Fale conosco</SectionLabel>
+        <h2 className="font-serif text-headline text-white mt-3 mb-4">
           Vamos conversar?
         </h2>
-        <p className="font-sans text-body-lg text-eco-muted mb-10">
+        <p className="font-sans text-body-lg text-eco-cream/70 mb-10">
           Tem um projeto em mente, quer saber mais sobre os cursos ou simplesmente quer conhecer o ateliê? Manda uma mensagem.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
@@ -20,7 +20,7 @@ export default function ContatoCTASection() {
             href="https://wa.me/5511999999999"
             variant="secondary"
             size="lg"
-            className="border-eco-cream/30 text-eco-cream hover:bg-eco-cream hover:text-eco-charcoal"
+            className="border-white/40 text-white hover:bg-white hover:text-eco-wood"
             target="_blank"
             rel="noopener noreferrer"
           >
