@@ -157,5 +157,12 @@ export default defineType({
       type: 'number',
       description: 'Menor número aparece primeiro na listagem',
     }),
+    defineField({
+      name: 'textoQuiz',
+      title: 'Texto do resultado do quiz',
+      type: 'text',
+      rows: 3,
+      description: 'Texto exibido quando este curso é indicado pelo quiz da página de cursos',
+    }),
   ],
 })

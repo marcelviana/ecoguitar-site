@@ -270,6 +270,7 @@ export interface CursoListagem {
   horarios?: string
   maxAlunosPorProfessor?: number
   imagemCapa?: string
+  textoQuiz?: string
 }
 
 export interface CursoDetalhe {
@@ -309,6 +310,7 @@ export const cursosListagemQuery = groq`
     horarios,
     maxAlunosPorProfessor,
     "imagemCapa": imagemCapa.asset->url,
+    textoQuiz,
   }
 `
 
