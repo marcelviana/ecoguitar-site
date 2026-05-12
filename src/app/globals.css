@@ -11,6 +11,7 @@
   --color-eco-wood-dark: #6B4423;
   --color-eco-border:    #D6CFC4;
   --color-eco-white:     #FDFAF6;
+  --color-eco-orange:    #E8552E;
 
   /* Font families (mapped from next/font CSS variables) */
   --font-sans:  var(--font-inter);
@@ -63,6 +64,7 @@
   --eco-muted:    #78716C;
   --eco-wood:     #8B5E3C;
   --eco-border:   #D6CFC4;
+  --eco-orange:   #E8552E;
 }
 
 body {
