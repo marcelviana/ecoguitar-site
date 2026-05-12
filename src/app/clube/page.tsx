@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
-import { getClube } from '@/lib/queries'
+import { getClube, getConfiguracao } from '@/lib/queries'
 
 export const revalidate = 3600
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'Faça parte do Clube do Luthier da Eco Guitar e tenha acesso a benefícios exclusivos, prioridade nos serviços e descontos especiais.',
 }
 
-const WA_LINK = 'https://wa.me/55XXXXXXXXXXX'
+const WA_FALLBACK = 'https://wa.me/5511976947027'
 
 const beneficiosFallback = [
   'Prioridade no agendamento de serviços',
@@ -47,7 +47,8 @@ const faqs = [
 ]
 
 export default async function ClubePage() {
-  const clube = await getClube()
+  const [clube, config] = await Promise.all([getClube(), getConfiguracao()])
+  const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : WA_FALLBACK
 
   const titulo = clube?.titulo ?? 'Clube do Luthier'
   const descricao =
@@ -134,7 +135,7 @@ export default async function ClubePage() {
 
                 <div className="border-t border-white/10 pt-6 flex flex-col gap-3">
                   <a
-                    href={WA_LINK}
+                    href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-eco-orange text-white font-sans font-medium text-body px-6 py-3 hover:bg-eco-orange/90 transition-colors w-full"
