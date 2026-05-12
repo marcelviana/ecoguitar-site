@@ -382,3 +382,26 @@ export async function getModelos(): Promise<ModeloInstrumento[]> {
     return []
   }
 }
+
+export interface ProcessoEtapa {
+  _id: string
+  titulo: string
+  descricao?: string
+  imagemUrl?: string
+  ordem?: number
+}
+
+const processoEtapasQuery = groq`
+  *[_type == "processo"] | order(ordem asc) {
+    _id, titulo, descricao, "imagemUrl": imagem.asset->url, ordem
+  }
+`
+
+export async function getProcessoEtapas(): Promise<ProcessoEtapa[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<ProcessoEtapa[]>(processoEtapasQuery)
+  } catch {
+    return []
+  }
+}
