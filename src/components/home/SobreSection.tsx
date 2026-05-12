@@ -4,12 +4,11 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import { urlFor } from '@/lib/sanity'
 import { sanityImg } from '@/lib/sanity-image'
 
-const sobre = {
-  titulo: 'Pedro Machado',
-  subtitulo: 'Luteria',
-  texto:
-    'Pedro Machado dedica mais de vinte anos ao ofício da luteria, construindo instrumentos que traduzem a identidade de cada músico em madeira e corda. Formado em engenharia acústica e apaixonado pela floresta brasileira, ele combina técnica rigorosa com sensibilidade artística em cada projeto.',
-}
+const stats = [
+  { value: '+150', label: 'cursos ministrados' },
+  { value: '+200', label: 'instrumentos construídos' },
+  { value: 'Turmas', label: 'de até 4 pessoas' },
+]
 
 interface SobreSectionProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,14 +25,34 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
           {/* Text column */}
           <div className="flex flex-col gap-6">
             <div>
-              <SectionLabel>{sobre.subtitulo}</SectionLabel>
+              <SectionLabel>Luteria artesanal</SectionLabel>
               <h2 className="font-serif text-headline text-eco-charcoal mt-3">
-                {sobre.titulo}
+                Pedro Machado
               </h2>
             </div>
             <p className="font-sans text-body-lg text-eco-muted max-w-lg">
-              {sobre.texto}
+              Há mais de 20 anos Pedro Machado constrói instrumentos que carregam a identidade de quem os toca. Fundador da Eco Guitar, ele é referência em madeiras brasileiras e precursor dos cursos Express de luteria no país — onde qualquer pessoa pode construir o próprio instrumento do zero.
             </p>
+
+            {/* Social proof */}
+            <div className="flex flex-wrap gap-6">
+              {stats.map((stat) => (
+                <div key={stat.value} className="flex flex-col gap-0.5">
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-charcoal">
+                    {stat.value}
+                  </span>
+                  <span className="font-sans text-small text-eco-muted">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Parceiros */}
+            <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+              Parceiros: School of Rock · Equilibrium · Santa Cruz
+            </p>
+
             <Link
               href="/sobre"
               className="inline-flex items-center gap-1 font-sans text-body text-eco-wood hover:underline underline-offset-4 transition-colors w-fit"
