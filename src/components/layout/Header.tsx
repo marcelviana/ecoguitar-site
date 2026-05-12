@@ -45,15 +45,27 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" aria-label="Eco Guitar — página inicial">
+          <Link
+            href="/"
+            aria-label="Eco Guitar — página inicial"
+            className="flex items-center gap-3"
+          >
             <Image
               src="/logo.png"
-              alt="Eco Guitar"
+              alt=""
               width={54}
               height={40}
               priority
               className="[mix-blend-mode:multiply]"
             />
+            <span
+              className={[
+                'font-serif text-xl leading-none transition-colors duration-300',
+                scrolled ? 'text-eco-charcoal' : 'text-eco-white',
+              ].join(' ')}
+            >
+              Eco Guitar
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -84,7 +96,10 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden p-2 text-eco-charcoal"
+            className={[
+              'lg:hidden p-2 transition-colors duration-300',
+              scrolled ? 'text-eco-charcoal' : 'text-eco-white',
+            ].join(' ')}
             aria-label="Abrir menu"
           >
             <HamburgerIcon />
@@ -113,13 +128,18 @@ export default function Header() {
         aria-label="Menu de navegação"
       >
         <div className="flex items-center justify-between px-6 h-18 border-b border-eco-border">
-          <Image
-            src="/logo.png"
-            alt="Eco Guitar"
-            width={54}
-            height={40}
-            className="[mix-blend-mode:multiply]"
-          />
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={54}
+              height={40}
+              className="[mix-blend-mode:multiply]"
+            />
+            <span className="font-serif text-xl leading-none text-eco-charcoal">
+              Eco Guitar
+            </span>
+          </div>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
