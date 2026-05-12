@@ -139,7 +139,7 @@ function CoursePageLayout({
       )}
 
       {/* ── Para quem é este curso ── */}
-      {curso.paraQuem && curso.paraQuem.length > 0 && (
+      {Array.isArray(curso.paraQuem) && curso.paraQuem.length > 0 && (
         <section className="bg-eco-paper py-section border-t border-eco-border">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
             <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
