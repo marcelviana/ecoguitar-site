@@ -137,7 +137,7 @@ export default async function ClubePage() {
                     href={WA_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-eco-wood text-white font-sans font-medium text-body px-6 py-3 hover:bg-eco-wood-dark transition-colors w-full"
+                    className="flex items-center justify-center gap-2 bg-eco-orange text-white font-sans font-medium text-body px-6 py-3 hover:bg-eco-orange/90 transition-colors w-full"
                   >
                     <WhatsAppIcon />
                     Quero ser membro
