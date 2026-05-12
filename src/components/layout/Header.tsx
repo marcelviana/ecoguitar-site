@@ -84,7 +84,7 @@ export default function Header() {
             className="hidden lg:inline-flex items-center gap-2 bg-eco-orange text-white text-small font-medium px-5 py-2.5 hover:bg-eco-orange/90 transition-colors"
           >
             <WhatsAppIcon />
-            Fale pelo WhatsApp
+            Falar no WhatsApp
           </a>
 
           {/* Mobile hamburger */}
