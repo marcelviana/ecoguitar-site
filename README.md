@@ -1,6 +1,6 @@
 # Eco Guitar — Site
 
-Site institucional da Eco Guitar, luthieria do Pedro Machado em Vila Madalena, São Paulo.
+Site institucional da Eco Guitar, luthieria do Pedro Machado em Vila Leopoldina, São Paulo.
 
 ## Stack
 - Next.js 16 (static export) + TypeScript + React 19
@@ -41,8 +41,8 @@ Pedro Machado acessa o Studio para editar:
 ## Estado atual
 - [x] Setup inicial Next.js 16 + Tailwind + React 19
 - [x] Schemas do Sanity criados
-- [ ] Design system (tokens, componentes base)
-- [ ] Páginas de conteúdo
-- [ ] Galeria com Instagram feed
-- [ ] Formulário de contato (Formspree)
-- [ ] Deploy Vercel
+- [x] Design system (tokens, componentes base)
+- [x] Páginas de conteúdo
+- [ ] Galeria com Instagram feed (TODO Sessão 5)
+- [x] Formulário de contato (Formspree)
+- [x] Deploy Vercel

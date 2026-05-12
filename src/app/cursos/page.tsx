@@ -10,7 +10,7 @@ export const revalidate = 60
 export const metadata: Metadata = {
   title: 'Cursos de Luteria — Eco Guitar',
   description:
-    'Aprenda a construir guitarras e violões com Pedro Henrique na Eco Guitar. Cursos Express, Intensivo e Extensivo em São Paulo.',
+    'Aprenda a construir guitarras e violões com Pedro Machado na Eco Guitar. Cursos Express, Intensivo e Extensivo em São Paulo.',
 }
 
 const WHATSAPP_URL = 'https://wa.me/5511976947027'
