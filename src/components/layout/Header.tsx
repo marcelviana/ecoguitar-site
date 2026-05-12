@@ -58,12 +58,7 @@ export default function Header() {
               priority
               className="[mix-blend-mode:multiply]"
             />
-            <span
-              className={[
-                'font-serif text-xl leading-none transition-colors duration-300',
-                scrolled ? 'text-eco-charcoal' : 'text-eco-white',
-              ].join(' ')}
-            >
+            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-charcoal">
               Eco Guitar
             </span>
           </Link>
@@ -96,10 +91,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className={[
-              'lg:hidden p-2 transition-colors duration-300',
-              scrolled ? 'text-eco-charcoal' : 'text-eco-white',
-            ].join(' ')}
+            className="lg:hidden p-2 text-eco-charcoal"
             aria-label="Abrir menu"
           >
             <HamburgerIcon />
@@ -136,7 +128,7 @@ export default function Header() {
               height={40}
               className="[mix-blend-mode:multiply]"
             />
-            <span className="font-serif text-xl leading-none text-eco-charcoal">
+            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-charcoal">
               Eco Guitar
             </span>
           </div>
