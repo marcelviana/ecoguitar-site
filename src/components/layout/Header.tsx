@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Cursos', href: '/cursos' },
   { label: 'Workshops', href: '/workshops' },
   { label: 'Galeria', href: '/galeria' },
-  { label: 'Clube do Luthier', href: '/clube' },
+  { label: 'Clube', href: '/clube' },
   { label: 'Contato', href: '/contato' },
 ]
 
