@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import CursoCard from '@/components/cursos/CursoCard'
+import QuizCurso from '@/components/cursos/QuizCurso'
 import { getCursosListagem, type CursoListagem } from '@/lib/queries'
 
 export const metadata: Metadata = {
@@ -132,6 +133,9 @@ export default async function CursosPage() {
           </div>
         </div>
       </section>
+
+      {/* Quiz */}
+      <QuizCurso cursos={cursos} />
 
       {/* Cards dos cursos */}
       <section className="bg-eco-paper py-section border-t border-eco-border">
