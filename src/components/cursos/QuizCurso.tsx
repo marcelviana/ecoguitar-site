@@ -135,7 +135,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                   <div className="h-1 bg-eco-border rounded-full overflow-hidden">
                     <div
                       className="h-full bg-eco-orange rounded-full transition-all duration-300"
-                      style={{ width: `${((step + 1) / PERGUNTAS.length) * 100}%` }}
+                      style={{ width: `${(step / PERGUNTAS.length) * 100}%` }}
                     />
                   </div>
                 </div>
