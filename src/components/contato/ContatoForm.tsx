@@ -135,7 +135,7 @@ export default function ContatoForm() {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-wood text-white hover:bg-eco-wood-dark border border-eco-wood hover:border-eco-wood-dark px-6 py-3 text-body disabled:opacity-60 disabled:cursor-not-allowed"
+          className="inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-orange text-white hover:bg-eco-orange/90 border border-eco-orange hover:border-eco-orange/90 px-6 py-3 text-body disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === 'submitting' ? 'Enviando…' : 'Enviar mensagem'}
         </button>

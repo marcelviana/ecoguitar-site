@@ -93,7 +93,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
 
         <Link
           href={`/cursos/${curso.slug}`}
-          className="inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-wood text-white hover:bg-eco-wood-dark border border-eco-wood hover:border-eco-wood-dark px-4 py-2 text-small rounded-sm"
+          className="inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-orange text-white hover:bg-eco-orange/90 border border-eco-orange hover:border-eco-orange/90 px-4 py-2 text-small rounded-sm"
         >
           Ver detalhes
         </Link>
