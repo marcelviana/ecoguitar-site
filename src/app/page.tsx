@@ -2,7 +2,6 @@ import PageLayout from '@/components/layout/PageLayout'
 import HeroSection from '@/components/home/HeroSection'
 import SobreSection from '@/components/home/SobreSection'
 import ServicosSection from '@/components/home/ServicosSection'
-import ProcessoSection from '@/components/home/ProcessoSection'
 import InstrumentosSection from '@/components/home/InstrumentosSection'
 import CursosSection from '@/components/home/CursosSection'
 import DepoimentosSection from '@/components/home/DepoimentosSection'
@@ -19,8 +18,7 @@ export default async function HomePage() {
       <HeroSection heroBannerImagem={config?.heroBannerImagem} />
       <SobreSection fotoPedro={config?.fotoPedro} />
       <ServicosSection />
-      <ProcessoSection />
-      <InstrumentosSection />
+<InstrumentosSection />
       <CursosSection />
       <DepoimentosSection />
       <ClubeSection />
