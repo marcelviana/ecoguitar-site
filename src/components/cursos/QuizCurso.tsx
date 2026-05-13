@@ -114,7 +114,7 @@ export default function QuizCurso({
   const textoResultado = cursoResultado?.textoQuiz ?? FALLBACKS[modalidadeVencedora]
 
   return (
-    <section className="bg-eco-sand-light py-section border-t border-eco-border">
+    <section className="bg-eco-sand-warm py-section border-t border-eco-border">
       <style>{`
         @keyframes quizSlideIn {
           from { opacity: 0; transform: translateX(20px); }
