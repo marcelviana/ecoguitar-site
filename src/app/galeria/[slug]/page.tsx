@@ -12,7 +12,7 @@ const CATEGORIA_LABELS: Record<string, string> = {
   'baritono': 'Guitarra Barítono',
   'headless': 'Guitarra Headless',
   'multiescala': 'Guitarra Multiescala',
-  'thinline': 'Guitarra Thinline',
+  'thinline': 'Thinline',
   'traveler': 'Guitarra Traveler',
   'baixo': 'Baixo',
   'violao': 'Violão',
