@@ -27,7 +27,7 @@ export default async function DepoimentosSection() {
     <section className="bg-eco-night py-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
-          <SectionLabel className="text-eco-turquoise">O que dizem</SectionLabel>
+          <SectionLabel className="text-eco-turquoise">O que diz quem já fez</SectionLabel>
           <h2 className="font-serif text-headline text-eco-sand-light mt-3">Depoimentos</h2>
         </div>
 
