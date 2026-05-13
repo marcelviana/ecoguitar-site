@@ -4,6 +4,7 @@ import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import FotoViewer from '@/components/galeria/FotoViewer'
+import YoutubeEmbed from '@/components/cursos/YoutubeEmbed'
 import { getAllInstrumentos, getInstrumentoBySlug } from '@/lib/queries'
 
 const CATEGORIA_LABELS: Record<string, string> = {
@@ -39,6 +40,27 @@ export async function generateMetadata({
   }
 }
 
+function extractYoutubeId(url: string): string | null {
+  try {
+    const u = new URL(url)
+    // formato embed: /embed/VIDEO_ID
+    if (u.pathname.startsWith('/embed/')) {
+      return u.pathname.split('/embed/')[1].split('/')[0] || null
+    }
+    // formato watch: ?v=VIDEO_ID
+    if (u.searchParams.has('v')) {
+      return u.searchParams.get('v')
+    }
+    // formato youtu.be: /VIDEO_ID
+    if (u.hostname === 'youtu.be') {
+      return u.pathname.slice(1).split('/')[0] || null
+    }
+    return null
+  } catch {
+    return null
+  }
+}
+
 const SPECS_FIXAS = [
   { key: 'corpo', label: 'Corpo' },
   { key: 'braco', label: 'Braço' },
@@ -63,32 +85,46 @@ export default async function InstrumentoPage({
   const temSpecs = specsFixas.length > 0 || specsExtras.length > 0
 
   const videoId = instrumento.videoYoutubeUrl
-    ? (() => {
-        try {
-          const url = new URL(instrumento.videoYoutubeUrl)
-          if (url.hostname === 'youtu.be') return url.pathname.slice(1)
-          return url.searchParams.get('v') ?? null
-        } catch {
-          return null
-        }
-      })()
+    ? extractYoutubeId(instrumento.videoYoutubeUrl)
     : null
 
   return (
     <PageLayout>
-      {/* Breadcrumb */}
-      <div className="bg-eco-sand-warm border-b border-eco-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex items-center gap-2">
-          <Link
-            href="/galeria"
-            className="font-mono text-label uppercase tracking-widest text-eco-sky hover:text-eco-night transition-colors"
-          >
-            Galeria
-          </Link>
-          <span className="text-eco-border">·</span>
-          <span className="font-mono text-label uppercase tracking-widest text-eco-night">
+      {/* Hero escuro */}
+      <div className="bg-eco-night py-section-sm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 mb-6">
+            <Link
+              href="/galeria"
+              className="font-mono text-label uppercase tracking-widest text-eco-white/60 hover:text-eco-white transition-colors"
+            >
+              Galeria
+            </Link>
+            <span className="text-eco-white/30">·</span>
+            <span className="font-mono text-label uppercase tracking-widest text-eco-white/60">
+              {instrumento.nome}
+            </span>
+          </nav>
+
+          {/* Subtítulo — modelo base */}
+          {instrumento.modeloBase && (
+            <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-3">
+              {CATEGORIA_LABELS[instrumento.modeloBase.categoria] ?? instrumento.modeloBase.categoria}
+              {' · '}
+              {instrumento.modeloBase.nome}
+            </p>
+          )}
+
+          <h1 className="font-serif text-headline text-eco-white leading-tight mb-4">
             {instrumento.nome}
-          </span>
+          </h1>
+
+          {instrumento.descricao && (
+            <p className="font-sans text-body text-eco-white/70 max-w-lg">
+              {instrumento.descricao}
+            </p>
+          )}
         </div>
       </div>
 
@@ -101,46 +137,15 @@ export default async function InstrumentoPage({
             <div className="flex flex-col gap-6">
               <FotoViewer fotos={instrumento.fotos ?? []} nome={instrumento.nome} />
               {videoId && (
-                <div className="rounded-2xl overflow-hidden w-full aspect-video">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-                    title={`Vídeo de ${instrumento.nome}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
-                </div>
+                <YoutubeEmbed videoId={videoId} titulo={instrumento.nome} />
               )}
             </div>
 
-            {/* Coluna direita — info + specs */}
+            {/* Coluna direita — specs + CTA */}
             <div className="flex flex-col gap-6">
-              {/* Modelo base */}
-              {instrumento.modeloBase && (
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-turquoise">
-                    {CATEGORIA_LABELS[instrumento.modeloBase.categoria] ?? instrumento.modeloBase.categoria}
-                  </span>
-                  <span className="text-eco-border">·</span>
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-sky">
-                    {instrumento.modeloBase.nome}
-                  </span>
-                </div>
-              )}
-
-              <h1 className="font-serif text-headline text-eco-night leading-tight">
-                {instrumento.nome}
-              </h1>
-
-              {instrumento.descricao && (
-                <p className="font-sans text-body text-eco-sky">
-                  {instrumento.descricao}
-                </p>
-              )}
-
               {/* Ficha técnica */}
               {temSpecs && (
-                <div className="mt-2">
+                <div>
                   <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-4">
                     Ficha técnica
                   </p>
