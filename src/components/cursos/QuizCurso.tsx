@@ -147,40 +147,20 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
             {!concluido ? (
               <>
                 {/* Progresso */}
-                <div className="mb-8">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="font-mono text-label text-eco-sky">
-                      Pergunta {step + 1} de {PERGUNTAS.length}
-                    </span>
-                  </div>
-                  {/* Barra */}
-                  <div
-                    className="h-1 rounded-full overflow-hidden"
-                    style={{ background: '#EDD9B0' }}
-                  >
+                <div className="mb-8" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span className="font-mono text-label text-eco-sky" style={{ whiteSpace: 'nowrap' }}>
+                    Pergunta {step + 1} de {PERGUNTAS.length}
+                  </span>
+                  <div style={{ flex: 1, height: '4px', background: '#EDD9B0', borderRadius: '99px', overflow: 'hidden' }}>
                     <div
-                      className="h-full rounded-full"
                       style={{
-                        width: `${((step + 1) / PERGUNTAS.length) * 100}%`,
+                        width: `${(selected !== null ? step + 1 : step) / PERGUNTAS.length * 100}%`,
+                        height: '100%',
                         background: '#D4813A',
+                        borderRadius: '99px',
                         transition: 'width 0.5s cubic-bezier(.4,0,.2,1)',
                       }}
                     />
-                  </div>
-                  {/* Dots */}
-                  <div className="flex gap-2 mt-3">
-                    {PERGUNTAS.map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          height: '4px',
-                          borderRadius: '9999px',
-                          background: i <= step ? '#D4813A' : '#EDD9B0',
-                          width: i === step ? '18px' : '8px',
-                          transition: 'width 0.3s ease, background 0.3s ease',
-                        }}
-                      />
-                    ))}
                   </div>
                 </div>
 
@@ -190,7 +170,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                 </h3>
 
                 {/* Opções */}
-                <div className="flex flex-col gap-3 mb-8">
+                <div className="flex flex-col gap-3 mb-6">
                   {pergunta.opcoes.map((opcao, idx) => {
                     const isSelecionada = selected === idx
                     return (
@@ -198,13 +178,14 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                         key={`${step}-${idx}`}
                         type="button"
                         onClick={() => handleSelect(idx)}
-                        className={`quiz-opt-${idx} text-left flex items-center gap-4 px-5 py-4 transition-all duration-200 cursor-pointer`}
+                        className={`quiz-opt-${idx} text-left flex items-center gap-4 px-5 py-4 cursor-pointer`}
                         style={{
                           borderRadius: '12px',
                           border: isSelecionada ? '1.5px solid #D4813A' : '1.5px solid #E8D5B0',
                           background: isSelecionada ? '#FFF3E0' : '#FFFDF8',
                           boxShadow: isSelecionada ? '0 0 0 3px rgba(212,129,58,0.15)' : 'none',
                           transform: isSelecionada ? 'translateX(4px)' : 'translateX(0)',
+                          transition: 'transform 0.18s ease, border 0.18s ease, background 0.18s ease, box-shadow 0.18s ease',
                         }}
                         onMouseEnter={(e) => {
                           if (!isSelecionada) {
@@ -272,17 +253,39 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                   })}
                 </div>
 
-                {/* Botão Próxima / Ver resultado */}
-                <div className="flex justify-end">
+                {/* Rodapé: dots + botão */}
+                <div className="flex items-center justify-between">
+                  {/* Dots */}
+                  <div className="flex gap-2">
+                    {PERGUNTAS.map((_, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          height: '4px',
+                          borderRadius: '9999px',
+                          background: i <= step ? '#D4813A' : '#EDD9B0',
+                          width: i === step ? '18px' : '8px',
+                          transition: 'width 0.3s ease, background 0.3s ease',
+                        }}
+                      />
+                    ))}
+                  </div>
+                  {/* Botão */}
                   <button
                     type="button"
                     onClick={handleNext}
                     disabled={selected === null}
-                    className="font-sans font-medium text-body text-white px-8 py-3 rounded-xl transition-opacity duration-150"
+                    className="font-sans font-medium"
                     style={{
-                      background: '#1E2D3A',
-                      opacity: selected === null ? 0.4 : 1,
-                      pointerEvents: selected === null ? 'none' : 'auto',
+                      fontSize: '14px',
+                      borderRadius: '99px',
+                      padding: '11px 24px',
+                      transition: 'all 0.18s ease',
+                      cursor: selected === null ? 'not-allowed' : 'pointer',
+                      background: selected === null ? 'transparent' : '#1E2D3A',
+                      color: selected === null ? '#D0C4AC' : 'white',
+                      border: selected === null ? '1.5px solid #D0C4AC' : '1.5px solid transparent',
+                      opacity: selected === null ? 0.5 : 1,
                     }}
                   >
                     {isUltimaPergunta ? 'Ver resultado' : 'Próxima'}
