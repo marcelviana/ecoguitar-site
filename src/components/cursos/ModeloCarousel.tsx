@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import type { ModeloInstrumento } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
+import CategoryBadge from '@/components/ui/CategoryBadge'
 
 function GuitarPlaceholder() {
   return (
@@ -65,6 +66,13 @@ export default function ModeloCarousel({ items }: { items: ModeloInstrumento[] }
               )}
             </div>
             <p className="font-sans text-small text-eco-night leading-tight">{modelo.nome}</p>
+            {modelo.categorias && modelo.categorias.length > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {modelo.categorias.map((cat) => (
+                  <CategoryBadge key={cat._id} label={cat.title} />
+                ))}
+              </div>
+            )}
             {modelo.observacao && (
               <p className="font-mono text-label text-eco-sky">{modelo.observacao}</p>
             )}

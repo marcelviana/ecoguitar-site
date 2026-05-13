@@ -5,19 +5,8 @@ import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import FotoViewer from '@/components/galeria/FotoViewer'
 import YoutubeEmbed from '@/components/cursos/YoutubeEmbed'
+import CategoryBadge from '@/components/ui/CategoryBadge'
 import { getAllInstrumentos, getInstrumentoBySlug } from '@/lib/queries'
-
-const CATEGORIA_LABELS: Record<string, string> = {
-  'guitarra': 'Guitarra',
-  'guitarra-7-cordas': 'Guitarra 7 Cordas',
-  'baritono': 'Guitarra Barítono',
-  'headless': 'Guitarra Headless',
-  'multiescala': 'Guitarra Multiescala',
-  'thinline': 'Thinline',
-  'traveler': 'Guitarra Traveler',
-  'baixo': 'Baixo',
-  'violao': 'Violão',
-}
 
 export async function generateStaticParams() {
   const instrumentos = await getAllInstrumentos()
@@ -108,6 +97,13 @@ export default async function InstrumentoPage({
           <h1 className="font-serif text-headline text-eco-white leading-tight">
             {instrumento.nome}
           </h1>
+          {instrumento.modeloBase?.categorias && instrumento.modeloBase.categorias.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-3">
+              {instrumento.modeloBase.categorias.map((cat) => (
+                <CategoryBadge key={cat._id} label={cat.title} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

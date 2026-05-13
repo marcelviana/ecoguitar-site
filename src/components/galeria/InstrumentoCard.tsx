@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { InstrumentoGaleria } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
+import CategoryBadge from '@/components/ui/CategoryBadge'
 
 export default function InstrumentoCard({ instrumento }: { instrumento: InstrumentoGaleria }) {
   return (
@@ -51,6 +52,13 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
           <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
             {instrumento.modeloBase.nome}
           </p>
+        )}
+        {instrumento.modeloBase?.categorias && instrumento.modeloBase.categorias.length > 0 && (
+          <div className="flex flex-wrap gap-1.5">
+            {instrumento.modeloBase.categorias.map((cat) => (
+              <CategoryBadge key={cat._id} label={cat.title} />
+            ))}
+          </div>
         )}
         {instrumento.descricao && (
           <p className="font-sans text-small text-eco-sky line-clamp-2 mt-1">
