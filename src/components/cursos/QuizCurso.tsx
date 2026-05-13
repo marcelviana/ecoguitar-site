@@ -63,7 +63,13 @@ function buildWaLink(nomeCurso: string) {
   )}`
 }
 
-export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
+export default function QuizCurso({
+  cursos,
+  showCoursesLink,
+}: {
+  cursos: CursoListagem[]
+  showCoursesLink?: boolean
+}) {
   const [step, setStep] = useState(0)
   const [scores, setScores] = useState<Record<Codigo, number>>({ E: 0, I: 0, X: 0 })
   const [selected, setSelected] = useState<number | null>(null)
@@ -108,7 +114,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
   const textoResultado = cursoResultado?.textoQuiz ?? FALLBACKS[modalidadeVencedora]
 
   return (
-    <section className="bg-eco-white py-section border-t border-eco-border">
+    <section className="bg-eco-sand-light py-section border-t border-eco-border">
       <style>{`
         @keyframes quizSlideIn {
           from { opacity: 0; transform: translateX(20px); }
@@ -137,26 +143,24 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
 
           {/* Card */}
           <div
-            className="rounded-2xl p-8 transition-opacity duration-200"
-            style={{
-              opacity: visible ? 1 : 0,
-              background: '#FDF6EC',
-              border: '1.5px solid #F5DFB0',
-            }}
+            className="bg-eco-sand-warm border border-eco-border rounded-2xl p-8 transition-opacity duration-200"
+            style={{ opacity: visible ? 1 : 0 }}
           >
             {!concluido ? (
               <>
                 {/* Progresso */}
-                <div className="mb-8" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span className="font-mono text-label text-eco-sky" style={{ whiteSpace: 'nowrap' }}>
+                <div className="mb-8 flex items-center gap-3">
+                  <span className="font-mono text-label text-eco-sky shrink-0">
                     Pergunta {step + 1} de {PERGUNTAS.length}
                   </span>
-                  <div style={{ flex: 1, height: '4px', background: '#EDD9B0', borderRadius: '99px', overflow: 'hidden' }}>
+                  <div
+                    className="bg-eco-border overflow-hidden"
+                    style={{ flex: 1, height: '4px', borderRadius: '99px' }}
+                  >
                     <div
+                      className="bg-eco-orange h-full"
                       style={{
                         width: `${(selected !== null ? step + 1 : step) / PERGUNTAS.length * 100}%`,
-                        height: '100%',
-                        background: '#D4813A',
                         borderRadius: '99px',
                         transition: 'width 0.5s cubic-bezier(.4,0,.2,1)',
                       }}
@@ -178,30 +182,17 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                         key={`${step}-${idx}`}
                         type="button"
                         onClick={() => handleSelect(idx)}
-                        className={`quiz-opt-${idx} text-left flex items-center gap-4 px-5 py-4 cursor-pointer`}
+                        className={[
+                          `quiz-opt-${idx} text-left flex items-center gap-4 px-5 py-4 cursor-pointer rounded-xl border`,
+                          isSelecionada
+                            ? 'bg-eco-sand-warm border-eco-orange'
+                            : 'bg-eco-white border-eco-border hover:border-eco-orange hover:bg-eco-sand-warm/60 hover:translate-x-[3px]',
+                        ].join(' ')}
                         style={{
-                          borderRadius: '12px',
-                          border: isSelecionada ? '1.5px solid #D4813A' : '1.5px solid #E8D5B0',
-                          background: isSelecionada ? '#FFF3E0' : '#FFFDF8',
+                          borderWidth: '1.5px',
                           boxShadow: isSelecionada ? '0 0 0 3px rgba(212,129,58,0.15)' : 'none',
-                          transform: isSelecionada ? 'translateX(4px)' : 'translateX(0)',
-                          transition: 'transform 0.18s ease, border 0.18s ease, background 0.18s ease, box-shadow 0.18s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!isSelecionada) {
-                            const el = e.currentTarget
-                            el.style.border = '1.5px solid #D4813A'
-                            el.style.background = '#FFF8EE'
-                            el.style.transform = 'translateX(3px)'
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!isSelecionada) {
-                            const el = e.currentTarget
-                            el.style.border = '1.5px solid #E8D5B0'
-                            el.style.background = '#FFFDF8'
-                            el.style.transform = 'translateX(0)'
-                          }
+                          transform: isSelecionada ? 'translateX(4px)' : undefined,
+                          transition: 'transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease',
                         }}
                       >
                         {/* Emoji */}
@@ -225,15 +216,13 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
 
                         {/* Check */}
                         <span
-                          className="flex-shrink-0 flex items-center justify-center"
-                          style={{
-                            width: '22px',
-                            height: '22px',
-                            borderRadius: '50%',
-                            border: isSelecionada ? 'none' : '2px solid #D4B896',
-                            background: isSelecionada ? '#D4813A' : 'transparent',
-                            transition: 'background 0.15s ease, border 0.15s ease',
-                          }}
+                          className={[
+                            'flex-shrink-0 flex items-center justify-center w-[22px] h-[22px] rounded-full',
+                            isSelecionada
+                              ? 'bg-eco-orange'
+                              : 'bg-transparent border-2 border-eco-border',
+                          ].join(' ')}
+                          style={{ transition: 'background 0.15s ease, border-color 0.15s ease' }}
                           aria-hidden="true"
                         >
                           {isSelecionada && (
@@ -260,12 +249,12 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                     {PERGUNTAS.map((_, i) => (
                       <div
                         key={i}
+                        className={i <= step ? 'bg-eco-orange' : 'bg-eco-border'}
                         style={{
                           height: '4px',
                           borderRadius: '9999px',
-                          background: i <= step ? '#D4813A' : '#EDD9B0',
                           width: i === step ? '18px' : '8px',
-                          transition: 'width 0.3s ease, background 0.3s ease',
+                          transition: 'width 0.3s ease, background-color 0.3s ease',
                         }}
                       />
                     ))}
@@ -275,17 +264,17 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                     type="button"
                     onClick={handleNext}
                     disabled={selected === null}
-                    className="font-sans font-medium"
+                    className={[
+                      'font-sans font-medium rounded-full',
+                      selected === null
+                        ? 'border border-eco-border text-eco-sky opacity-50 cursor-not-allowed'
+                        : 'bg-eco-night text-white border border-eco-night cursor-pointer',
+                    ].join(' ')}
                     style={{
                       fontSize: '14px',
-                      borderRadius: '99px',
                       padding: '11px 24px',
+                      borderWidth: '1.5px',
                       transition: 'all 0.18s ease',
-                      cursor: selected === null ? 'not-allowed' : 'pointer',
-                      background: selected === null ? 'transparent' : '#1E2D3A',
-                      color: selected === null ? '#D0C4AC' : 'white',
-                      border: selected === null ? '1.5px solid #D0C4AC' : '1.5px solid transparent',
-                      opacity: selected === null ? 0.5 : 1,
                     }}
                   >
                     {isUltimaPergunta ? 'Ver resultado' : 'Próxima'}
@@ -330,6 +319,18 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
               </div>
             )}
           </div>
+
+          {/* Link para página de cursos — exibido apenas quando showCoursesLink=true */}
+          {showCoursesLink && (
+            <div className="text-center mt-6">
+              <Link
+                href="/cursos"
+                className="font-sans text-small text-eco-sky hover:text-eco-night underline-offset-4 hover:underline transition-colors"
+              >
+                Prefere ver todos os cursos →
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

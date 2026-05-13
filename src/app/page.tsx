@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout'
 import HeroSection from '@/components/home/HeroSection'
 import SobreSection from '@/components/home/SobreSection'
@@ -20,15 +19,7 @@ export default async function HomePage() {
       <SobreSection fotoPedro={config?.fotoPedro} />
       <ServicosSection />
 <InstrumentosSection />
-      <QuizCurso cursos={cursos} />
-      <div className="text-center mt-6 pb-2">
-        <Link
-          href="/cursos"
-          className="font-sans text-small text-eco-sky hover:underline underline-offset-4 transition-colors"
-        >
-          Prefere ver todos os cursos →
-        </Link>
-      </div>
+      <QuizCurso cursos={cursos} showCoursesLink />
       <DepoimentosSection />
       <ClubeSection />
       <GaleriaSection />
