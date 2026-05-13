@@ -8,7 +8,7 @@ import ServicosSection from '@/components/home/ServicosSection'
 import QuizCurso from '@/components/cursos/QuizCurso'
 import GaleriaSection from '@/components/home/GaleriaSection'
 import DepoimentosSection from '@/components/home/DepoimentosSection'
-import InstrumentosSection from '@/components/home/InstrumentosSection'
+import SobreSection from '@/components/home/SobreSection'
 import ContatoCTASection from '@/components/home/ContatoCTASection'
 import { getConfiguracao, getCursosListagem } from '@/lib/queries'
 
@@ -21,14 +21,14 @@ export default async function HomePage() {
       <HeroSection heroBannerImagem={config?.heroBannerImagem} />
       {/* 2. Serviços — eco-white (#FFFDF8, quase branco) */}
       <ServicosSection />
-      {/* 3. Quiz — eco-sand-warm (#FFE9C2, bege quente) — diferencia de eco-white acima e abaixo */}
+      {/* 3. Quiz — eco-night (escuro) — card interno é eco-sand-warm; seção escura garante contraste com o card e com Serviços/Galeria (eco-white) adjacentes */}
       <QuizCurso cursos={cursos} showCoursesLink />
       {/* 4. Galeria — eco-white (#FFFDF8) — contrasta com o bege quente do Quiz */}
       <GaleriaSection />
       {/* 5. Depoimentos — eco-night (escuro) — contraste forte com o branco da Galeria */}
       <DepoimentosSection />
-      {/* 6. Luteria — eco-sand-warm (#FFE9C2) — clareia após o escuro dos Depoimentos */}
-      <InstrumentosSection />
+      {/* 6. Luteria / Pedro Machado — eco-sand-warm — clareia após o escuro dos Depoimentos */}
+      <SobreSection fotoPedro={config?.fotoPedro} />
       {/* 7. Fale conosco — eco-turquoise — CTA final em cor de destaque da marca */}
       <ContatoCTASection />
     </PageLayout>
