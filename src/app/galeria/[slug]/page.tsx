@@ -62,6 +62,18 @@ export default async function InstrumentoPage({
   const specsExtras = instrumento.specsExtras ?? []
   const temSpecs = specsFixas.length > 0 || specsExtras.length > 0
 
+  const videoId = instrumento.videoYoutubeUrl
+    ? (() => {
+        try {
+          const url = new URL(instrumento.videoYoutubeUrl)
+          if (url.hostname === 'youtu.be') return url.pathname.slice(1)
+          return url.searchParams.get('v') ?? null
+        } catch {
+          return null
+        }
+      })()
+    : null
+
   return (
     <PageLayout>
       {/* Breadcrumb */}
@@ -85,8 +97,21 @@ export default async function InstrumentoPage({
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12 items-start">
 
-            {/* Coluna esquerda — fotos */}
-            <FotoViewer fotos={instrumento.fotos ?? []} nome={instrumento.nome} />
+            {/* Coluna esquerda — fotos + vídeo */}
+            <div className="flex flex-col gap-6">
+              <FotoViewer fotos={instrumento.fotos ?? []} nome={instrumento.nome} />
+              {videoId && (
+                <div className="rounded-2xl overflow-hidden w-full aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+                    title={`Vídeo de ${instrumento.nome}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+              )}
+            </div>
 
             {/* Coluna direita — info + specs */}
             <div className="flex flex-col gap-6">

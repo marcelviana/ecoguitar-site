@@ -125,9 +125,25 @@ export default defineType({
         },
       ],
     }),
+    // ── Mídia ──
+    defineField({
+      name: 'videoYoutubeUrl',
+      title: 'URL do vídeo no YouTube',
+      type: 'url',
+      description: 'Ex: https://www.youtube.com/watch?v=ABC123',
+      group: 'midia',
+    }),
+    defineField({
+      name: 'paginaGaleriaUrl',
+      title: 'URL da página na galeria',
+      type: 'url',
+      description: 'Ex: https://ecoguitar-site.vercel.app/galeria/telecaster-portao',
+      group: 'midia',
+    }),
   ],
   groups: [
     { name: 'specs', title: 'Especificações técnicas' },
+    { name: 'midia', title: 'Mídia' },
   ],
   preview: {
     select: { title: 'nome', subtitle: 'corpo', media: 'fotos.0' },

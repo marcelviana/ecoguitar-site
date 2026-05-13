@@ -143,6 +143,8 @@ export interface InstrumentoDetalhe {
   ferragens?: string
   captacao?: string
   specsExtras?: SpecExtra[]
+  videoYoutubeUrl?: string
+  paginaGaleriaUrl?: string
 }
 
 export interface Clube {
@@ -183,6 +185,8 @@ const instrumentoBySlugQuery = groq`
     ferragens,
     captacao,
     specsExtras,
+    videoYoutubeUrl,
+    paginaGaleriaUrl,
   }
 `
 
