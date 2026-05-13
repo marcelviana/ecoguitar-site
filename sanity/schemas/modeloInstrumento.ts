@@ -13,24 +13,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'categoria',
-      title: 'Categoria',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Guitarra', value: 'guitarra' },
-          { title: 'Guitarra 7 Cordas', value: 'guitarra-7-cordas' },
-          { title: 'Guitarra Barítono', value: 'baritono' },
-          { title: 'Guitarra Headless', value: 'headless' },
-          { title: 'Guitarra Multiescala', value: 'multiescala' },
-          { title: 'Guitarra Thinline', value: 'thinline' },
-          { title: 'Guitarra Traveler', value: 'traveler' },
-          { title: 'Baixo', value: 'baixo' },
-          { title: 'Violão', value: 'violao' },
-        ],
-        layout: 'dropdown',
-      },
-      validation: (Rule) => Rule.required(),
+      name: 'categorias',
+      title: 'Categorias',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'categoria' }] }],
+      description: 'Ex: Guitarra, 7 Cordas, Multiescala',
     }),
     defineField({
       name: 'imagem',
@@ -58,13 +45,17 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: 'nome', subtitle: 'categoria', media: 'imagem' },
+    select: {
+      title: 'nome',
+      subtitle: 'categorias.0.title',
+      media: 'imagem',
+    },
   },
   orderings: [
     {
-      title: 'Categoria',
-      name: 'categoriaAsc',
-      by: [{ field: 'categoria', direction: 'asc' }],
+      title: 'Nome',
+      name: 'nomeAsc',
+      by: [{ field: 'nome', direction: 'asc' }],
     },
   ],
 })

@@ -118,6 +118,11 @@ export interface SpecExtra {
   valor: string
 }
 
+export interface CategoriaRef {
+  _id: string
+  title: string
+}
+
 export interface InstrumentoGaleria {
   _id: string
   nome: string
@@ -125,7 +130,7 @@ export interface InstrumentoGaleria {
   descricao?: string
   destaque?: boolean
   fotoUrl?: string
-  modeloBase?: { nome: string; categoria: string }
+  modeloBase?: { nome: string; categoria?: string; categorias?: CategoriaRef[] }
 }
 
 export interface InstrumentoDetalhe {
@@ -135,7 +140,7 @@ export interface InstrumentoDetalhe {
   descricao?: string
   destaque?: boolean
   fotos: string[]
-  modeloBase?: { nome: string; categoria: string }
+  modeloBase?: { nome: string; categoria?: string; categorias?: CategoriaRef[] }
   corpo?: string
   braco?: string
   escala?: string
@@ -165,7 +170,7 @@ const instrumentosTodosQuery = groq`
     descricao,
     destaque,
     "fotoUrl": fotos[0].asset->url,
-    "modeloBase": modeloBase->{ nome, categoria },
+    "modeloBase": modeloBase->{ nome, "categorias": categorias[]->{_id, title}, "categoria": categorias[0]->title },
   }
 `
 
@@ -177,7 +182,7 @@ const instrumentoBySlugQuery = groq`
     descricao,
     destaque,
     "fotos": fotos[].asset->url,
-    "modeloBase": modeloBase->{ nome, categoria },
+    "modeloBase": modeloBase->{ nome, "categorias": categorias[]->{_id, title}, "categoria": categorias[0]->title },
     corpo,
     braco,
     escala,
@@ -254,7 +259,9 @@ export interface PerguntaResposta {
 export interface ModeloInstrumento {
   _id: string
   nome: string
-  categoria: string
+  /** @deprecated derivado de categorias[0].title para compatibilidade */
+  categoria?: string
+  categorias?: CategoriaRef[]
   imagem?: string
   disponivel: boolean
   destaque: boolean
@@ -341,7 +348,8 @@ export const cursoBySlugQuery = groq`
     "modelosDisponiveis": modelosDisponiveis[]->{
       _id,
       nome,
-      categoria,
+      "categorias": categorias[]->{_id, title},
+      "categoria": categorias[0]->title,
       disponivel,
       destaque,
       observacao,
@@ -351,10 +359,11 @@ export const cursoBySlugQuery = groq`
 `
 
 export const modelosQuery = groq`
-  *[_type == "modeloInstrumento" && disponivel == true] | order(categoria asc, nome asc) {
+  *[_type == "modeloInstrumento" && disponivel == true] | order(nome asc) {
     _id,
     nome,
-    categoria,
+    "categorias": categorias[]->{_id, title},
+    "categoria": categorias[0]->title,
     disponivel,
     destaque,
     observacao,

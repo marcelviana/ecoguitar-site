@@ -7,6 +7,7 @@ import configuracao from './configuracao'
 import sobre from './sobre'
 import modeloInstrumento from './modeloInstrumento'
 import processo from './processo'
+import categoria from './categoria'
 
 export const schemaTypes = [
   curso,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   sobre,
   modeloInstrumento,
   processo,
+  categoria,
 ]
