@@ -165,9 +165,9 @@ export default async function InstrumentoPage({
 
       {/* 3. Seção de vídeo — apenas quando existir */}
       {videoId && (
-        <section className="bg-eco-night py-12">
+        <section className="bg-eco-sky py-12">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-4">
+            <p className="font-mono text-label uppercase tracking-widest text-eco-white mb-4">
               Assista ao vídeo
             </p>
             <YoutubeEmbed videoId={videoId} titulo={instrumento.nome} />
