@@ -19,7 +19,7 @@ export default async function HomePage() {
       <SobreSection fotoPedro={config?.fotoPedro} />
       <ServicosSection />
 <InstrumentosSection />
-      <QuizCurso cursos={cursos} showCoursesLink />
+      <QuizCurso cursos={cursos} showCoursesLink /> 
       <DepoimentosSection />
       <ClubeSection />
       <GaleriaSection />
