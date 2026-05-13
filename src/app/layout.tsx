@@ -92,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-eco-cream text-eco-charcoal font-sans">
+      <body className="min-h-full flex flex-col bg-eco-sand-light text-eco-night font-sans">
         {children}
       </body>
     </html>

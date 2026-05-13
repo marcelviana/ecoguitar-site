@@ -23,7 +23,7 @@ export const revalidate = 60
 const WHATSAPP_URL = 'https://wa.me/5511976947027'
 
 const MODALIDADE_BADGE: Record<string, string> = {
-  Express: 'bg-eco-wood/20 text-eco-white border border-eco-wood/40',
+  Express: 'bg-eco-turquoise/20 text-eco-white border border-eco-turquoise/40',
   Intensivo: 'bg-white/10 text-eco-white border border-white/20',
   Extensivo: 'bg-white/10 text-eco-white border border-white/20',
 }
@@ -64,7 +64,7 @@ function CoursePageLayout({
   return (
     <PageLayout>
       {/* ── Hero full-bleed ── */}
-      <div className="relative h-[300px] lg:h-[340px] overflow-hidden bg-eco-charcoal">
+      <div className="relative h-[300px] lg:h-[340px] overflow-hidden bg-eco-night">
         {curso.imagemCapa && (
           <Image
             src={sanityImg(curso.imagemCapa, 1600)}
@@ -125,7 +125,7 @@ function CoursePageLayout({
 
       {/* ── Vídeo (abaixo do hero, se existir) ── */}
       {curso.videoYoutubeId && (
-        <section className="bg-eco-charcoal py-8">
+        <section className="bg-eco-night py-8">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <YoutubeEmbed videoId={curso.videoYoutubeId} titulo={curso.titulo} />
           </div>
@@ -134,7 +134,7 @@ function CoursePageLayout({
 
       {/* ── Para quem é este curso ── */}
       {Array.isArray(curso.paraQuem) && curso.paraQuem.length > 0 && (
-        <section className="bg-eco-wood py-section">
+        <section className="bg-eco-turquoise py-section">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
             <h2 className="font-serif text-headline text-eco-white mb-8">
               Para quem é este curso?
@@ -172,9 +172,9 @@ function CoursePageLayout({
 
       {/* ── Descritivo do curso ── */}
       {curso.descricaoCompleta && curso.descricaoCompleta.length > 0 && (
-        <section className="bg-eco-cream py-section border-t border-eco-border">
+        <section className="bg-eco-sand-light py-section border-t border-eco-border">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <div className="prose prose-stone max-w-none font-sans text-eco-charcoal">
+            <div className="prose prose-stone max-w-none font-sans text-eco-night">
               <PortableText value={curso.descricaoCompleta} />
             </div>
           </div>
@@ -183,12 +183,12 @@ function CoursePageLayout({
 
       {/* ── Modelos ── */}
       {modelos.length > 0 && (
-        <section className="bg-eco-paper py-section border-t border-eco-border">
+        <section className="bg-eco-sand-warm py-section border-t border-eco-border">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="font-serif text-headline text-eco-charcoal mb-4">
+            <h2 className="font-serif text-headline text-eco-night mb-4">
               São mais de 100 projetos para escolher!
             </h2>
-            <p className="font-sans text-body text-eco-muted mb-10 max-w-lg">
+            <p className="font-sans text-body text-eco-sky mb-10 max-w-lg">
               Escolha o modelo que mais combina com o seu estilo. Não encontrou? Criamos o
               gabarito sob encomenda.
             </p>
@@ -199,7 +199,7 @@ function CoursePageLayout({
 
       {/* ── Galeria ── */}
       {curso.galeria && curso.galeria.length > 0 && (
-        <section className="bg-eco-charcoal py-section border-t border-white/10">
+        <section className="bg-eco-night py-section border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <h2 className="font-serif text-headline text-eco-white mb-10">
               Instrumentos dos nossos alunos
@@ -210,15 +210,15 @@ function CoursePageLayout({
       )}
 
       {/* ── Investimento + CTA ── */}
-      <section className="bg-eco-cream py-section border-t border-eco-border">
+      <section className="bg-eco-sand-light py-section border-t border-eco-border">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           {/* Card de investimento */}
-          <div className="bg-eco-charcoal rounded-2xl overflow-hidden">
+          <div className="bg-eco-night rounded-2xl overflow-hidden">
             {/* Corpo: duas colunas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
               {/* Esquerda — preço */}
               <div className="p-8">
-                <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-3">
                   Investimento
                 </p>
                 {curso.preco ? (
@@ -227,18 +227,18 @@ function CoursePageLayout({
                       {curso.preco}
                     </p>
                     {curso.precoIndividual && (
-                      <p className="font-sans text-small text-eco-muted mt-2">
+                      <p className="font-sans text-small text-eco-sky mt-2">
                         Individual: R$ {curso.precoIndividual.toLocaleString('pt-BR')}
                       </p>
                     )}
                   </>
                 ) : (
-                  <p className="font-sans text-body text-eco-muted">
+                  <p className="font-sans text-body text-eco-sky">
                     Consulte via WhatsApp
                   </p>
                 )}
                 {curso.modalidade && (
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-wood mt-3">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mt-3">
                     {curso.modalidade}
                   </p>
                 )}
@@ -248,7 +248,7 @@ function CoursePageLayout({
               <div className="p-8 flex flex-col gap-4">
                 {curso.duracao && (
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
                       Duração
                     </p>
                     <p className="font-sans text-body text-eco-white mt-0.5">{curso.duracao}</p>
@@ -256,7 +256,7 @@ function CoursePageLayout({
                 )}
                 {curso.horarios && (
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
                       Horário
                     </p>
                     <p className="font-sans text-body text-eco-white mt-0.5">{curso.horarios}</p>
@@ -264,7 +264,7 @@ function CoursePageLayout({
                 )}
                 {curso.maxAlunosPorProfessor && (
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
                       Turma
                     </p>
                     <p className="font-sans text-body text-eco-white mt-0.5">
@@ -277,14 +277,14 @@ function CoursePageLayout({
 
             {/* Rodapé — benefício + CTA */}
             <div className="border-t border-white/10 px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <p className="font-sans text-small text-eco-muted max-w-sm">
+              <p className="font-sans text-small text-eco-sky max-w-sm">
                 Você leva o instrumento pronto para casa. Material incluso.
               </p>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-wood text-white hover:bg-eco-wood-dark px-6 py-3 text-body"
+                className="flex-shrink-0 inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 bg-eco-turquoise text-white hover:bg-eco-turquoise-dk px-6 py-3 text-body"
               >
                 Falar no WhatsApp
               </a>
@@ -296,16 +296,16 @@ function CoursePageLayout({
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {(curso.oQueEstaIncluido ?? []).length > 0 && (
                 <div>
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-3">
                     Incluso
                   </p>
                   <ul className="flex flex-col gap-2">
                     {(curso.oQueEstaIncluido ?? []).map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-eco-wood flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="w-4 h-4 text-eco-turquoise flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="font-sans text-small text-eco-charcoal">{item}</span>
+                        <span className="font-sans text-small text-eco-night">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -313,16 +313,16 @@ function CoursePageLayout({
               )}
               {(curso.oQueNaoEstaIncluido ?? []).length > 0 && (
                 <div>
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-3">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-3">
                     Não incluso
                   </p>
                   <ul className="flex flex-col gap-2">
                     {(curso.oQueNaoEstaIncluido ?? []).map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-eco-muted flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="w-4 h-4 text-eco-sky flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                        <span className="font-sans text-small text-eco-muted">{item}</span>
+                        <span className="font-sans text-small text-eco-sky">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -336,9 +336,9 @@ function CoursePageLayout({
 
       {/* ── FAQ ── */}
       {curso.faq && curso.faq.length > 0 && (
-        <section className="bg-eco-paper py-section border-t border-eco-border">
+        <section className="bg-eco-sand-warm py-section border-t border-eco-border">
           <div className="max-w-3xl mx-auto px-6 lg:px-12">
-            <h2 className="font-serif text-headline text-eco-charcoal mb-8">
+            <h2 className="font-serif text-headline text-eco-night mb-8">
               Perguntas frequentes
             </h2>
             <FaqAccordion items={curso.faq} />

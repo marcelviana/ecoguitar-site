@@ -20,9 +20,9 @@ export default function SectionHeading({
   return (
     <div className={`flex flex-col gap-3 ${alignClass} ${className}`}>
       {label && <SectionLabel>{label}</SectionLabel>}
-      <h2 className="font-serif text-headline text-eco-charcoal">{title}</h2>
+      <h2 className="font-serif text-headline text-eco-night">{title}</h2>
       {subtitle && (
-        <p className="text-body-lg text-eco-muted max-w-2xl">{subtitle}</p>
+        <p className="text-body-lg text-eco-sky max-w-2xl">{subtitle}</p>
       )}
     </div>
   )

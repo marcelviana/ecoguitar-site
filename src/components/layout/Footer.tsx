@@ -21,7 +21,7 @@ export default async function Footer() {
   const igUrl = config?.instagram ? `https://instagram.com/${config.instagram.replace(/^@/, '')}` : null
   const ytUrl = config?.youtube ?? null
   return (
-    <footer className="bg-eco-charcoal text-eco-cream">
+    <footer className="bg-eco-night text-eco-sand-light">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-section-sm lg:py-16">
         {/* Three-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -34,7 +34,7 @@ export default async function Footer() {
               height={40}
               className="[filter:invert(1)] [mix-blend-mode:screen]"
             />
-            <p className="font-serif text-body-lg text-eco-muted leading-relaxed">
+            <p className="font-serif text-body-lg text-eco-sky leading-relaxed">
               A sua guitarra é tão única quanto o som que você faz.
             </p>
             <div className="flex gap-4">
@@ -44,7 +44,7 @@ export default async function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Eco Guitar no Instagram"
-                  className="text-eco-muted hover:text-eco-cream transition-colors"
+                  className="text-eco-sky hover:text-eco-sand-light transition-colors"
                 >
                   <InstagramIcon />
                 </a>
@@ -55,7 +55,7 @@ export default async function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Eco Guitar no YouTube"
-                  className="text-eco-muted hover:text-eco-cream transition-colors"
+                  className="text-eco-sky hover:text-eco-sand-light transition-colors"
                 >
                   <YouTubeIcon />
                 </a>
@@ -65,7 +65,7 @@ export default async function Footer() {
 
           {/* Col 2 — Navigation */}
           <div className="flex flex-col gap-4">
-            <span className="font-mono text-label tracking-widest uppercase text-eco-muted">
+            <span className="font-mono text-label tracking-widest uppercase text-eco-sky">
               Navegação
             </span>
             <nav aria-label="Rodapé — navegação">
@@ -74,7 +74,7 @@ export default async function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-sans text-small text-eco-muted hover:text-eco-cream transition-colors"
+                      className="font-sans text-small text-eco-sky hover:text-eco-sand-light transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -86,10 +86,10 @@ export default async function Footer() {
 
           {/* Col 3 — Contact */}
           <div className="flex flex-col gap-4">
-            <span className="font-mono text-label tracking-widest uppercase text-eco-muted">
+            <span className="font-mono text-label tracking-widest uppercase text-eco-sky">
               Contato
             </span>
-            <ul className="flex flex-col gap-3 text-eco-muted">
+            <ul className="flex flex-col gap-3 text-eco-sky">
               {config?.endereco && (
                 <li className="font-sans text-small leading-relaxed">
                   {config.endereco}
@@ -101,7 +101,7 @@ export default async function Footer() {
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-sans text-small hover:text-eco-cream transition-colors"
+                    className="font-sans text-small hover:text-eco-sand-light transition-colors"
                   >
                     WhatsApp
                   </a>
@@ -110,7 +110,7 @@ export default async function Footer() {
               <li>
                 <a
                   href={`mailto:${email}`}
-                  className="font-sans text-small hover:text-eco-cream transition-colors"
+                  className="font-sans text-small hover:text-eco-sand-light transition-colors"
                 >
                   {email}
                 </a>
@@ -120,8 +120,8 @@ export default async function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-6 border-t border-eco-charcoal/50 border-white/10">
-          <p className="font-mono text-label text-eco-muted">
+        <div className="mt-16 pt-6 border-t border-eco-night/50 border-white/10">
+          <p className="font-mono text-label text-eco-sky">
             © 2025 Eco Guitar. Todos os direitos reservados.
           </p>
         </div>

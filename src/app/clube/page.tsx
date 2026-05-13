@@ -62,23 +62,23 @@ export default async function ClubePage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-charcoal py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-wood">Membros exclusivos</SectionLabel>
+          <SectionLabel className="text-eco-turquoise">Membros exclusivos</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">{titulo}</h1>
-          <p className="font-sans text-body-lg text-eco-muted mt-4 max-w-xl">{descricao}</p>
+          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">{descricao}</p>
         </div>
       </section>
 
       {/* Benefícios + card de preço */}
-      <section className="bg-eco-cream py-section">
+      <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
             {/* Lista de benefícios */}
             <div className="lg:col-span-2 flex flex-col gap-8">
               <div>
                 <SectionLabel>O que está incluso</SectionLabel>
-                <h2 className="font-serif text-headline text-eco-charcoal mt-3">
+                <h2 className="font-serif text-headline text-eco-night mt-3">
                   Benefícios do clube
                 </h2>
               </div>
@@ -87,10 +87,10 @@ export default async function ClubePage() {
                   <li key={beneficio} className="flex items-start gap-4">
                     <span
                       aria-hidden="true"
-                      className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-eco-wood/10 flex items-center justify-center"
+                      className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-eco-turquoise/10 flex items-center justify-center"
                     >
                       <svg
-                        className="w-3 h-3 text-eco-wood"
+                        className="w-3 h-3 text-eco-turquoise"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -103,7 +103,7 @@ export default async function ClubePage() {
                         />
                       </svg>
                     </span>
-                    <span className="font-sans text-body text-eco-charcoal">{beneficio}</span>
+                    <span className="font-sans text-body text-eco-night">{beneficio}</span>
                   </li>
                 ))}
               </ul>
@@ -111,9 +111,9 @@ export default async function ClubePage() {
 
             {/* Card de preço */}
             <div className="sticky top-24">
-              <div className="bg-eco-charcoal rounded-2xl p-8 flex flex-col gap-6">
+              <div className="bg-eco-night rounded-2xl p-8 flex flex-col gap-6">
                 <div>
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-wood">
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-turquoise">
                     Investimento mensal
                   </span>
                   {preco ? (
@@ -121,13 +121,13 @@ export default async function ClubePage() {
                       <span className="font-serif text-display text-eco-white leading-none">
                         R${preco}
                       </span>
-                      <span className="font-mono text-small text-eco-muted mb-1">/{periodo}</span>
+                      <span className="font-mono text-small text-eco-sky mb-1">/{periodo}</span>
                     </div>
                   ) : (
                     <p className="font-serif text-title text-eco-white mt-3">Consulte o valor</p>
                   )}
                   {vagas !== null && vagas !== undefined && (
-                    <p className="font-mono text-label text-eco-muted mt-2">
+                    <p className="font-mono text-label text-eco-sky mt-2">
                       {vagas} {vagas === 1 ? 'vaga disponível' : 'vagas disponíveis'}
                     </p>
                   )}
@@ -148,7 +148,7 @@ export default async function ClubePage() {
                   </Button>
                 </div>
 
-                <p className="font-mono text-label text-eco-muted text-center">
+                <p className="font-mono text-label text-eco-sky text-center">
                   Sem fidelidade mínima · Cancele quando quiser
                 </p>
               </div>
@@ -158,17 +158,17 @@ export default async function ClubePage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-eco-paper border-y border-eco-border py-section">
+      <section className="bg-eco-sand-warm border-y border-eco-border py-section">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <SectionLabel>Dúvidas frequentes</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+          <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
             Perguntas sobre o clube
           </h2>
           <div className="flex flex-col divide-y divide-eco-border">
             {faqs.map((faq) => (
               <div key={faq.pergunta} className="py-6 flex flex-col gap-3">
-                <h3 className="font-serif text-title text-eco-charcoal">{faq.pergunta}</h3>
-                <p className="font-sans text-body text-eco-muted">{faq.resposta}</p>
+                <h3 className="font-serif text-title text-eco-night">{faq.pergunta}</h3>
+                <p className="font-sans text-body text-eco-sky">{faq.resposta}</p>
               </div>
             ))}
           </div>
@@ -176,11 +176,11 @@ export default async function ClubePage() {
       </section>
 
       {/* Depoimento decorativo */}
-      <section className="bg-eco-charcoal py-section">
+      <section className="bg-eco-night py-section">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center gap-8">
           <svg
             aria-hidden="true"
-            className="w-12 h-12 text-eco-wood/40"
+            className="w-12 h-12 text-eco-turquoise/40"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -191,8 +191,8 @@ export default async function ClubePage() {
             Pedro vale cada centavo.
           </blockquote>
           <div className="flex flex-col items-center gap-1">
-            <span className="font-sans text-body text-eco-muted">— Membro do Clube do Luthier</span>
-            <span className="font-mono text-label text-eco-wood uppercase tracking-widest">São Paulo, SP</span>
+            <span className="font-sans text-body text-eco-sky">— Membro do Clube do Luthier</span>
+            <span className="font-mono text-label text-eco-turquoise uppercase tracking-widest">São Paulo, SP</span>
           </div>
         </div>
       </section>

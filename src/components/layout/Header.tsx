@@ -37,7 +37,7 @@ export default function Header({ waLink }: { waLink: string }) {
         className={[
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-eco-cream shadow-sm border-b border-eco-border'
+            ? 'bg-eco-sand-light shadow-sm border-b border-eco-border'
             : 'bg-transparent',
         ].join(' ')}
       >
@@ -56,7 +56,7 @@ export default function Header({ waLink }: { waLink: string }) {
               priority
               className="[mix-blend-mode:multiply]"
             />
-            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-charcoal">
+            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-night">
               Eco Guitar
             </span>
           </Link>
@@ -67,7 +67,7 @@ export default function Header({ waLink }: { waLink: string }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-sans text-small text-eco-charcoal hover:text-eco-wood transition-colors"
+                className="font-sans text-small text-eco-night hover:text-eco-turquoise transition-colors"
               >
                 {link.label}
               </Link>
@@ -89,7 +89,7 @@ export default function Header({ waLink }: { waLink: string }) {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden p-2 text-eco-charcoal"
+            className="lg:hidden p-2 text-eco-night"
             aria-label="Abrir menu"
           >
             <HamburgerIcon />
@@ -100,7 +100,7 @@ export default function Header({ waLink }: { waLink: string }) {
       {/* Mobile drawer overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-eco-charcoal/40 lg:hidden"
+          className="fixed inset-0 z-40 bg-eco-night/40 lg:hidden"
           onClick={() => setMenuOpen(false)}
           aria-hidden="true"
         />
@@ -109,7 +109,7 @@ export default function Header({ waLink }: { waLink: string }) {
       {/* Mobile drawer */}
       <div
         className={[
-          'fixed top-0 right-0 bottom-0 z-50 w-72 bg-eco-cream flex flex-col lg:hidden',
+          'fixed top-0 right-0 bottom-0 z-50 w-72 bg-eco-sand-light flex flex-col lg:hidden',
           'transform transition-transform duration-300 ease-in-out',
           menuOpen ? 'translate-x-0' : 'translate-x-full',
         ].join(' ')}
@@ -126,14 +126,14 @@ export default function Header({ waLink }: { waLink: string }) {
               height={40}
               className="[mix-blend-mode:multiply]"
             />
-            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-charcoal">
+            <span className="font-[family-name:var(--font-josefin)] font-light text-xl tracking-[0.15em] uppercase text-eco-night">
               Eco Guitar
             </span>
           </div>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
-            className="p-2 text-eco-charcoal"
+            className="p-2 text-eco-night"
             aria-label="Fechar menu"
           >
             <CloseIcon />
@@ -146,7 +146,7 @@ export default function Header({ waLink }: { waLink: string }) {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-sans text-body text-eco-charcoal hover:text-eco-wood py-3 border-b border-eco-border/50 transition-colors"
+              className="font-sans text-body text-eco-night hover:text-eco-turquoise py-3 border-b border-eco-border/50 transition-colors"
             >
               {link.label}
             </Link>

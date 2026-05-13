@@ -1,12 +1,12 @@
 export default function InstrumentoLoading() {
   return (
     <div className="animate-pulse">
-      <div className="bg-eco-paper border-b border-eco-border">
+      <div className="bg-eco-sand-warm border-b border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3">
           <div className="h-3 w-40 bg-eco-border rounded" />
         </div>
       </div>
-      <div className="bg-eco-cream py-section">
+      <div className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12">
             {/* Fotos */}

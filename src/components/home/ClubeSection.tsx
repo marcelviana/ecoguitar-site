@@ -9,9 +9,9 @@ const clube = {
 
 export default function ClubeSection() {
   return (
-    <section className="bg-eco-wood py-section">
+    <section className="bg-eco-turquoise py-section">
       <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <SectionLabel className="text-eco-cream/60">Exclusivo</SectionLabel>
+        <SectionLabel className="text-eco-sand-light/60">Exclusivo</SectionLabel>
         <h2 className="font-serif text-headline text-white mt-3 mb-6">
           {clube.titulo}
         </h2>
@@ -22,7 +22,7 @@ export default function ClubeSection() {
           href="/clube"
           variant="secondary"
           size="lg"
-          className="border-white text-white hover:bg-white hover:text-eco-wood"
+          className="border-white text-white hover:bg-white hover:text-eco-turquoise"
         >
           Quero participar
         </Button>

@@ -11,7 +11,7 @@ export default function GaleriaSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
           <SectionLabel>@ecoguitar</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3">Galeria</h2>
+          <h2 className="font-serif text-headline text-eco-night mt-3">Galeria</h2>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">

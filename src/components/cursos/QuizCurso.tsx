@@ -113,14 +113,14 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
             <p className="font-mono text-label uppercase tracking-widest text-eco-orange mb-2">
               Descubra qual curso é o seu
             </p>
-            <h2 className="font-serif text-headline text-eco-charcoal">Quiz rápido</h2>
-            <p className="font-sans text-body text-eco-muted mt-2">
+            <h2 className="font-serif text-headline text-eco-night">Quiz rápido</h2>
+            <p className="font-sans text-body text-eco-sky mt-2">
               Quatro perguntas para encontrar a modalidade certa para o seu perfil.
             </p>
           </div>
 
           <div
-            className="bg-eco-paper border border-eco-border rounded-2xl p-8 transition-opacity duration-200"
+            className="bg-eco-sand-warm border border-eco-border rounded-2xl p-8 transition-opacity duration-200"
             style={{ opacity: visible ? 1 : 0 }}
           >
             {!concluido ? (
@@ -128,7 +128,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                 {/* Progresso */}
                 <div className="mb-8">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-mono text-label text-eco-muted">
+                    <span className="font-mono text-label text-eco-sky">
                       Pergunta {step + 1} de {PERGUNTAS.length}
                     </span>
                   </div>
@@ -141,7 +141,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                 </div>
 
                 {/* Pergunta */}
-                <h3 className="font-serif text-title text-eco-charcoal mb-6">
+                <h3 className="font-serif text-title text-eco-night mb-6">
                   {pergunta.texto}
                 </h3>
 
@@ -156,10 +156,10 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                       className={[
                         'text-left px-5 py-4 border rounded-xl font-sans text-body transition-colors duration-150 cursor-pointer disabled:cursor-default',
                         selected === idx
-                          ? 'border-eco-orange bg-eco-orange/10 text-eco-charcoal'
+                          ? 'border-eco-orange bg-eco-orange/10 text-eco-night'
                           : selected !== null
-                          ? 'border-eco-border text-eco-charcoal opacity-40'
-                          : 'border-eco-border text-eco-charcoal hover:border-eco-orange hover:bg-eco-orange/5',
+                          ? 'border-eco-border text-eco-night opacity-40'
+                          : 'border-eco-border text-eco-night hover:border-eco-orange hover:bg-eco-orange/5',
                       ].join(' ')}
                     >
                       {opcao.texto}
@@ -174,8 +174,8 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                   <p className="font-mono text-label uppercase tracking-widest text-eco-orange mb-1">
                     Curso indicado para você
                   </p>
-                  <h3 className="font-serif text-headline text-eco-charcoal">{nomeCurso}</h3>
-                  <p className="font-sans text-body text-eco-muted mt-3">{textoResultado}</p>
+                  <h3 className="font-serif text-headline text-eco-night">{nomeCurso}</h3>
+                  <p className="font-sans text-body text-eco-sky mt-3">{textoResultado}</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -189,7 +189,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                   </a>
                   <Link
                     href={`/cursos/${slugCurso}`}
-                    className="inline-flex items-center justify-center font-sans font-medium text-body border border-eco-charcoal text-eco-charcoal hover:bg-eco-charcoal hover:text-white px-6 py-3 transition-colors"
+                    className="inline-flex items-center justify-center font-sans font-medium text-body border border-eco-night text-eco-night hover:bg-eco-night hover:text-white px-6 py-3 transition-colors"
                   >
                     Saber mais sobre este curso
                   </Link>
@@ -198,7 +198,7 @@ export default function QuizCurso({ cursos }: { cursos: CursoListagem[] }) {
                 <button
                   type="button"
                   onClick={reiniciar}
-                  className="self-start font-sans text-small text-eco-muted underline-offset-4 hover:underline"
+                  className="self-start font-sans text-small text-eco-sky underline-offset-4 hover:underline"
                 >
                   Refazer o quiz
                 </button>

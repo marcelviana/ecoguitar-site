@@ -37,10 +37,10 @@ export default function ContatoForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-xl bg-eco-wood/10 border border-eco-wood/30 p-8 text-center">
+      <div className="rounded-xl bg-eco-turquoise/10 border border-eco-turquoise/30 p-8 text-center">
         <svg
           aria-hidden="true"
-          className="mx-auto mb-4 w-12 h-12 text-eco-wood"
+          className="mx-auto mb-4 w-12 h-12 text-eco-turquoise"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -52,14 +52,14 @@ export default function ContatoForm() {
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <h3 className="font-serif text-title text-eco-charcoal mb-2">Mensagem enviada!</h3>
-        <p className="font-sans text-body text-eco-muted">
+        <h3 className="font-serif text-title text-eco-night mb-2">Mensagem enviada!</h3>
+        <p className="font-sans text-body text-eco-sky">
           Obrigado pelo contato. Pedro responderá em breve.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-6 font-sans text-small text-eco-wood underline-offset-4 hover:underline"
+          className="mt-6 font-sans text-small text-eco-turquoise underline-offset-4 hover:underline"
         >
           Enviar outra mensagem
         </button>
@@ -71,7 +71,7 @@ export default function ContatoForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="flex flex-col gap-2">
-          <label htmlFor="nome" className="font-mono text-label uppercase tracking-widest text-eco-muted">
+          <label htmlFor="nome" className="font-mono text-label uppercase tracking-widest text-eco-sky">
             Nome
           </label>
           <input
@@ -80,11 +80,11 @@ export default function ContatoForm() {
             type="text"
             required
             placeholder="Seu nome completo"
-            className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-charcoal placeholder:text-eco-muted/50 focus:outline-none focus:border-eco-wood transition-colors"
+            className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-night placeholder:text-eco-sky/50 focus:outline-none focus:border-eco-turquoise transition-colors"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="font-mono text-label uppercase tracking-widest text-eco-muted">
+          <label htmlFor="email" className="font-mono text-label uppercase tracking-widest text-eco-sky">
             E-mail
           </label>
           <input
@@ -93,26 +93,26 @@ export default function ContatoForm() {
             type="email"
             required
             placeholder="seu@email.com"
-            className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-charcoal placeholder:text-eco-muted/50 focus:outline-none focus:border-eco-wood transition-colors"
+            className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-night placeholder:text-eco-sky/50 focus:outline-none focus:border-eco-turquoise transition-colors"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="telefone" className="font-mono text-label uppercase tracking-widest text-eco-muted">
-          Telefone <span className="normal-case tracking-normal text-eco-muted/60">(opcional)</span>
+        <label htmlFor="telefone" className="font-mono text-label uppercase tracking-widest text-eco-sky">
+          Telefone <span className="normal-case tracking-normal text-eco-sky/60">(opcional)</span>
         </label>
         <input
           id="telefone"
           name="telefone"
           type="tel"
           placeholder="(11) 99999-9999"
-          className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-charcoal placeholder:text-eco-muted/50 focus:outline-none focus:border-eco-wood transition-colors"
+          className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-night placeholder:text-eco-sky/50 focus:outline-none focus:border-eco-turquoise transition-colors"
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="mensagem" className="font-mono text-label uppercase tracking-widest text-eco-muted">
+        <label htmlFor="mensagem" className="font-mono text-label uppercase tracking-widest text-eco-sky">
           Mensagem
         </label>
         <textarea
@@ -121,7 +121,7 @@ export default function ContatoForm() {
           required
           rows={5}
           placeholder="Como posso te ajudar?"
-          className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-charcoal placeholder:text-eco-muted/50 focus:outline-none focus:border-eco-wood transition-colors resize-none"
+          className="bg-eco-white border border-eco-border rounded-lg px-4 py-3 font-sans text-body text-eco-night placeholder:text-eco-sky/50 focus:outline-none focus:border-eco-turquoise transition-colors resize-none"
         />
       </div>
 

@@ -30,7 +30,7 @@ export default function FotoViewer({ fotos, nome }: { fotos: string[]; nome: str
         <button
           type="button"
           onClick={() => setLightbox(true)}
-          className="relative aspect-[4/3] bg-eco-wood/10 rounded-xl overflow-hidden cursor-zoom-in group w-full"
+          className="relative aspect-[4/3] bg-eco-turquoise/10 rounded-xl overflow-hidden cursor-zoom-in group w-full"
           aria-label="Ampliar foto"
         >
           <Image
@@ -58,8 +58,8 @@ export default function FotoViewer({ fotos, nome }: { fotos: string[]; nome: str
                 onClick={() => setAtiva(i)}
                 className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all duration-150 cursor-pointer ${
                   i === ativa
-                    ? 'border-eco-wood scale-105'
-                    : 'border-eco-border opacity-60 hover:opacity-100 hover:border-eco-wood/50 hover:scale-105'
+                    ? 'border-eco-turquoise scale-105'
+                    : 'border-eco-border opacity-60 hover:opacity-100 hover:border-eco-turquoise/50 hover:scale-105'
                 }`}
                 aria-label={`Ver foto ${i + 1}`}
                 aria-pressed={i === ativa}

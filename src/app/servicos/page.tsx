@@ -142,13 +142,13 @@ export default function ServicosPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-charcoal py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-wood">Luteria</SectionLabel>
+          <SectionLabel className="text-eco-turquoise">Luteria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Serviços de manutenção e construção de instrumentos
           </h1>
-          <p className="font-sans text-body-lg text-eco-muted mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">
             Cada instrumento merece cuidado especializado. Do ajuste fino à construção completa,
             tratamos sua guitarra ou violão com a dedicação que ela merece.
           </p>
@@ -156,29 +156,29 @@ export default function ServicosPage() {
       </section>
 
       {/* Grid de serviços */}
-      <section className="bg-eco-cream py-section">
+      <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {servicos.map((servico) => (
               <article
                 key={servico.titulo}
-                className="flex flex-col gap-5 bg-eco-paper border border-eco-border rounded-2xl p-6 lg:p-8"
+                className="flex flex-col gap-5 bg-eco-sand-warm border border-eco-border rounded-2xl p-6 lg:p-8"
               >
-                <div className="text-eco-wood">{servico.icon}</div>
+                <div className="text-eco-turquoise">{servico.icon}</div>
                 <div className="flex flex-col gap-3 flex-1">
-                  <h2 className="font-serif text-title text-eco-charcoal">{servico.titulo}</h2>
+                  <h2 className="font-serif text-title text-eco-night">{servico.titulo}</h2>
                   <ul className="flex flex-col gap-2">
                     {servico.detalhes.map((item) => (
-                      <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-muted">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-eco-wood flex-shrink-0" aria-hidden="true" />
+                      <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-sky">
+                        <span className="mt-1.5 w-1 h-1 rounded-full bg-eco-turquoise flex-shrink-0" aria-hidden="true" />
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="border-t border-eco-border pt-4 flex items-center justify-between">
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-muted">Prazo</span>
-                  <span className="font-mono text-small text-eco-wood">{servico.prazo}</span>
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-sky">Prazo</span>
+                  <span className="font-mono text-small text-eco-turquoise">{servico.prazo}</span>
                 </div>
               </article>
             ))}
@@ -187,24 +187,24 @@ export default function ServicosPage() {
       </section>
 
       {/* Linha do tempo */}
-      <section className="bg-eco-paper border-y border-eco-border py-section">
+      <section className="bg-eco-sand-warm border-y border-eco-border py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionLabel>Como funciona</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-12 max-w-lg">
+          <h2 className="font-serif text-headline text-eco-night mt-3 mb-12 max-w-lg">
             Do primeiro contato à entrega do instrumento
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {etapas.map((etapa, i) => (
               <div key={etapa.numero} className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-display text-eco-wood/20 leading-none">{etapa.numero}</span>
+                  <span className="font-mono text-display text-eco-turquoise/20 leading-none">{etapa.numero}</span>
                   {i < etapas.length - 1 && (
                     <div className="hidden lg:block flex-1 h-px bg-eco-border" aria-hidden="true" />
                   )}
                 </div>
                 <div>
-                  <h3 className="font-serif text-title text-eco-charcoal">{etapa.titulo}</h3>
-                  <p className="font-sans text-small text-eco-muted mt-2">{etapa.descricao}</p>
+                  <h3 className="font-serif text-title text-eco-night">{etapa.titulo}</h3>
+                  <p className="font-sans text-small text-eco-sky mt-2">{etapa.descricao}</p>
                 </div>
               </div>
             ))}
@@ -213,7 +213,7 @@ export default function ServicosPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-eco-wood py-section-sm">
+      <section className="bg-eco-turquoise py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="font-serif text-headline text-white max-w-md">
@@ -228,7 +228,7 @@ export default function ServicosPage() {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white text-eco-wood font-sans font-medium text-body px-6 py-3 hover:bg-eco-cream transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-white text-eco-turquoise font-sans font-medium text-body px-6 py-3 hover:bg-eco-sand-light transition-colors"
             >
               <WhatsAppIcon />
               WhatsApp

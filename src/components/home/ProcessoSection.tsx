@@ -8,11 +8,11 @@ export default async function ProcessoSection() {
   if (etapas.length === 0) return null
 
   return (
-    <section className="bg-eco-paper py-section">
+    <section className="bg-eco-sand-warm py-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
           <SectionLabel>Processo</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3">
+          <h2 className="font-serif text-headline text-eco-night mt-3">
             Como é feito um instrumento
           </h2>
         </div>
@@ -31,12 +31,12 @@ export default async function ProcessoSection() {
                 </div>
               )}
               <div className="flex flex-col gap-2">
-                <span className="font-mono text-headline text-eco-wood/30 leading-none">
+                <span className="font-mono text-headline text-eco-turquoise/30 leading-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-serif text-title text-eco-charcoal">{etapa.titulo}</h3>
+                <h3 className="font-serif text-title text-eco-night">{etapa.titulo}</h3>
                 {etapa.descricao && (
-                  <p className="font-sans text-body text-eco-muted">{etapa.descricao}</p>
+                  <p className="font-sans text-body text-eco-sky">{etapa.descricao}</p>
                 )}
               </div>
             </div>

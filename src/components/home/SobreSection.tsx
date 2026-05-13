@@ -19,18 +19,18 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
   const imageUrl = fotoPedro ? urlFor(fotoPedro)?.url() : null
 
   return (
-    <section id="sobre" className="bg-eco-paper py-section">
+    <section id="sobre" className="bg-eco-sand-warm py-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text column */}
           <div className="flex flex-col gap-6">
             <div>
               <SectionLabel>Luteria artesanal</SectionLabel>
-              <h2 className="font-serif text-headline text-eco-charcoal mt-3">
+              <h2 className="font-serif text-headline text-eco-night mt-3">
                 Pedro Machado
               </h2>
             </div>
-            <p className="font-sans text-body-lg text-eco-muted max-w-lg">
+            <p className="font-sans text-body-lg text-eco-sky max-w-lg">
               Há mais de 20 anos Pedro Machado constrói instrumentos que carregam a identidade de quem os toca. Fundador da Eco Guitar, ele é referência em madeiras brasileiras e precursor dos cursos Express de luteria no país — onde qualquer pessoa pode construir o próprio instrumento do zero.
             </p>
 
@@ -38,10 +38,10 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
             <div className="flex flex-wrap gap-6">
               {stats.map((stat) => (
                 <div key={stat.value} className="flex flex-col gap-0.5">
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-charcoal">
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-night">
                     {stat.value}
                   </span>
-                  <span className="font-sans text-small text-eco-muted">
+                  <span className="font-sans text-small text-eco-sky">
                     {stat.label}
                   </span>
                 </div>
@@ -49,13 +49,13 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
             </div>
 
             {/* Parceiros */}
-            <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+            <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
               Parceiros: School of Rock · Equilibrium · Santa Cruz
             </p>
 
             <Link
               href="/sobre"
-              className="inline-flex items-center gap-1 font-sans text-body text-eco-wood hover:underline underline-offset-4 transition-colors w-fit"
+              className="inline-flex items-center gap-1 font-sans text-body text-eco-turquoise hover:underline underline-offset-4 transition-colors w-fit"
             >
               Ler mais →
             </Link>
@@ -63,7 +63,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
 
           {/* Image column */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-square bg-eco-wood/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
+            <div className="relative w-full max-w-md aspect-square bg-eco-turquoise/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
               {imageUrl ? (
                 <Image
                   src={sanityImg(imageUrl, 900)}
@@ -74,7 +74,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
               ) : (
                 <svg
                   aria-hidden="true"
-                  className="w-16 h-16 text-eco-wood/40"
+                  className="w-16 h-16 text-eco-turquoise/40"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

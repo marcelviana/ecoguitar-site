@@ -3,15 +3,16 @@
 /* ── Eco Guitar Design Tokens ── */
 @theme {
   /* Colors */
-  --color-eco-cream:     #F5F0E8;
-  --color-eco-paper:     #EDE7D9;
-  --color-eco-charcoal:  #1C1917;
-  --color-eco-muted:     #78716C;
-  --color-eco-wood:      #8B5E3C;
-  --color-eco-wood-dark: #6B4423;
-  --color-eco-border:    #D6CFC4;
-  --color-eco-white:     #FDFAF6;
-  --color-eco-orange:    #E8552E;
+  --color-eco-sand-light:   #FFF8EE;
+  --color-eco-sand-warm:    #FFE9C2;
+  --color-eco-night:        #2B3A4A;
+  --color-eco-sky:          #6B8FA8;
+  --color-eco-turquoise:    #1AACAC;
+  --color-eco-turquoise-dk: #0D7A7A;
+  --color-eco-border:       #E8D9BF;
+  --color-eco-white:        #FFFDF8;
+  --color-eco-orange:       #E8552E;
+  --color-eco-sun:          #F5C842;
 
   /* Font families (mapped from next/font CSS variables) */
   --font-sans:    var(--font-inter);
@@ -59,18 +60,21 @@
 
 /* CSS variables for use outside Tailwind */
 :root {
-  --eco-cream:    #F5F0E8;
-  --eco-paper:    #EDE7D9;
-  --eco-charcoal: #1C1917;
-  --eco-muted:    #78716C;
-  --eco-wood:     #8B5E3C;
-  --eco-border:   #D6CFC4;
-  --eco-orange:   #E8552E;
+  --eco-sand-light:   #FFF8EE;
+  --eco-sand-warm:    #FFE9C2;
+  --eco-night:        #2B3A4A;
+  --eco-sky:          #6B8FA8;
+  --eco-turquoise:    #1AACAC;
+  --eco-turquoise-dk: #0D7A7A;
+  --eco-border:       #E8D9BF;
+  --eco-white:        #FFFDF8;
+  --eco-orange:       #E8552E;
+  --eco-sun:          #F5C842;
 }
 
 body {
-  background-color: var(--eco-cream);
-  color: var(--eco-charcoal);
+  background-color: var(--eco-sand-light);
+  color: var(--eco-night);
   font-family: var(--font-inter, Arial, sans-serif);
   -webkit-font-smoothing: antialiased;
 }

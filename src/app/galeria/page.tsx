@@ -24,13 +24,13 @@ export default async function GaleriaPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-charcoal py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-wood">Galeria</SectionLabel>
+          <SectionLabel className="text-eco-turquoise">Galeria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Instrumentos construídos e restaurados no ateliê
           </h1>
-          <p className="font-sans text-body-lg text-eco-muted mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">
             Cada peça conta uma história. Veja de perto o trabalho artesanal que nasce nas mãos
             de Pedro Machado na Eco Guitar.
           </p>
@@ -39,11 +39,11 @@ export default async function GaleriaPage() {
 
       {instrumentos.length === 0 ? (
         /* Estado vazio */
-        <section className="bg-eco-cream py-section">
+        <section className="bg-eco-sand-light py-section">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center gap-6 py-16 text-center">
             <svg
               aria-hidden="true"
-              className="w-20 h-20 text-eco-wood/20"
+              className="w-20 h-20 text-eco-turquoise/20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -56,10 +56,10 @@ export default async function GaleriaPage() {
               />
             </svg>
             <div>
-              <h2 className="font-serif text-title text-eco-charcoal">
+              <h2 className="font-serif text-title text-eco-night">
                 Galeria em construção
               </h2>
-              <p className="font-sans text-body text-eco-muted mt-2 max-w-sm">
+              <p className="font-sans text-body text-eco-sky mt-2 max-w-sm">
                 Em breve você poderá ver todos os instrumentos criados e restaurados aqui no ateliê.
               </p>
             </div>
@@ -72,10 +72,10 @@ export default async function GaleriaPage() {
         <>
           {/* Destaques */}
           {destaques.length > 0 && (
-            <section className="bg-eco-cream py-section">
+            <section className="bg-eco-sand-light py-section">
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <SectionLabel>Em destaque</SectionLabel>
-                <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+                <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
                   Peças especiais
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -89,12 +89,12 @@ export default async function GaleriaPage() {
 
           {/* Demais instrumentos */}
           {demais.length > 0 && (
-            <section className={`py-section ${destaques.length > 0 ? 'bg-eco-paper border-t border-eco-border' : 'bg-eco-cream'}`}>
+            <section className={`py-section ${destaques.length > 0 ? 'bg-eco-sand-warm border-t border-eco-border' : 'bg-eco-sand-light'}`}>
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {destaques.length > 0 && (
                   <>
                     <SectionLabel>Acervo completo</SectionLabel>
-                    <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+                    <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
                       Todos os instrumentos
                     </h2>
                   </>
@@ -102,7 +102,7 @@ export default async function GaleriaPage() {
                 {destaques.length === 0 && (
                   <>
                     <SectionLabel>Acervo</SectionLabel>
-                    <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+                    <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
                       Todos os instrumentos
                     </h2>
                   </>
@@ -119,14 +119,14 @@ export default async function GaleriaPage() {
       )}
 
       {/* Instagram CTA */}
-      <section className="bg-eco-charcoal py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <SectionLabel className="text-eco-wood">Instagram</SectionLabel>
+            <SectionLabel className="text-eco-turquoise">Instagram</SectionLabel>
             <h2 className="font-serif text-title text-eco-white mt-3">
               Acompanhe o processo de construção
             </h2>
-            <p className="font-sans text-body text-eco-muted mt-2 max-w-md">
+            <p className="font-sans text-body text-eco-sky mt-2 max-w-md">
               Bastidores, novidades e o dia a dia do ateliê direto no nosso Instagram.
             </p>
           </div>
@@ -134,7 +134,7 @@ export default async function GaleriaPage() {
             href={igUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-eco-cream/30 text-eco-cream font-sans font-medium text-body px-6 py-3 hover:bg-eco-cream/10 transition-colors flex-shrink-0"
+            className="inline-flex items-center gap-3 border border-eco-sand-light/30 text-eco-sand-light font-sans font-medium text-body px-6 py-3 hover:bg-eco-sand-light/10 transition-colors flex-shrink-0"
           >
             <InstagramIcon />
             @{igHandle}

@@ -75,7 +75,7 @@ export default function ServicosSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
           <SectionLabel>O que fazemos</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3">
+          <h2 className="font-serif text-headline text-eco-night mt-3">
             Serviços
           </h2>
         </div>
@@ -85,20 +85,20 @@ export default function ServicosSection() {
             <div
               key={s.slug}
               className={[
-                'flex flex-col gap-5 p-8 bg-eco-paper border border-eco-border rounded-xl transition-shadow duration-200 hover:shadow-md',
+                'flex flex-col gap-5 p-8 bg-eco-sand-warm border border-eco-border rounded-xl transition-shadow duration-200 hover:shadow-md',
                 'xl:col-span-2',
                 i === 3 ? 'xl:col-start-2' : '',
                 i === 4 ? 'xl:col-start-4' : '',
               ].join(' ')}
             >
-              <div className="text-eco-wood">{s.icone}</div>
+              <div className="text-eco-turquoise">{s.icone}</div>
               <div>
-                <h3 className="font-serif text-title text-eco-charcoal mb-2">{s.titulo}</h3>
-                <p className="font-sans text-body text-eco-muted">{s.descricao}</p>
+                <h3 className="font-serif text-title text-eco-night mb-2">{s.titulo}</h3>
+                <p className="font-sans text-body text-eco-sky">{s.descricao}</p>
               </div>
               <Link
                 href={s.href}
-                className="mt-auto inline-flex items-center gap-1 font-sans text-small text-eco-wood hover:underline underline-offset-4 transition-colors"
+                className="mt-auto inline-flex items-center gap-1 font-sans text-small text-eco-turquoise hover:underline underline-offset-4 transition-colors"
               >
                 Saiba mais →
               </Link>

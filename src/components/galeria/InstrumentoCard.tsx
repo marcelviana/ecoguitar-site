@@ -7,9 +7,9 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
   return (
     <Link
       href={`/galeria/${instrumento.slug}`}
-      className="group flex flex-col bg-eco-paper border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      className="group flex flex-col bg-eco-sand-warm border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200"
     >
-      <div className="relative aspect-[5/4] bg-eco-wood/10 overflow-hidden">
+      <div className="relative aspect-[5/4] bg-eco-turquoise/10 overflow-hidden">
         {instrumento.fotoUrl ? (
           <Image
             src={sanityImg(instrumento.fotoUrl, 600)}
@@ -22,7 +22,7 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
           <div className="absolute inset-0 flex items-center justify-center">
             <svg
               aria-hidden="true"
-              className="w-20 h-20 text-eco-wood/20"
+              className="w-20 h-20 text-eco-turquoise/20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -37,23 +37,23 @@ export default function InstrumentoCard({ instrumento }: { instrumento: Instrume
           </div>
         )}
         {instrumento.destaque && (
-          <span className="absolute top-3 left-3 bg-eco-wood text-white font-mono text-label uppercase tracking-widest px-3 py-1">
+          <span className="absolute top-3 left-3 bg-eco-turquoise text-white font-mono text-label uppercase tracking-widest px-3 py-1">
             Destaque
           </span>
         )}
       </div>
 
       <div className="flex flex-col gap-2 p-5">
-        <h3 className="font-serif text-title text-eco-charcoal group-hover:text-eco-wood transition-colors duration-200">
+        <h3 className="font-serif text-title text-eco-night group-hover:text-eco-turquoise transition-colors duration-200">
           {instrumento.nome}
         </h3>
         {instrumento.modeloBase && (
-          <p className="font-mono text-label uppercase tracking-widest text-eco-muted">
+          <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
             {instrumento.modeloBase.nome}
           </p>
         )}
         {instrumento.descricao && (
-          <p className="font-sans text-small text-eco-muted line-clamp-2 mt-1">
+          <p className="font-sans text-small text-eco-sky line-clamp-2 mt-1">
             {instrumento.descricao}
           </p>
         )}

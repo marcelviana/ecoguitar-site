@@ -4,15 +4,16 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 const colors = [
-  { name: 'eco-cream', hex: '#F5F0E8', bg: 'bg-eco-cream', dark: false },
-  { name: 'eco-paper', hex: '#EDE7D9', bg: 'bg-eco-paper', dark: false },
-  { name: 'eco-charcoal', hex: '#1C1917', bg: 'bg-eco-charcoal', dark: true },
-  { name: 'eco-muted', hex: '#78716C', bg: 'bg-eco-muted', dark: true },
-  { name: 'eco-wood', hex: '#8B5E3C', bg: 'bg-eco-wood', dark: true },
-  { name: 'eco-wood-dark', hex: '#6B4423', bg: 'bg-eco-wood-dark', dark: true },
-  { name: 'eco-border', hex: '#D6CFC4', bg: 'bg-eco-border', dark: false },
-  { name: 'eco-white', hex: '#FDFAF6', bg: 'bg-eco-white', dark: false },
+  { name: 'eco-sand-light', hex: '#FFF8EE', bg: 'bg-eco-sand-light', dark: false },
+  { name: 'eco-sand-warm', hex: '#FFE9C2', bg: 'bg-eco-sand-warm', dark: false },
+  { name: 'eco-night', hex: '#2B3A4A', bg: 'bg-eco-night', dark: true },
+  { name: 'eco-sky', hex: '#6B8FA8', bg: 'bg-eco-sky', dark: true },
+  { name: 'eco-turquoise', hex: '#1AACAC', bg: 'bg-eco-turquoise', dark: true },
+  { name: 'eco-turquoise-dk', hex: '#0D7A7A', bg: 'bg-eco-turquoise-dk', dark: true },
+  { name: 'eco-border', hex: '#E8D9BF', bg: 'bg-eco-border', dark: false },
+  { name: 'eco-white', hex: '#FFFDF8', bg: 'bg-eco-white', dark: false },
   { name: 'eco-orange', hex: '#E8552E', bg: 'bg-eco-orange', dark: true },
+  { name: 'eco-sun', hex: '#F5C842', bg: 'bg-eco-sun', dark: false },
 ]
 
 const typeScale = [
@@ -33,15 +34,15 @@ export default function DesignPage() {
 
         {/* Header */}
         <div className="mb-20 border-b border-eco-border pb-8">
-          <h1 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-2">
+          <h1 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-2">
             Design System
           </h1>
-          <p className="font-serif text-headline text-eco-charcoal">Eco Guitar — Fundação Visual</p>
+          <p className="font-serif text-headline text-eco-night">Eco Guitar — Fundação Visual</p>
         </div>
 
         {/* ── Color Tokens ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             01 — Cores
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -51,8 +52,8 @@ export default function DesignPage() {
                   className={`${c.bg} h-20 border border-eco-border/50`}
                 />
                 <div>
-                  <p className="font-mono text-label text-eco-charcoal">{c.name}</p>
-                  <p className="font-mono text-label text-eco-muted">{c.hex}</p>
+                  <p className="font-mono text-label text-eco-night">{c.name}</p>
+                  <p className="font-mono text-label text-eco-sky">{c.hex}</p>
                 </div>
               </div>
             ))}
@@ -61,14 +62,14 @@ export default function DesignPage() {
 
         {/* ── Type Scale ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             02 — Tipografia
           </h2>
           <div className="flex flex-col gap-10">
             {typeScale.map((t) => (
               <div key={t.label} className="flex flex-col gap-1 border-b border-eco-border pb-8">
-                <span className="font-mono text-label text-eco-muted mb-2">{t.label}</span>
-                <p className={`${t.className} text-eco-charcoal`}>{t.sample}</p>
+                <span className="font-mono text-label text-eco-sky mb-2">{t.label}</span>
+                <p className={`${t.className} text-eco-night`}>{t.sample}</p>
               </div>
             ))}
           </div>
@@ -76,7 +77,7 @@ export default function DesignPage() {
 
         {/* ── Buttons ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             03 — Botões
           </h2>
 
@@ -84,7 +85,7 @@ export default function DesignPage() {
           <div className="flex flex-col gap-8">
             {(['primary', 'secondary', 'ghost'] as const).map((variant) => (
               <div key={variant} className="flex flex-col gap-3">
-                <span className="font-mono text-label text-eco-muted">{variant}</span>
+                <span className="font-mono text-label text-eco-sky">{variant}</span>
                 <div className="flex flex-wrap gap-4 items-center">
                   <Button variant={variant} size="sm" href="#">Tamanho SM</Button>
                   <Button variant={variant} size="md" href="#">Tamanho MD</Button>
@@ -97,12 +98,12 @@ export default function DesignPage() {
 
         {/* ── SectionHeading ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             04 — Section Heading
           </h2>
           <div className="flex flex-col gap-16">
             <div>
-              <span className="font-mono text-label text-eco-muted block mb-6">Com label — alinhado à esquerda</span>
+              <span className="font-mono text-label text-eco-sky block mb-6">Com label — alinhado à esquerda</span>
               <SectionHeading
                 label="NOSSOS CURSOS"
                 title="Aprenda a construir seu próprio instrumento"
@@ -111,7 +112,7 @@ export default function DesignPage() {
               />
             </div>
             <div>
-              <span className="font-mono text-label text-eco-muted block mb-6">Sem label — centralizado</span>
+              <span className="font-mono text-label text-eco-sky block mb-6">Sem label — centralizado</span>
               <SectionHeading
                 title="Galeria de Instrumentos"
                 subtitle="Cada peça é única. Feita à mão, com amor e precisão."
@@ -119,7 +120,7 @@ export default function DesignPage() {
               />
             </div>
             <div>
-              <span className="font-mono text-label text-eco-muted block mb-6">Só título — à esquerda</span>
+              <span className="font-mono text-label text-eco-sky block mb-6">Só título — à esquerda</span>
               <SectionHeading
                 title="Depoimentos"
                 align="left"
@@ -130,21 +131,21 @@ export default function DesignPage() {
 
         {/* ── SectionLabel ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             05 — Section Label
           </h2>
           <div className="flex flex-col gap-6">
             <div>
-              <span className="font-mono text-label text-eco-muted block mb-4">Sobre fundo claro (eco-cream)</span>
-              <div className="bg-eco-cream px-8 py-6 flex flex-col gap-3 border border-eco-border">
+              <span className="font-mono text-label text-eco-sky block mb-4">Sobre fundo claro (eco-sand-light)</span>
+              <div className="bg-eco-sand-light px-8 py-6 flex flex-col gap-3 border border-eco-border">
                 <SectionLabel>NOSSOS CURSOS</SectionLabel>
                 <SectionLabel>GALERIA</SectionLabel>
                 <SectionLabel>DEPOIMENTOS</SectionLabel>
               </div>
             </div>
             <div>
-              <span className="font-mono text-label text-eco-muted block mb-4">Sobre fundo escuro (eco-charcoal)</span>
-              <div className="bg-eco-charcoal px-8 py-6 flex flex-col gap-3">
+              <span className="font-mono text-label text-eco-sky block mb-4">Sobre fundo escuro (eco-night)</span>
+              <div className="bg-eco-night px-8 py-6 flex flex-col gap-3">
                 <SectionLabel>CLUBE DO LUTHIER</SectionLabel>
                 <SectionLabel>CURSOS E WORKSHOPS</SectionLabel>
                 <SectionLabel>SOBRE O PROJETO</SectionLabel>
@@ -155,22 +156,22 @@ export default function DesignPage() {
 
         {/* ── Spacing ── */}
         <section className="mb-20">
-          <h2 className="font-mono text-label uppercase tracking-widest text-eco-muted mb-8">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
             06 — Espaçamento de Seção
           </h2>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-4 bg-eco-wood" style={{ height: '7rem' }} />
+              <div className="w-4 bg-eco-turquoise" style={{ height: '7rem' }} />
               <div>
-                <p className="font-mono text-label text-eco-charcoal">section</p>
-                <p className="font-mono text-label text-eco-muted">7rem — py-section</p>
+                <p className="font-mono text-label text-eco-night">section</p>
+                <p className="font-mono text-label text-eco-sky">7rem — py-section</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-4 bg-eco-wood/50" style={{ height: '4rem' }} />
+              <div className="w-4 bg-eco-turquoise/50" style={{ height: '4rem' }} />
               <div>
-                <p className="font-mono text-label text-eco-charcoal">section-sm</p>
-                <p className="font-mono text-label text-eco-muted">4rem — py-section-sm</p>
+                <p className="font-mono text-label text-eco-night">section-sm</p>
+                <p className="font-mono text-label text-eco-sky">4rem — py-section-sm</p>
               </div>
             </div>
           </div>

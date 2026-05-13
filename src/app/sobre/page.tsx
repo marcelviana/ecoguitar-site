@@ -65,9 +65,9 @@ export default async function SobrePage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-charcoal py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-wood">{subtitulo}</SectionLabel>
+          <SectionLabel className="text-eco-turquoise">{subtitulo}</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             {titulo}
           </h1>
@@ -75,12 +75,12 @@ export default async function SobrePage() {
       </section>
 
       {/* Apresentação */}
-      <section className="bg-eco-paper py-section">
+      <section className="bg-eco-sand-warm py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Foto */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-md aspect-square bg-eco-wood/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-square bg-eco-turquoise/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
                 {fotoPrincipalUrl ? (
                   <Image
                     src={sanityImg(fotoPrincipalUrl, 900)}
@@ -93,7 +93,7 @@ export default async function SobrePage() {
                 ) : (
                   <svg
                     aria-hidden="true"
-                    className="w-16 h-16 text-eco-wood/40"
+                    className="w-16 h-16 text-eco-turquoise/40"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -112,7 +112,7 @@ export default async function SobrePage() {
             {/* Bio */}
             <div className="flex flex-col gap-5">
               {bioParas.map((p, i) => (
-                <p key={i} className="font-sans text-body-lg text-eco-muted leading-relaxed">
+                <p key={i} className="font-sans text-body-lg text-eco-sky leading-relaxed">
                   {p}
                 </p>
               ))}
@@ -122,24 +122,24 @@ export default async function SobrePage() {
       </section>
 
       {/* Curiosidades */}
-      <section className="bg-eco-cream py-section">
+      <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionLabel>Fatos rápidos</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+          <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
             Um pouco sobre Pedro
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {curiosidades.map((c, i) => (
               <div
                 key={i}
-                className="bg-eco-paper border border-eco-border rounded-2xl p-6 flex flex-col gap-3"
+                className="bg-eco-sand-warm border border-eco-border rounded-2xl p-6 flex flex-col gap-3"
               >
                 {c.icone && (
                   <span className="text-3xl leading-none" aria-hidden="true">
                     {c.icone}
                   </span>
                 )}
-                <p className="font-sans text-body text-eco-charcoal font-medium">
+                <p className="font-sans text-body text-eco-night font-medium">
                   {c.texto}
                 </p>
               </div>
@@ -150,10 +150,10 @@ export default async function SobrePage() {
 
       {/* Galeria do Ateliê */}
       {fotosAtelier.length > 0 && (
-        <section className="bg-eco-paper border-t border-eco-border py-section">
+        <section className="bg-eco-sand-warm border-t border-eco-border py-section">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <SectionLabel>O espaço</SectionLabel>
-            <h2 className="font-serif text-headline text-eco-charcoal mt-3 mb-10">
+            <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
               O ateliê
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -163,7 +163,7 @@ export default async function SobrePage() {
                 return (
                   <div
                     key={i}
-                    className="relative aspect-square bg-eco-wood/10 rounded-xl overflow-hidden"
+                    className="relative aspect-square bg-eco-turquoise/10 rounded-xl overflow-hidden"
                   >
                     <Image
                       src={fotoUrl}
@@ -181,7 +181,7 @@ export default async function SobrePage() {
       )}
 
       {/* CTA */}
-      <section className="bg-eco-wood py-section-sm">
+      <section className="bg-eco-turquoise py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="font-serif text-title text-white">

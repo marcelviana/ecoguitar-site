@@ -15,14 +15,14 @@ export default function FaqAccordion({ items }: { items: PerguntaResposta[] }) {
           <button
             type="button"
             onClick={() => setAberto(aberto === i ? null : i)}
-            className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left bg-eco-paper hover:bg-eco-cream transition-colors duration-150"
+            className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left bg-eco-sand-warm hover:bg-eco-sand-light transition-colors duration-150"
             aria-expanded={aberto === i}
           >
-            <span className="font-sans text-body font-medium text-eco-charcoal">
+            <span className="font-sans text-body font-medium text-eco-night">
               {item.pergunta}
             </span>
             <svg
-              className={`w-5 h-5 text-eco-wood flex-shrink-0 transition-transform duration-200 ${aberto === i ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-eco-turquoise flex-shrink-0 transition-transform duration-200 ${aberto === i ? 'rotate-180' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -32,8 +32,8 @@ export default function FaqAccordion({ items }: { items: PerguntaResposta[] }) {
             </svg>
           </button>
           {aberto === i && (
-            <div className="px-6 py-4 bg-eco-cream">
-              <p className="font-sans text-body text-eco-muted">{item.resposta}</p>
+            <div className="px-6 py-4 bg-eco-sand-light">
+              <p className="font-sans text-body text-eco-sky">{item.resposta}</p>
             </div>
           )}
         </div>

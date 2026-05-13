@@ -108,15 +108,15 @@ export default async function CursosPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-charcoal py-section">
+      <section className="bg-eco-night py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p className="font-mono text-label uppercase tracking-widest text-eco-wood mb-4">
+          <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-4">
             Luteria artesanal em São Paulo
           </p>
           <h1 className="font-serif text-display text-eco-white max-w-2xl">
             Construa o instrumento dos seus sonhos
           </h1>
-          <p className="font-sans text-body-lg text-eco-muted mt-6 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-sky mt-6 max-w-xl">
             Com mais de 15 anos de experiência em construção, manutenção, cursos e workshops,
             vamos extrair o máximo do seu instrumento.
           </p>
@@ -129,21 +129,21 @@ export default async function CursosPage() {
       </section>
 
       {/* Por quê construir o SEU instrumento? */}
-      <section className="bg-eco-cream py-section">
+      <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="font-serif text-headline text-eco-charcoal mb-12 max-w-xl">
+          <h2 className="font-serif text-headline text-eco-night mb-12 max-w-xl">
             Por quê construir o{' '}
-            <em className="not-italic text-eco-wood">SEU</em>{' '}
+            <em className="not-italic text-eco-turquoise">SEU</em>{' '}
             instrumento?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {RAZOES.map((r) => (
               <div key={r.num} className="flex flex-col gap-3">
-                <span className="font-serif text-display text-eco-wood/20 leading-none select-none">
+                <span className="font-serif text-display text-eco-turquoise/20 leading-none select-none">
                   {r.num}
                 </span>
-                <h3 className="font-serif text-title text-eco-charcoal">{r.titulo}</h3>
-                <p className="font-sans text-body text-eco-muted">{r.texto}</p>
+                <h3 className="font-serif text-title text-eco-night">{r.titulo}</h3>
+                <p className="font-sans text-body text-eco-sky">{r.texto}</p>
               </div>
             ))}
           </div>
@@ -154,12 +154,12 @@ export default async function CursosPage() {
       <QuizCurso cursos={cursos} />
 
       {/* Cards dos cursos */}
-      <section className="bg-eco-cream py-section border-t border-eco-border">
+      <section className="bg-eco-sand-light py-section border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="font-serif text-headline text-eco-charcoal mb-4">
+          <h2 className="font-serif text-headline text-eco-night mb-4">
             Qual curso combina mais com você?
           </h2>
-          <p className="font-sans text-body text-eco-muted mb-10 max-w-lg">
+          <p className="font-sans text-body text-eco-sky mb-10 max-w-lg">
             Escolha a modalidade que encaixa na sua rotina e venha construir com a gente.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -171,13 +171,13 @@ export default async function CursosPage() {
       </section>
 
       {/* CTA final */}
-      <section className="bg-eco-wood py-section-sm">
+      <section className="bg-eco-turquoise py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h2 className="font-serif text-title text-white">
               Pronto para começar?
             </h2>
-            <p className="font-sans text-body text-eco-cream/70 mt-1">
+            <p className="font-sans text-body text-eco-sand-light/70 mt-1">
               Fale com Pedro e descubra qual curso é ideal para você.
             </p>
           </div>

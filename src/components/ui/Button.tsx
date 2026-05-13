@@ -25,9 +25,9 @@ const variantClasses: Record<Variant, string> = {
   primary:
     'bg-eco-orange text-white hover:bg-eco-orange/90 border border-eco-orange hover:border-eco-orange/90',
   secondary:
-    'border border-eco-charcoal text-eco-charcoal hover:bg-eco-charcoal hover:text-white bg-transparent',
+    'border border-eco-night text-eco-night hover:bg-eco-night hover:text-white bg-transparent',
   ghost:
-    'border-0 text-eco-wood underline-offset-4 hover:underline bg-transparent',
+    'border-0 text-eco-turquoise underline-offset-4 hover:underline bg-transparent',
 }
 
 const sizeClasses: Record<Size, string> = {

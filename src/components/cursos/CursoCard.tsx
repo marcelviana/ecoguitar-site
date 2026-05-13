@@ -4,18 +4,18 @@ import type { CursoListagem } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
 
 const MODALIDADE_STYLES: Record<string, string> = {
-  Express: 'bg-eco-wood text-white',
-  Intensivo: 'bg-eco-charcoal text-white',
-  Extensivo: 'bg-eco-charcoal/80 text-white backdrop-blur-sm',
+  Express: 'bg-eco-turquoise text-white',
+  Intensivo: 'bg-eco-night text-white',
+  Extensivo: 'bg-eco-night/80 text-white backdrop-blur-sm',
 }
 
 export default function CursoCard({ curso }: { curso: CursoListagem }) {
   const badgeClass =
-    MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-paper text-eco-muted'
+    MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-sand-warm text-eco-sky'
 
   return (
-    <article className="flex flex-col bg-eco-paper border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200">
-      <div className="relative aspect-[16/9] bg-eco-wood/10">
+    <article className="flex flex-col bg-eco-sand-warm border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200">
+      <div className="relative aspect-[16/9] bg-eco-turquoise/10">
         {curso.imagemCapa ? (
           <Image
             src={sanityImg(curso.imagemCapa, 600)}
@@ -28,7 +28,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
           <div className="absolute inset-0 flex items-center justify-center">
             <svg
               aria-hidden="true"
-              className="w-16 h-16 text-eco-wood/20"
+              className="w-16 h-16 text-eco-turquoise/20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -53,35 +53,35 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
 
       <div className="flex flex-col gap-4 p-6 flex-1">
         <div className="flex-1 flex flex-col gap-2">
-          <h2 className="font-serif text-title text-eco-charcoal">{curso.titulo}</h2>
+          <h2 className="font-serif text-title text-eco-night">{curso.titulo}</h2>
           {curso.subtitulo && (
-            <p className="font-sans text-small text-eco-muted">{curso.subtitulo}</p>
+            <p className="font-sans text-small text-eco-sky">{curso.subtitulo}</p>
           )}
 
           {(curso.duracao || curso.horarios) && (
             <dl className="mt-3 flex flex-col gap-1.5 border-t border-eco-border pt-3">
               {curso.duracao && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
                     Duração
                   </dt>
-                  <dd className="font-sans text-small text-eco-charcoal">{curso.duracao}</dd>
+                  <dd className="font-sans text-small text-eco-night">{curso.duracao}</dd>
                 </div>
               )}
               {curso.horarios && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
                     Horário
                   </dt>
-                  <dd className="font-sans text-small text-eco-charcoal">{curso.horarios}</dd>
+                  <dd className="font-sans text-small text-eco-night">{curso.horarios}</dd>
                 </div>
               )}
               {curso.preco && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
                     Valor
                   </dt>
-                  <dd className="font-mono text-small text-eco-wood font-medium">{curso.preco}</dd>
+                  <dd className="font-mono text-small text-eco-turquoise font-medium">{curso.preco}</dd>
                 </div>
               )}
             </dl>

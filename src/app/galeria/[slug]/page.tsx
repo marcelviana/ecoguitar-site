@@ -65,23 +65,23 @@ export default async function InstrumentoPage({
   return (
     <PageLayout>
       {/* Breadcrumb */}
-      <div className="bg-eco-paper border-b border-eco-border">
+      <div className="bg-eco-sand-warm border-b border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex items-center gap-2">
           <Link
             href="/galeria"
-            className="font-mono text-label uppercase tracking-widest text-eco-muted hover:text-eco-charcoal transition-colors"
+            className="font-mono text-label uppercase tracking-widest text-eco-sky hover:text-eco-night transition-colors"
           >
             Galeria
           </Link>
           <span className="text-eco-border">·</span>
-          <span className="font-mono text-label uppercase tracking-widest text-eco-charcoal">
+          <span className="font-mono text-label uppercase tracking-widest text-eco-night">
             {instrumento.nome}
           </span>
         </div>
       </div>
 
       {/* Conteúdo principal */}
-      <section className="bg-eco-cream py-section">
+      <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12 items-start">
 
@@ -93,22 +93,22 @@ export default async function InstrumentoPage({
               {/* Modelo base */}
               {instrumento.modeloBase && (
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-wood">
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-turquoise">
                     {CATEGORIA_LABELS[instrumento.modeloBase.categoria] ?? instrumento.modeloBase.categoria}
                   </span>
                   <span className="text-eco-border">·</span>
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-muted">
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-sky">
                     {instrumento.modeloBase.nome}
                   </span>
                 </div>
               )}
 
-              <h1 className="font-serif text-headline text-eco-charcoal leading-tight">
+              <h1 className="font-serif text-headline text-eco-night leading-tight">
                 {instrumento.nome}
               </h1>
 
               {instrumento.descricao && (
-                <p className="font-sans text-body text-eco-muted">
+                <p className="font-sans text-body text-eco-sky">
                   {instrumento.descricao}
                 </p>
               )}
@@ -116,26 +116,26 @@ export default async function InstrumentoPage({
               {/* Ficha técnica */}
               {temSpecs && (
                 <div className="mt-2">
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-muted mb-4">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-4">
                     Ficha técnica
                   </p>
                   <dl className="flex flex-col divide-y divide-eco-border border-t border-b border-eco-border">
                     {specsFixas.map((s) => (
                       <div key={s.key} className="flex gap-4 py-3">
-                        <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-28 flex-shrink-0 pt-0.5">
+                        <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-28 flex-shrink-0 pt-0.5">
                           {s.label}
                         </dt>
-                        <dd className="font-sans text-body text-eco-charcoal">
+                        <dd className="font-sans text-body text-eco-night">
                           {instrumento[s.key]}
                         </dd>
                       </div>
                     ))}
                     {specsExtras.map((s, i) => (
                       <div key={i} className="flex gap-4 py-3">
-                        <dt className="font-mono text-label uppercase tracking-widest text-eco-muted w-28 flex-shrink-0 pt-0.5">
+                        <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-28 flex-shrink-0 pt-0.5">
                           {s.label}
                         </dt>
-                        <dd className="font-sans text-body text-eco-charcoal">
+                        <dd className="font-sans text-body text-eco-night">
                           {s.valor}
                         </dd>
                       </div>

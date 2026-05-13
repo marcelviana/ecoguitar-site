@@ -27,8 +27,8 @@ export default function ModelosGrid({ modelos }: { modelos: ModeloInstrumento[] 
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
       {Object.entries(grouped).map(([categoria, items]) => (
         <div key={categoria}>
-          <div className="inline-block mb-4 px-4 py-1.5 bg-eco-wood/10 border-l-4 border-eco-wood rounded-r-lg">
-            <h3 className="font-mono text-label uppercase tracking-widest text-eco-wood-dark">
+          <div className="inline-block mb-4 px-4 py-1.5 bg-eco-turquoise/10 border-l-4 border-eco-turquoise rounded-r-lg">
+            <h3 className="font-mono text-label uppercase tracking-widest text-eco-turquoise-dk">
               {CATEGORIA_LABELS[categoria] ?? categoria}
             </h3>
           </div>
