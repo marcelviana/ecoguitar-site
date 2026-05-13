@@ -2,6 +2,7 @@ import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import SectionLabel from '@/components/ui/SectionLabel'
 import SectionHeading from '@/components/ui/SectionHeading'
+import CategoryBadge from '@/components/ui/CategoryBadge'
 
 const colors = [
   { name: 'eco-sand-light', hex: '#FFF8EE', bg: 'bg-eco-sand-light', dark: false },
@@ -174,6 +175,40 @@ export default function DesignPage() {
                 <p className="font-mono text-label text-eco-sky">4rem — py-section-sm</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ── Badges ── */}
+        <section className="mb-20">
+          <h2 className="font-mono text-label uppercase tracking-widest text-eco-sky mb-8">
+            07 — Badges
+          </h2>
+          <div className="flex flex-col gap-10">
+
+            {/* Variante turquoise */}
+            <div>
+              <span className="font-mono text-label text-eco-sky block mb-4">
+                turquoise — uso atual (categorias de modelo)
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {['baixo', 'guitarra', '7 cordas', 'multiescala', 'thinline'].map((label) => (
+                  <CategoryBadge key={label} label={label} variant="turquoise" />
+                ))}
+              </div>
+            </div>
+
+            {/* Variante sun */}
+            <div>
+              <span className="font-mono text-label text-eco-sky block mb-4">
+                sun — variante alternativa
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {['baixo', 'guitarra', '7 cordas', 'multiescala', 'thinline'].map((label) => (
+                  <CategoryBadge key={label} label={label} variant="sun" />
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
