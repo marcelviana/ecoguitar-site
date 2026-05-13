@@ -38,6 +38,21 @@ Pedro Machado acessa o Studio para editar:
 - Itens e preços do Clube do Luthier
 - Dados de contato globais
 
+## Revalidação (Sanity Webhook)
+
+A página `/galeria` revalida automaticamente quando novos instrumentos são publicados no Sanity, via webhook.
+
+**Como configurar no Sanity Studio:**
+
+1. Acesse **Settings → API → Webhooks**
+2. Crie um novo webhook apontando para:
+   `https://seudominio.com/api/revalidate?secret=SEU_TOKEN`
+3. Selecione o trigger para o tipo `instrumento` (on create, update, delete)
+
+**Variável de ambiente na Vercel:**
+
+Defina `REVALIDATE_SECRET` nas variáveis de ambiente do projeto na Vercel com o mesmo valor usado no webhook.
+
 ## Estado atual
 - [x] Setup inicial Next.js 16 + Tailwind + React 19
 - [x] Schemas do Sanity criados

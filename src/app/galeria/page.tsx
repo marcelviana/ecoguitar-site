@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import InstrumentoCard from '@/components/galeria/InstrumentoCard'
+import GaleriaGrid from '@/components/galeria/GaleriaGrid'
 import Button from '@/components/ui/Button'
 import { getAllInstrumentos, getConfiguracao } from '@/lib/queries'
 
-export const revalidate = 3600
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Galeria de Instrumentos — Eco Guitar',
@@ -87,19 +88,18 @@ export default async function GaleriaPage() {
             </section>
           )}
 
-          {/* Demais instrumentos */}
+          {/* Acervo com filtros e paginação */}
           {demais.length > 0 && (
             <section className={`py-section ${destaques.length > 0 ? 'bg-eco-sand-warm border-t border-eco-border' : 'bg-eco-sand-light'}`}>
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                {destaques.length > 0 && (
+                {destaques.length > 0 ? (
                   <>
                     <SectionLabel>Acervo completo</SectionLabel>
                     <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
                       Todos os instrumentos
                     </h2>
                   </>
-                )}
-                {destaques.length === 0 && (
+                ) : (
                   <>
                     <SectionLabel>Acervo</SectionLabel>
                     <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
@@ -107,11 +107,7 @@ export default async function GaleriaPage() {
                     </h2>
                   </>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                  {demais.map((instrumento) => (
-                    <InstrumentoCard key={instrumento._id} instrumento={instrumento} />
-                  ))}
-                </div>
+                <GaleriaGrid instrumentos={demais} />
               </div>
             </section>
           )}
