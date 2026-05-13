@@ -100,7 +100,7 @@ export default async function InstrumentoPage({
           {instrumento.modeloBase?.categorias && instrumento.modeloBase.categorias.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {instrumento.modeloBase.categorias.map((cat) => (
-                <CategoryBadge key={cat._id} label={cat.title} />
+                <CategoryBadge key={cat._id} label={cat.title} variant="sun" />
               ))}
             </div>
           )}

@@ -200,9 +200,9 @@ export default function DesignPage() {
             {/* Variante sun */}
             <div>
               <span className="font-mono text-label text-eco-sky block mb-4">
-                sun — variante alternativa
+                sun — hero do detalhe do instrumento (fundo escuro)
               </span>
-              <div className="flex flex-wrap gap-2">
+              <div className="bg-eco-night rounded-xl px-5 py-4 flex flex-wrap gap-2">
                 {['baixo', 'guitarra', '7 cordas', 'multiescala', 'thinline'].map((label) => (
                   <CategoryBadge key={label} label={label} variant="sun" />
                 ))}
