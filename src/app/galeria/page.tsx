@@ -10,7 +10,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Galeria de Instrumentos — Eco Guitar',
   description:
-    'Conheça os instrumentos construídos e restaurados no ateliê da Eco Guitar. Guitarras e violões artesanais feitos em São Paulo.',
+    'Conheça os instrumentos construídos e restaurados no ateliê da Eco Guitar. Guitarras, baixos e violões artesanais feitos em São Paulo.',
 }
 
 export default async function GaleriaPage() {
