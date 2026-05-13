@@ -114,7 +114,7 @@ export default function QuizCurso({
   const textoResultado = cursoResultado?.textoQuiz ?? FALLBACKS[modalidadeVencedora]
 
   return (
-    <section className="bg-eco-sand-warm py-section border-t border-eco-border">
+    <section className="bg-eco-night py-section border-t border-eco-border/20">
       <style>{`
         @keyframes quizSlideIn {
           from { opacity: 0; transform: translateX(20px); }
@@ -133,7 +133,7 @@ export default function QuizCurso({
             <p className="font-mono text-label uppercase tracking-widest text-eco-orange mb-2">
               Para o seu perfil
             </p>
-            <h2 className="font-serif text-headline text-eco-night" style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}>
+            <h2 className="font-serif text-headline text-eco-sand-light" style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}>
               Qual curso é o seu?
             </h2>
             <p className="font-sans text-body text-eco-sky mt-2">
