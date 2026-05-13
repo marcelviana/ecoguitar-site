@@ -90,56 +90,34 @@ export default async function InstrumentoPage({
 
   return (
     <PageLayout>
-      {/* Hero escuro */}
-      <div className="bg-eco-night py-section-sm">
+      {/* 1. Hero compacto */}
+      <section className="bg-eco-night py-8">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 mb-6">
+          <nav className="flex items-center gap-2 mb-2">
             <Link
               href="/galeria"
-              className="font-mono text-label uppercase tracking-widest text-eco-white/60 hover:text-eco-white transition-colors"
+              className="font-mono text-label uppercase tracking-widest text-eco-white/50 hover:text-eco-white transition-colors"
             >
               Galeria
             </Link>
-            <span className="text-eco-white/30">·</span>
-            <span className="font-mono text-label uppercase tracking-widest text-eco-white/60">
+            <span className="text-eco-white/30 text-sm">·</span>
+            <span className="font-mono text-label uppercase tracking-widest text-eco-white/50">
               {instrumento.nome}
             </span>
           </nav>
-
-          {/* Subtítulo — modelo base */}
-          {instrumento.modeloBase && (
-            <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-3">
-              {CATEGORIA_LABELS[instrumento.modeloBase.categoria] ?? instrumento.modeloBase.categoria}
-              {' · '}
-              {instrumento.modeloBase.nome}
-            </p>
-          )}
-
-          <h1 className="font-serif text-headline text-eco-white leading-tight mb-4">
+          <h1 className="font-serif text-headline text-eco-white leading-tight">
             {instrumento.nome}
           </h1>
-
-          {instrumento.descricao && (
-            <p className="font-sans text-body text-eco-white/70 max-w-lg">
-              {instrumento.descricao}
-            </p>
-          )}
         </div>
-      </div>
+      </section>
 
-      {/* Conteúdo principal */}
+      {/* 2. Grid fotos + specs */}
       <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12 items-start">
 
-            {/* Coluna esquerda — fotos + vídeo */}
-            <div className="flex flex-col gap-6">
-              <FotoViewer fotos={instrumento.fotos ?? []} nome={instrumento.nome} />
-              {videoId && (
-                <YoutubeEmbed videoId={videoId} titulo={instrumento.nome} />
-              )}
-            </div>
+            {/* Coluna esquerda — fotos */}
+            <FotoViewer fotos={instrumento.fotos ?? []} nome={instrumento.nome} />
 
             {/* Coluna direita — specs + CTA */}
             <div className="flex flex-col gap-6">
@@ -184,6 +162,18 @@ export default async function InstrumentoPage({
           </div>
         </div>
       </section>
+
+      {/* 3. Seção de vídeo — apenas quando existir */}
+      {videoId && (
+        <section className="bg-eco-night py-12">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-4">
+              Assista ao vídeo
+            </p>
+            <YoutubeEmbed videoId={videoId} titulo={instrumento.nome} />
+          </div>
+        </section>
+      )}
     </PageLayout>
   )
 }
