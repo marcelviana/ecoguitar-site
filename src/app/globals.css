@@ -58,6 +58,13 @@
   letter-spacing: 0.08em;
 }
 
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* CSS variables for use outside Tailwind */
 :root {
   --eco-sand-light:   #FFF8EE;

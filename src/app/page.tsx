@@ -1,3 +1,7 @@
+// Anterior: sem revalidação (página ficava estática indefinidamente após o build)
+// 60s: tempo adequado para conteúdo editorial como depoimentos aparecerem rapidamente
+export const revalidate = 60
+
 import PageLayout from '@/components/layout/PageLayout'
 import HeroSection from '@/components/home/HeroSection'
 import SobreSection from '@/components/home/SobreSection'
