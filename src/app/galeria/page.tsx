@@ -115,14 +115,14 @@ export default async function GaleriaPage() {
       )}
 
       {/* Instagram CTA */}
-      <section className="bg-eco-night py-section-sm">
+      <section className="bg-eco-turquoise-dk py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <SectionLabel className="text-eco-turquoise">Instagram</SectionLabel>
+            <SectionLabel className="text-white/70">Instagram</SectionLabel>
             <h2 className="font-serif text-title text-eco-white mt-3">
               Acompanhe o processo de construção
             </h2>
-            <p className="font-sans text-body text-eco-sky mt-2 max-w-md">
+            <p className="font-sans text-body text-white/80 mt-2 max-w-md">
               Bastidores, novidades e o dia a dia do ateliê direto no nosso Instagram.
             </p>
           </div>
@@ -130,7 +130,7 @@ export default async function GaleriaPage() {
             href={igUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-eco-sand-light/30 text-eco-sand-light font-sans font-medium text-body px-6 py-3 hover:bg-eco-sand-light/10 transition-colors flex-shrink-0"
+            className="inline-flex items-center gap-3 border border-white/40 text-white font-sans font-medium text-body px-6 py-3 hover:bg-white/10 transition-colors flex-shrink-0"
           >
             <InstagramIcon />
             @{igHandle}
