@@ -4,11 +4,16 @@ import type { InstrumentoGaleria } from '@/lib/queries'
 import { sanityImg } from '@/lib/sanity-image'
 import CategoryBadge from '@/components/ui/CategoryBadge'
 
-export default function InstrumentoCard({ instrumento }: { instrumento: InstrumentoGaleria }) {
+interface Props {
+  instrumento: InstrumentoGaleria
+  cardBg?: string
+}
+
+export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-warm' }: Props) {
   return (
     <Link
       href={`/galeria/${instrumento.slug}`}
-      className="group flex flex-col bg-eco-sand-warm border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      className={`group flex flex-col ${cardBg} border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200`}
     >
       <div className="relative aspect-[5/4] bg-eco-turquoise/10 overflow-hidden">
         {instrumento.fotoUrl ? (

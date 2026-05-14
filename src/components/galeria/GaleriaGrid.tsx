@@ -5,41 +5,34 @@ import type { InstrumentoGaleria } from '@/lib/queries'
 import InstrumentoCard from './InstrumentoCard'
 import Button from '@/components/ui/Button'
 
-const CATEGORIA_LABELS: Record<string, string> = {
-  guitarra: 'Guitarra',
-  'guitarra-7-cordas': 'Guitarra 7 Cordas',
-  baritono: 'Guitarra Barítono',
-  headless: 'Guitarra Headless',
-  multiescala: 'Guitarra Multiescala',
-  thinline: 'Thinline',
-  traveler: 'Guitarra Traveler',
-  baixo: 'Baixo',
-  violao: 'Violão',
-}
-
 const ITEMS_PER_PAGE = 18
 
 interface Props {
   instrumentos: InstrumentoGaleria[]
+  cardBg?: string
 }
 
-export default function GaleriaGrid({ instrumentos }: Props) {
+export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>('todos')
   const [pagina, setPagina] = useState(1)
   const topoRef = useRef<HTMLDivElement>(null)
 
-  const categorias = Array.from(
-    new Set(
-      instrumentos
-        .map((i) => i.modeloBase?.categoria)
-        .filter((c): c is string => Boolean(c))
-    )
-  )
+  const categoriaMap = new Map<string, string>()
+  instrumentos.forEach((i) => {
+    i.modeloBase?.categorias?.forEach((cat) => {
+      if (!categoriaMap.has(cat._id)) {
+        categoriaMap.set(cat._id, cat.title)
+      }
+    })
+  })
+  const categorias = Array.from(categoriaMap.entries())
 
   const filtrados =
     categoriaAtiva === 'todos'
       ? instrumentos
-      : instrumentos.filter((i) => i.modeloBase?.categoria === categoriaAtiva)
+      : instrumentos.filter((i) =>
+          i.modeloBase?.categorias?.some((cat) => cat._id === categoriaAtiva)
+        )
 
   const totalPaginas = Math.max(1, Math.ceil(filtrados.length / ITEMS_PER_PAGE))
   const paginaAtual = Math.min(pagina, totalPaginas)
@@ -71,17 +64,17 @@ export default function GaleriaGrid({ instrumentos }: Props) {
           >
             Todos
           </button>
-          {categorias.map((cat) => (
+          {categorias.map(([id, title]) => (
             <button
-              key={cat}
-              onClick={() => selecionarCategoria(cat)}
+              key={id}
+              onClick={() => selecionarCategoria(id)}
               className={`font-mono text-label uppercase tracking-widest px-4 py-2 transition-colors ${
-                categoriaAtiva === cat
+                categoriaAtiva === id
                   ? 'bg-eco-turquoise text-white'
                   : 'border border-eco-border text-eco-sky hover:border-eco-turquoise hover:text-eco-turquoise'
               }`}
             >
-              {CATEGORIA_LABELS[cat] ?? cat}
+              {title}
             </button>
           ))}
         </div>
@@ -96,7 +89,7 @@ export default function GaleriaGrid({ instrumentos }: Props) {
       {visiveis.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {visiveis.map((instrumento) => (
-            <InstrumentoCard key={instrumento._id} instrumento={instrumento} />
+            <InstrumentoCard key={instrumento._id} instrumento={instrumento} cardBg={cardBg} />
           ))}
         </div>
       ) : (

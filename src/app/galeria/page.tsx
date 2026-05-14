@@ -107,7 +107,7 @@ export default async function GaleriaPage() {
                     </h2>
                   </>
                 )}
-                <GaleriaGrid instrumentos={demais} />
+                <GaleriaGrid instrumentos={demais} cardBg="bg-eco-sand-light" />
               </div>
             </section>
           )}
