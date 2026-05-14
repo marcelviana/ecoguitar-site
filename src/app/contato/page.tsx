@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import ContatoForm from '@/components/contato/ContatoForm'
 import { getConfiguracao } from '@/lib/queries'
+import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 export const metadata: Metadata = {
   title: 'Contato — Eco Guitar',
@@ -14,17 +17,37 @@ export default async function ContatoPage() {
   const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : 'https://wa.me/5511999999999'
   const igHandle = config?.instagram ? config.instagram.replace(/^@/, '') : 'ecoguitar'
   const igUrl = `https://instagram.com/${igHandle}`
+  const heroImagemUrl = config?.heroBannerContato ? urlFor(config.heroBannerContato)?.url() : null
   return (
     <PageLayout>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-eco-night py-section-sm">
+        {heroImagemUrl && (
+          <>
+            <Image
+              src={sanityImg(heroImagemUrl, 1600)}
+              alt="Contato Eco Guitar"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-eco-night/90 via-eco-night/60 to-transparent" />
+          </>
+        )}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+          <SectionLabel className="text-eco-turquoise">Fale conosco</SectionLabel>
+          <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">Contato</h1>
+        </div>
+      </section>
+
       <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             {/* Info */}
             <div className="flex flex-col gap-8">
               <div>
-                <SectionLabel>Fale conosco</SectionLabel>
-                <h1 className="font-serif text-headline text-eco-night mt-3">Contato</h1>
-                <p className="font-sans text-body-lg text-eco-sky mt-4">
+                <p className="font-sans text-body-lg text-eco-sky">
                   Tem dúvidas sobre os cursos, quer encomendar um instrumento ou simplesmente quer
                   conhecer o ateliê? Envie uma mensagem e Pedro responde em breve.
                 </p>

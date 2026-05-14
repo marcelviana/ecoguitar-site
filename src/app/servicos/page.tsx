@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Button from '@/components/ui/Button'
+import { getConfiguracao } from '@/lib/queries'
+import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 export const metadata: Metadata = {
   title: 'Serviços de Luteria — Eco Guitar',
@@ -138,12 +142,28 @@ const etapas = [
   },
 ]
 
-export default function ServicosPage() {
+export default async function ServicosPage() {
+  const config = await getConfiguracao()
+  const heroImagemUrl = config?.heroBannerServicos ? urlFor(config.heroBannerServicos)?.url() : null
+
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-night py-section-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="relative overflow-hidden bg-eco-night py-section-sm">
+        {heroImagemUrl && (
+          <>
+            <Image
+              src={sanityImg(heroImagemUrl, 1600)}
+              alt="Serviços de Luteria"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-eco-night/90 via-eco-night/60 to-transparent" />
+          </>
+        )}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <SectionLabel className="text-eco-turquoise">Luteria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Serviços de manutenção e construção de instrumentos

@@ -19,6 +19,13 @@ export default defineType({
       initialValue: 'Luteria artesanal',
     }),
     defineField({
+      name: 'heroImagem',
+      title: 'Imagem de Fundo do Hero',
+      type: 'image',
+      description: 'Imagem de fundo exibida no topo da página Sobre. Opcional.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'array',

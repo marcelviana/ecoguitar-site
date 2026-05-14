@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import CursoCard from '@/components/cursos/CursoCard'
 import QuizCurso from '@/components/cursos/QuizCurso'
-import { getCursosListagem, type CursoListagem } from '@/lib/queries'
+import { getCursosListagem, getConfiguracao, type CursoListagem } from '@/lib/queries'
+import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 export const revalidate = 60
 
@@ -102,14 +105,28 @@ const CURSOS_FALLBACK: CursoListagem[] = [
 ]
 
 export default async function CursosPage() {
-  const cursosDb = await getCursosListagem()
+  const [cursosDb, config] = await Promise.all([getCursosListagem(), getConfiguracao()])
   const cursos = cursosDb.length > 0 ? cursosDb : CURSOS_FALLBACK
+  const heroImagemUrl = config?.heroBannerCursos ? urlFor(config.heroBannerCursos)?.url() : null
 
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-night py-section">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="relative overflow-hidden bg-eco-night py-section">
+        {heroImagemUrl && (
+          <>
+            <Image
+              src={sanityImg(heroImagemUrl, 1600)}
+              alt="Cursos de Luteria"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-eco-night/90 via-eco-night/60 to-transparent" />
+          </>
+        )}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <p className="font-mono text-label uppercase tracking-widest text-eco-turquoise mb-4">
             Luteria artesanal em São Paulo
           </p>

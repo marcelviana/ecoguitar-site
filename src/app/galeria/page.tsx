@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import PageLayout from '@/components/layout/PageLayout'
 import SectionLabel from '@/components/ui/SectionLabel'
 import InstrumentoCard from '@/components/galeria/InstrumentoCard'
 import GaleriaGrid from '@/components/galeria/GaleriaGrid'
 import Button from '@/components/ui/Button'
 import { getAllInstrumentos, getConfiguracao } from '@/lib/queries'
+import { urlFor } from '@/lib/sanity'
+import { sanityImg } from '@/lib/sanity-image'
 
 export const revalidate = 60
 
@@ -18,6 +21,7 @@ export default async function GaleriaPage() {
   const [instrumentos, config] = await Promise.all([getAllInstrumentos(), getConfiguracao()])
   const igHandle = config?.instagram ? config.instagram.replace(/^@/, '') : 'ecoguitar'
   const igUrl = `https://instagram.com/${igHandle}`
+  const heroImagemUrl = config?.heroBannerGaleria ? urlFor(config.heroBannerGaleria)?.url() : null
 
   const destaques = instrumentos.filter((i) => i.destaque)
   const demais = instrumentos.filter((i) => !i.destaque)
@@ -25,8 +29,21 @@ export default async function GaleriaPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-eco-night py-section-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="relative overflow-hidden bg-eco-night py-section-sm">
+        {heroImagemUrl && (
+          <>
+            <Image
+              src={sanityImg(heroImagemUrl, 1600)}
+              alt="Galeria de Instrumentos"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-eco-night/90 via-eco-night/60 to-transparent" />
+          </>
+        )}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <SectionLabel className="text-eco-turquoise">Galeria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Instrumentos construídos e restaurados no ateliê

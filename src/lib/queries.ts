@@ -10,12 +10,24 @@ export interface Configuracao {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroBannerImagem?: any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerCursos?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerWorkshops?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerGaleria?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerContato?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerServicos?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fotoPedro?: any
 }
 
 const configuracaoQuery = `*[_type == "configuracao"][0]{
   endereco, whatsapp, email, instagram, youtube,
-  heroBannerImagem, fotoPedro
+  heroBannerImagem, heroBannerCursos, heroBannerWorkshops,
+  heroBannerGaleria, heroBannerContato, heroBannerServicos,
+  fotoPedro
 }`
 
 export async function getConfiguracao(): Promise<Configuracao | null> {
@@ -228,6 +240,8 @@ export interface Sobre {
   titulo?: string
   subtitulo?: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroImagem?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   bio?: any[]
   curiosidades?: { icone?: string; texto: string }[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -237,7 +251,7 @@ export interface Sobre {
 }
 
 const sobreQuery = `*[_type == "sobre"][0]{
-  titulo, subtitulo, bio, curiosidades, fotoPrincipal, fotosAtelier
+  titulo, subtitulo, heroImagem, bio, curiosidades, fotoPrincipal, fotosAtelier
 }`
 
 export async function getSobre(): Promise<Sobre | null> {
