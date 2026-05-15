@@ -217,132 +217,207 @@ function EspecieModal({ especie, onClose }: ModalProps) {
           ×
         </button>
 
-        {/* Layout: coluna única no mobile, duas colunas no sm+ */}
-        <div className="flex flex-col sm:flex-row">
-
-          {/* Coluna esquerda — carrossel */}
-          <div className="sm:w-64 shrink-0 flex flex-col">
-            {/* Foto */}
-            <div className="relative aspect-[3/4] max-h-64 sm:max-h-none sm:flex-1 bg-eco-night/5 sm:rounded-tl-2xl overflow-hidden">
-              {fotos.length > 0 ? (
-                <Image
-                  src={sanityImg(fotos[fotoIndex], 600)}
-                  alt={`${especie.nome} — foto ${fotoIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 100vw, 256px"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-eco-turquoise/30">
-                  <LeafIcon />
+        {/* Bloco de informações reutilizado em mobile (overlay) e desktop (coluna direita) */}
+        {(() => {
+          const infoBloco = (
+            <div className="flex flex-col gap-3">
+              <div>
+                <h2 className="font-serif text-title text-eco-night">{especie.nome}</h2>
+                {especie.nomeCientifico && (
+                  <p className="font-sans text-small text-eco-sky italic mt-0.5">
+                    {especie.nomeCientifico}
+                  </p>
+                )}
+              </div>
+              {especie.usos && especie.usos.length > 0 && (
+                <div>
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-1.5">
+                    Uso no instrumento
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {especie.usos.map((uso) => (
+                      <span
+                        key={uso}
+                        className="font-mono text-label bg-eco-night/10 text-eco-night px-2 py-0.5 rounded-full"
+                      >
+                        {USO_LABELS[uso] ?? uso}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
-
-              {temMultiplasFotos && (
-                <>
-                  <button
-                    type="button"
-                    onClick={prev}
-                    aria-label="Foto anterior"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
-                  >
-                    ‹
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    aria-label="Próxima foto"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
-                  >
-                    ›
-                  </button>
-                </>
+              {especie.tags && especie.tags.length > 0 && (
+                <div>
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-1.5">
+                    Caráter sonoro
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {especie.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-label bg-eco-turquoise/10 text-eco-turquoise px-2 py-0.5 rounded-full"
+                      >
+                        {TAG_LABELS[tag] ?? tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
-            </div>
-
-            {/* Dots — abaixo da foto */}
-            {temMultiplasFotos && (
-              <div className="flex justify-center gap-1.5 py-2 bg-eco-night/5">
-                {fotos.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => setFotoIndex(i)}
-                    aria-label={`Foto ${i + 1}`}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      i === fotoIndex ? 'bg-eco-night/60' : 'bg-eco-night/20'
-                    }`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Coluna direita — informações */}
-          <div className="flex-1 p-6 flex flex-col gap-4 min-w-0">
-            <div>
-              <h2 className="font-serif text-title text-eco-night">{especie.nome}</h2>
-              {especie.nomeCientifico && (
-                <p className="font-sans text-small text-eco-sky italic mt-1">
-                  {especie.nomeCientifico}
+              {especie.origem && (
+                <p className="font-sans text-small text-eco-sky flex items-center gap-1.5">
+                  <PinIcon />
+                  {especie.origem}
                 </p>
               )}
             </div>
+          )
 
-            {/* Usos */}
-            {especie.usos && especie.usos.length > 0 && (
-              <div>
-                <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-2">
-                  Uso no instrumento
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {especie.usos.map((uso) => (
-                    <span
-                      key={uso}
-                      className="font-mono text-label bg-eco-night/10 text-eco-night px-2 py-0.5 rounded-full"
-                    >
-                      {USO_LABELS[uso] ?? uso}
-                    </span>
-                  ))}
+          return (
+            <>
+              {/* ── Mobile (abaixo de sm) ── */}
+              <div className="sm:hidden">
+                {/* Imagem full-width com overlay de texto na base */}
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-t-2xl">
+                  {fotos.length > 0 ? (
+                    <Image
+                      src={sanityImg(fotos[fotoIndex], 800)}
+                      alt={`${especie.nome} — foto ${fotoIndex + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-eco-turquoise/10 text-eco-turquoise/30">
+                      <LeafIcon />
+                    </div>
+                  )}
+
+                  {/* Setas */}
+                  {temMultiplasFotos && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={prev}
+                        aria-label="Foto anterior"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        onClick={next}
+                        aria-label="Próxima foto"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                      >
+                        ›
+                      </button>
+                    </>
+                  )}
+
+                  {/* Overlay com informações */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-eco-sand-light/80 backdrop-blur-md p-4">
+                    {infoBloco}
+                  </div>
                 </div>
-              </div>
-            )}
 
-            {/* Tags acústicas */}
-            {especie.tags && especie.tags.length > 0 && (
-              <div>
-                <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-2">
-                  Caráter sonoro
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {especie.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-mono text-label bg-eco-turquoise/10 text-eco-turquoise px-2 py-0.5 rounded-full"
-                    >
-                      {TAG_LABELS[tag] ?? tag}
-                    </span>
-                  ))}
+                {/* Dots — fora da imagem */}
+                {temMultiplasFotos && (
+                  <div className="flex justify-center gap-1.5 py-2">
+                    {fotos.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setFotoIndex(i)}
+                        aria-label={`Foto ${i + 1}`}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          i === fotoIndex ? 'bg-eco-night/60' : 'bg-eco-night/20'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Curiosidade — fora da imagem */}
+                {especie.curiosidade && (
+                  <div className="border-t border-eco-border px-4 pb-4 pt-4">
+                    <p className="font-sans text-small text-eco-sky italic">{especie.curiosidade}</p>
+                  </div>
+                )}
+              </div>
+
+              {/* ── Desktop (sm e acima) ── */}
+              <div className="hidden sm:grid sm:grid-cols-[1fr_1fr]">
+                {/* Coluna esquerda — imagem + dots */}
+                <div className="self-start">
+                  <div className="relative w-full aspect-[4/5] overflow-hidden rounded-tl-2xl bg-eco-night/5">
+                    {fotos.length > 0 ? (
+                      <Image
+                        src={sanityImg(fotos[fotoIndex], 800)}
+                        alt={`${especie.nome} — foto ${fotoIndex + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="50vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-eco-turquoise/30">
+                        <LeafIcon />
+                      </div>
+                    )}
+
+                    {temMultiplasFotos && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={prev}
+                          aria-label="Foto anterior"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                        >
+                          ‹
+                        </button>
+                        <button
+                          type="button"
+                          onClick={next}
+                          aria-label="Próxima foto"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                        >
+                          ›
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  {temMultiplasFotos && (
+                    <div className="flex justify-center gap-1.5 py-3">
+                      {fotos.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setFotoIndex(i)}
+                          aria-label={`Foto ${i + 1}`}
+                          className={`w-2 h-2 rounded-full transition-colors ${
+                            i === fotoIndex ? 'bg-eco-night/60' : 'bg-eco-night/20'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
 
-            {/* Origem */}
-            {especie.origem && (
-              <p className="font-sans text-small text-eco-sky flex items-center gap-1.5">
-                <PinIcon />
-                {especie.origem}
-              </p>
-            )}
+                {/* Coluna direita — informações */}
+                <div className="self-start p-6">
+                  {infoBloco}
+                </div>
 
-            {/* Curiosidade */}
-            {especie.curiosidade && (
-              <div className="border-t border-eco-border mt-4 pt-4">
-                <p className="font-sans text-body text-eco-sky italic">{especie.curiosidade}</p>
+                {/* Curiosidade — full width, abaixo das duas colunas */}
+                {especie.curiosidade && (
+                  <div className="col-span-2 border-t border-eco-border mx-6 pb-6 pt-4">
+                    <p className="font-sans text-small text-eco-sky italic">{especie.curiosidade}</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </div>
+            </>
+          )
+        })()}
       </div>
     </div>
   )
