@@ -314,8 +314,13 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                     </div>
                   )}
 
-                  {/* Overlay com informações — 45% inferior */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-eco-sand-light/80 backdrop-blur-sm px-4 py-3 overflow-y-auto">
+                  {/* Gradiente decorativo — funde imagem com o fundo */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[45%] pointer-events-none"
+                    style={{ background: 'linear-gradient(to bottom, transparent, var(--color-eco-sand-light))' }}
+                  />
+                  {/* Camada de conteúdo — sobre o gradiente */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-eco-sand-light px-4 py-3 overflow-y-auto">
                     {infoBloco}
                   </div>
                 </div>
