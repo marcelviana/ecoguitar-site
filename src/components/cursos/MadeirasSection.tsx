@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { sanityImg } from '@/lib/sanity-image'
 import type { EspecieMadeira } from '@/lib/queries'
@@ -31,8 +32,111 @@ const FILTROS = [
   { value: 'fundo_lateral', label: 'Fundo e lateral' },
 ]
 
-function EspecieCard({ especie }: { especie: EspecieMadeira }) {
+function LeafIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+    </svg>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
+
+// ── Card compacto ────────────────────────────────────────────────────────────
+
+interface CardProps {
+  especie: EspecieMadeira
+  onClick: () => void
+}
+
+function EspecieCard({ especie, onClick }: CardProps) {
+  const primeiraFoto = especie.fotos?.find(Boolean) ?? null
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex flex-col rounded-xl overflow-hidden border border-eco-border bg-eco-sand-warm cursor-pointer hover:shadow-md transition-shadow duration-200 text-left w-full"
+    >
+      {/* Foto quadrada */}
+      <div className="relative aspect-square w-full bg-eco-turquoise/10">
+        {primeiraFoto ? (
+          <Image
+            src={sanityImg(primeiraFoto, 400)}
+            alt={especie.nome}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-eco-turquoise/40">
+            <LeafIcon />
+          </div>
+        )}
+      </div>
+
+      {/* Rodapé */}
+      <div className="p-3 flex flex-col gap-1.5">
+        <p className="font-serif text-body text-eco-night leading-tight">{especie.nome}</p>
+        {especie.usos && especie.usos.length > 0 && (
+          <div className="flex flex-wrap gap-1">
+            {especie.usos.map((uso) => (
+              <span
+                key={uso}
+                className="font-mono text-label bg-eco-night/10 text-eco-night px-2 py-0.5 rounded-full"
+              >
+                {USO_LABELS[uso] ?? uso}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </button>
+  )
+}
+
+// ── Modal ────────────────────────────────────────────────────────────────────
+
+interface ModalProps {
+  especie: EspecieMadeira
+  onClose: () => void
+}
+
+function EspecieModal({ especie, onClose }: ModalProps) {
   const [fotoIndex, setFotoIndex] = useState(0)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
   const fotos = especie.fotos?.filter(Boolean) ?? []
   const temMultiplasFotos = fotos.length > 1
 
@@ -44,111 +148,198 @@ function EspecieCard({ especie }: { especie: EspecieMadeira }) {
     setFotoIndex((i) => (i === fotos.length - 1 ? 0 : i + 1))
   }
 
-  return (
-    <div className="flex flex-col rounded-xl overflow-hidden border border-eco-border bg-eco-sand-warm">
-      {/* Carrossel de fotos */}
-      <div className="relative h-52 bg-eco-night/10">
-        {fotos.length > 0 ? (
-          <Image
-            src={sanityImg(fotos[fotoIndex], 600)}
-            alt={especie.nome}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="font-sans text-small text-eco-sky">Sem foto</span>
-          </div>
-        )}
+  // Foca o botão de fechar ao abrir
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+  }, [])
 
-        {temMultiplasFotos && (
-          <>
-            <button
-              onClick={prev}
-              aria-label="Foto anterior"
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors"
-            >
-              ‹
-            </button>
-            <button
-              onClick={next}
-              aria-label="Próxima foto"
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors"
-            >
-              ›
-            </button>
-            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
-              {fotos.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setFotoIndex(i)}
-                  aria-label={`Foto ${i + 1}`}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                    i === fotoIndex ? 'bg-white' : 'bg-white/40'
-                  }`}
-                />
-              ))}
+  // Fecha com Escape e armadilha de foco
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
+    },
+    [onClose]
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    // Trava o scroll do body
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [handleKeyDown])
+
+  const modal = (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={especie.nome}
+        className="bg-eco-sand-light rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+      >
+        {/* Botão fechar */}
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Fechar"
+          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-eco-sand-light/80 text-eco-sky hover:text-eco-night transition-colors text-xl leading-none"
+        >
+          ×
+        </button>
+
+        {/* Carrossel de fotos */}
+        <div className="relative h-64 sm:h-80 bg-eco-turquoise/10 rounded-t-2xl overflow-hidden">
+          {fotos.length > 0 ? (
+            <Image
+              src={sanityImg(fotos[fotoIndex], 800)}
+              alt={`${especie.nome} — foto ${fotoIndex + 1}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 672px"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-eco-turquoise/30">
+              <LeafIcon />
             </div>
-          </>
-        )}
-      </div>
+          )}
 
-      {/* Conteúdo do card */}
-      <div className="flex flex-col gap-3 p-4">
-        <div>
-          <h3 className="font-serif text-title text-eco-night">{especie.nome}</h3>
-          {especie.nomeCientifico && (
-            <p className="font-sans text-small text-eco-sky italic">{especie.nomeCientifico}</p>
+          {temMultiplasFotos && (
+            <>
+              <button
+                type="button"
+                onClick={prev}
+                aria-label="Foto anterior"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Próxima foto"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+              >
+                ›
+              </button>
+              <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+                {fotos.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setFotoIndex(i)}
+                    aria-label={`Foto ${i + 1}`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      i === fotoIndex ? 'bg-white' : 'bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
           )}
         </div>
 
-        {/* Badges de uso */}
-        {especie.usos && especie.usos.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {especie.usos.map((uso) => (
-              <span
-                key={uso}
-                className="font-mono text-label px-2 py-0.5 rounded bg-eco-night/10 text-eco-night"
-              >
-                {USO_LABELS[uso] ?? uso}
-              </span>
-            ))}
+        {/* Informações */}
+        <div className="p-6 flex flex-col gap-4">
+          <div>
+            <h2 className="font-serif text-headline text-eco-night">{especie.nome}</h2>
+            {especie.nomeCientifico && (
+              <p className="font-sans text-body text-eco-sky italic mt-1">
+                {especie.nomeCientifico}
+              </p>
+            )}
           </div>
-        )}
 
-        {/* Tags de caráter acústico */}
-        {especie.tags && especie.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {especie.tags.map((tag) => (
-              <span
-                key={tag}
-                className="font-mono text-label px-2 py-0.5 rounded bg-eco-turquoise/10 text-eco-turquoise"
-              >
-                {TAG_LABELS[tag] ?? tag}
-              </span>
-            ))}
-          </div>
-        )}
+          {/* Usos */}
+          {especie.usos && especie.usos.length > 0 && (
+            <div>
+              <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-2">
+                Uso no instrumento
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {especie.usos.map((uso) => (
+                  <span
+                    key={uso}
+                    className="font-mono text-label bg-eco-night/10 text-eco-night px-2 py-0.5 rounded-full"
+                  >
+                    {USO_LABELS[uso] ?? uso}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Origem */}
-        {especie.origem && (
-          <p className="font-sans text-small text-eco-sky flex items-center gap-1.5">
-            <span aria-hidden="true">📍</span>
-            {especie.origem}
-          </p>
-        )}
+          {/* Tags acústicas */}
+          {especie.tags && especie.tags.length > 0 && (
+            <div>
+              <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-2">
+                Caráter sonoro
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {especie.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-label bg-eco-turquoise/10 text-eco-turquoise px-2 py-0.5 rounded-full"
+                  >
+                    {TAG_LABELS[tag] ?? tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Curiosidade */}
-        {especie.curiosidade && (
-          <div className="border-t border-eco-border pt-3 mt-1">
-            <p className="font-sans text-small text-eco-sky italic">{especie.curiosidade}</p>
-          </div>
-        )}
+          {/* Origem */}
+          {especie.origem && (
+            <p className="font-sans text-small text-eco-sky flex items-center gap-1.5">
+              <PinIcon />
+              {especie.origem}
+            </p>
+          )}
+
+          {/* Curiosidade */}
+          {especie.curiosidade && (
+            <div className="border-t border-eco-border mt-4 pt-4">
+              <p className="font-sans text-body text-eco-sky italic">{especie.curiosidade}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
+
+  return createPortal(modal, document.body)
 }
+
+// ── Seção principal ──────────────────────────────────────────────────────────
 
 interface Props {
   especies: EspecieMadeira[]
@@ -156,6 +347,7 @@ interface Props {
 
 export default function MadeirasSection({ especies }: Props) {
   const [filtroAtivo, setFiltroAtivo] = useState('todas')
+  const [especieSelecionada, setEspecieSelecionada] = useState<EspecieMadeira | null>(null)
 
   if (!especies || especies.length === 0) return null
 
@@ -179,16 +371,17 @@ export default function MadeirasSection({ especies }: Props) {
           e muitas vezes o aluno muda de ideia quando vê a madeira de perto.
         </p>
 
-        {/* Filtros */}
-        <div className="flex flex-wrap gap-2 mt-8">
+        {/* Filtros com scroll horizontal no mobile */}
+        <div className="flex gap-2 mt-8 overflow-x-auto pb-1 scrollbar-none">
           {FILTROS.map((f) => (
             <button
               key={f.value}
+              type="button"
               onClick={() => setFiltroAtivo(f.value)}
-              className={`font-sans text-small px-4 py-1.5 rounded-full transition-colors ${
+              className={`font-mono text-label uppercase tracking-widest px-4 py-2 rounded-full shrink-0 transition-colors duration-200 ${
                 filtroAtivo === f.value
                   ? 'bg-eco-turquoise text-white'
-                  : 'border border-eco-border text-eco-sky hover:border-eco-turquoise hover:text-eco-turquoise'
+                  : 'border border-eco-border text-eco-sky bg-transparent hover:border-eco-turquoise hover:text-eco-turquoise'
               }`}
             >
               {f.label}
@@ -197,12 +390,13 @@ export default function MadeirasSection({ especies }: Props) {
         </div>
 
         {/* Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 transition-opacity duration-300"
-          style={{ opacity: 1 }}
-        >
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
           {especiesFiltradas.map((especie) => (
-            <EspecieCard key={especie._id} especie={especie} />
+            <EspecieCard
+              key={especie._id}
+              especie={especie}
+              onClick={() => setEspecieSelecionada(especie)}
+            />
           ))}
         </div>
 
@@ -212,6 +406,14 @@ export default function MadeirasSection({ especies }: Props) {
           </p>
         )}
       </div>
+
+      {/* Modal */}
+      {especieSelecionada && (
+        <EspecieModal
+          especie={especieSelecionada}
+          onClose={() => setEspecieSelecionada(null)}
+        />
+      )}
     </section>
   )
 }
