@@ -150,7 +150,7 @@ export default function QuizCurso({
               <>
                 {/* Progresso */}
                 <div className="mb-8 flex items-center gap-3">
-                  <span className="font-mono text-label text-eco-sky shrink-0">
+                  <span className="font-mono text-label text-eco-ink shrink-0">
                     Pergunta {step + 1} de {PERGUNTAS.length}
                   </span>
                   <div
@@ -267,7 +267,7 @@ export default function QuizCurso({
                     className={[
                       'font-sans font-medium rounded-full',
                       selected === null
-                        ? 'border border-eco-border text-eco-sky opacity-50 cursor-not-allowed'
+                        ? 'border border-eco-border text-eco-ink opacity-50 cursor-not-allowed'
                         : 'bg-eco-night text-white border border-eco-night cursor-pointer',
                     ].join(' ')}
                     style={{
@@ -289,7 +289,7 @@ export default function QuizCurso({
                     Curso indicado para você
                   </p>
                   <h3 className="font-serif text-headline text-eco-night">{nomeCurso}</h3>
-                  <p className="font-sans text-body text-eco-sky mt-3">{textoResultado}</p>
+                  <p className="font-sans text-body text-eco-ink mt-3">{textoResultado}</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -312,7 +312,7 @@ export default function QuizCurso({
                 <button
                   type="button"
                   onClick={reiniciar}
-                  className="self-start font-sans text-small text-eco-sky underline-offset-4 hover:underline"
+                  className="self-start font-sans text-small text-eco-ink underline-offset-4 hover:underline"
                 >
                   Refazer o quiz
                 </button>

@@ -30,7 +30,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
                 Pedro Machado
               </h2>
             </div>
-            <p className="font-sans text-body-lg text-eco-sky max-w-lg">
+            <p className="font-sans text-body-lg text-eco-ink max-w-lg">
               Há mais de 20 anos Pedro Machado constrói instrumentos que carregam a identidade de quem os toca. Fundador da Eco Guitar, ele é referência em madeiras brasileiras e precursor dos cursos Express de luteria no país — onde qualquer pessoa pode construir o próprio instrumento do zero.
             </p>
 
@@ -41,7 +41,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
                   <span className="font-mono text-label uppercase tracking-widest text-eco-night">
                     {stat.value}
                   </span>
-                  <span className="font-sans text-small text-eco-sky">
+                  <span className="font-sans text-small text-eco-ink">
                     {stat.label}
                   </span>
                 </div>
@@ -49,13 +49,13 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
             </div>
 
             {/* Parceiros */}
-            <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
+            <p className="font-mono text-label uppercase tracking-widest text-eco-ink">
               Parceiros: School of Rock · Equilibrium · Santa Cruz
             </p>
 
             <Link
               href="/sobre"
-              className="inline-flex items-center gap-1 font-sans text-body text-eco-turquoise hover:underline underline-offset-4 transition-colors w-fit"
+              className="inline-flex items-center gap-1 font-sans text-body text-eco-turquoise-dk hover:underline underline-offset-4 transition-colors w-fit"
             >
               Ler mais →
             </Link>
@@ -63,7 +63,7 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
 
           {/* Image column */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-square bg-eco-turquoise/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
+            <div className="relative w-full max-w-md aspect-square bg-eco-turquoise-lt border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
               {imageUrl ? (
                 <Image
                   src={sanityImg(imageUrl, 900)}

@@ -164,11 +164,11 @@ export default async function ServicosPage() {
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">Luteria</SectionLabel>
+          <SectionLabel tone="turquoise">Luteria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Serviços de manutenção e construção de instrumentos
           </h1>
-          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-ink mt-4 max-w-xl">
             Cada instrumento merece cuidado especializado. Do ajuste fino à construção completa,
             tratamos sua guitarra ou violão com a dedicação que ela merece.
           </p>
@@ -189,7 +189,7 @@ export default async function ServicosPage() {
                   <h2 className="font-serif text-title text-eco-night">{servico.titulo}</h2>
                   <ul className="flex flex-col gap-2">
                     {servico.detalhes.map((item) => (
-                      <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-sky">
+                      <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-ink">
                         <span className="mt-1.5 w-1 h-1 rounded-full bg-eco-turquoise flex-shrink-0" aria-hidden="true" />
                         {item}
                       </li>
@@ -197,7 +197,7 @@ export default async function ServicosPage() {
                   </ul>
                 </div>
                 <div className="border-t border-eco-border pt-4 flex items-center justify-between">
-                  <span className="font-mono text-label uppercase tracking-widest text-eco-sky">Prazo</span>
+                  <span className="font-mono text-label uppercase tracking-widest text-eco-ink">Prazo</span>
                   <span className="font-mono text-small text-eco-turquoise">{servico.prazo}</span>
                 </div>
               </article>
@@ -224,7 +224,7 @@ export default async function ServicosPage() {
                 </div>
                 <div>
                   <h3 className="font-serif text-title text-eco-night">{etapa.titulo}</h3>
-                  <p className="font-sans text-small text-eco-sky mt-2">{etapa.descricao}</p>
+                  <p className="font-sans text-small text-eco-ink mt-2">{etapa.descricao}</p>
                 </div>
               </div>
             ))}

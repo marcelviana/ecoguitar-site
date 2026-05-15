@@ -33,7 +33,7 @@ function WorkshopCard({ workshop }: { workshop: Workshop }) {
           <span className="font-mono text-label uppercase tracking-widest text-eco-turquoise/70">
             {new Date(workshop.data).toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}
           </span>
-          <span className="font-mono text-label text-eco-sky">
+          <span className="font-mono text-label text-eco-ink">
             {new Date(workshop.data).getFullYear()}
           </span>
         </div>
@@ -44,12 +44,12 @@ function WorkshopCard({ workshop }: { workshop: Workshop }) {
           <h2 className="font-serif text-title text-eco-night">{workshop.titulo}</h2>
 
           {workshop.descricao && (
-            <p className="font-sans text-body text-eco-sky">{workshop.descricao}</p>
+            <p className="font-sans text-body text-eco-ink">{workshop.descricao}</p>
           )}
 
           <div className="flex flex-wrap gap-4 mt-1">
             {workshop.data && (
-              <div className="flex items-center gap-2 text-eco-sky">
+              <div className="flex items-center gap-2 text-eco-ink">
                 <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -58,7 +58,7 @@ function WorkshopCard({ workshop }: { workshop: Workshop }) {
               </div>
             )}
             {workshop.vagas !== undefined && (
-              <div className="flex items-center gap-2 text-eco-sky">
+              <div className="flex items-center gap-2 text-eco-ink">
                 <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -101,7 +101,7 @@ function WorkshopsVazios() {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1}
           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
-      <p className="font-sans text-body text-eco-sky max-w-sm">
+      <p className="font-sans text-body text-eco-ink max-w-sm">
         Nenhum workshop agendado no momento. Deixe seu contato para ser avisado sobre as próximas datas.
       </p>
       <Button href="/contato" variant="secondary" size="md">
@@ -133,11 +133,11 @@ export default async function WorkshopsPage() {
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">Encontros práticos</SectionLabel>
+          <SectionLabel tone="turquoise">Encontros práticos</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Workshops de Luteria
           </h1>
-          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-ink mt-4 max-w-xl">
             Mergulhe em um dia intensivo de luteria. Os workshops da Eco Guitar são encontros
             focados, com turmas pequenas e muito tempo na bancada.
           </p>
@@ -164,7 +164,7 @@ export default async function WorkshopsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h2 className="font-serif text-title text-eco-night">Quer um workshop personalizado?</h2>
-            <p className="font-sans text-body text-eco-sky mt-1">
+            <p className="font-sans text-body text-eco-ink mt-1">
               Grupos e empresas podem solicitar datas e temas específicos.
             </p>
           </div>

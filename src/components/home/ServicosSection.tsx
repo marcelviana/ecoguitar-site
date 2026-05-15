@@ -94,11 +94,11 @@ export default function ServicosSection() {
               <div className="text-eco-turquoise">{s.icone}</div>
               <div>
                 <h3 className="font-serif text-title text-eco-night mb-2">{s.titulo}</h3>
-                <p className="font-sans text-body text-eco-sky">{s.descricao}</p>
+                <p className="font-sans text-body text-eco-ink">{s.descricao}</p>
               </div>
               <Link
                 href={s.href}
-                className="mt-auto inline-flex items-center gap-1 font-sans text-small text-eco-turquoise hover:underline underline-offset-4 transition-colors"
+                className="mt-auto inline-flex items-center gap-1 font-sans text-small text-eco-turquoise-dk hover:underline underline-offset-4 transition-colors"
               >
                 Saiba mais →
               </Link>

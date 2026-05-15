@@ -5,7 +5,7 @@ export default function ContatoCTASection() {
   return (
     <section className="bg-eco-turquoise py-section">
       <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <SectionLabel className="text-eco-sand-light/60">Fale conosco</SectionLabel>
+        <SectionLabel tone="sand">Fale conosco</SectionLabel>
         <h2 className="font-serif text-headline text-white mt-3 mb-4">
           Vamos conversar?
         </h2>

@@ -81,7 +81,7 @@ export default async function SobrePage() {
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">{subtitulo}</SectionLabel>
+          <SectionLabel tone="turquoise">{subtitulo}</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             {titulo}
           </h1>
@@ -94,7 +94,7 @@ export default async function SobrePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Foto */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-md aspect-square bg-eco-turquoise/20 border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-square bg-eco-turquoise-lt border border-eco-border rounded-2xl overflow-hidden flex items-center justify-center">
                 {fotoPrincipalUrl ? (
                   <Image
                     src={sanityImg(fotoPrincipalUrl, 900)}
@@ -126,7 +126,7 @@ export default async function SobrePage() {
             {/* Bio */}
             <div className="flex flex-col gap-5">
               {bioParas.map((p, i) => (
-                <p key={i} className="font-sans text-body-lg text-eco-sky leading-relaxed">
+                <p key={i} className="font-sans text-body-lg text-eco-ink leading-relaxed">
                   {p}
                 </p>
               ))}

@@ -36,7 +36,7 @@ export default async function ContatoPage() {
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">Fale conosco</SectionLabel>
+          <SectionLabel tone="turquoise">Fale conosco</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">Contato</h1>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default async function ContatoPage() {
             {/* Info */}
             <div className="flex flex-col gap-8">
               <div>
-                <p className="font-sans text-body-lg text-eco-sky">
+                <p className="font-sans text-body-lg text-eco-ink">
                   Tem dúvidas sobre os cursos, quer encomendar um instrumento ou simplesmente quer
                   conhecer o ateliê? Envie uma mensagem e Pedro responde em breve.
                 </p>
@@ -64,7 +64,7 @@ export default async function ContatoPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">Localização</p>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-ink">Localização</p>
                     <p className="font-sans text-body text-eco-night mt-1">São Paulo — SP</p>
                   </div>
                 </div>
@@ -77,12 +77,12 @@ export default async function ContatoPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">Instagram</p>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-ink">Instagram</p>
                     <a
                       href={igUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-sans text-body text-eco-turquoise hover:underline underline-offset-4 mt-1 inline-block"
+                      className="font-sans text-body text-eco-turquoise-dk hover:underline underline-offset-4 mt-1 inline-block"
                     >
                       @{igHandle}
                     </a>
@@ -97,12 +97,12 @@ export default async function ContatoPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-mono text-label uppercase tracking-widest text-eco-sky">WhatsApp</p>
+                    <p className="font-mono text-label uppercase tracking-widest text-eco-ink">WhatsApp</p>
                     <a
                       href={waLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-sans text-body text-eco-turquoise hover:underline underline-offset-4 mt-1 inline-block"
+                      className="font-sans text-body text-eco-turquoise-dk hover:underline underline-offset-4 mt-1 inline-block"
                     >
                       Chamar no WhatsApp
                     </a>

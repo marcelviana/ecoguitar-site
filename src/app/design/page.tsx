@@ -9,6 +9,7 @@ const colors = [
   { name: 'eco-sand-warm', hex: '#FFE9C2', bg: 'bg-eco-sand-warm', dark: false },
   { name: 'eco-night', hex: '#2B3A4A', bg: 'bg-eco-night', dark: true },
   { name: 'eco-sky', hex: '#6B8FA8', bg: 'bg-eco-sky', dark: true },
+  { name: 'eco-ink', hex: '#4A6378', bg: 'bg-eco-ink', dark: true },
   { name: 'eco-turquoise', hex: '#1AACAC', bg: 'bg-eco-turquoise', dark: true },
   { name: 'eco-turquoise-dk', hex: '#0D7A7A', bg: 'bg-eco-turquoise-dk', dark: true },
   { name: 'eco-turquoise-lt', hex: '#E2F6F6', bg: 'bg-eco-turquoise-lt', dark: false },
@@ -151,6 +152,20 @@ export default function DesignPage() {
                 <SectionLabel>CLUBE DO LUTHIER</SectionLabel>
                 <SectionLabel>CURSOS E WORKSHOPS</SectionLabel>
                 <SectionLabel>SOBRE O PROJETO</SectionLabel>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <span className="font-mono text-label text-eco-sky block mb-4">Variantes tone</span>
+            <div className="flex flex-col gap-4">
+              <div className="bg-eco-sand-light p-4 rounded-lg flex flex-col gap-2">
+                <SectionLabel tone="orange">Tom orange (padrão)</SectionLabel>
+                <SectionLabel tone="turquoise">Tom turquoise</SectionLabel>
+                <SectionLabel tone="sun">Tom sun</SectionLabel>
+              </div>
+              <div className="bg-eco-night p-4 rounded-lg flex flex-col gap-2">
+                <SectionLabel tone="sand">Tom sand (sobre fundo escuro)</SectionLabel>
               </div>
             </div>
           </div>

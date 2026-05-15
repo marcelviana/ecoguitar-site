@@ -11,7 +11,7 @@ const MODALIDADE_STYLES: Record<string, string> = {
 
 export default function CursoCard({ curso }: { curso: CursoListagem }) {
   const badgeClass =
-    MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-sand-warm text-eco-sky'
+    MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-sand-warm text-eco-ink'
 
   return (
     <article className="flex flex-col bg-eco-sand-warm border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200">
@@ -55,14 +55,14 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
         <div className="flex-1 flex flex-col gap-2">
           <h2 className="font-serif text-title text-eco-night">{curso.titulo}</h2>
           {curso.subtitulo && (
-            <p className="font-sans text-small text-eco-sky">{curso.subtitulo}</p>
+            <p className="font-sans text-small text-eco-ink">{curso.subtitulo}</p>
           )}
 
           {(curso.duracao || curso.horarios) && (
             <dl className="mt-3 flex flex-col gap-1.5 border-t border-eco-border pt-3">
               {curso.duracao && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-ink w-20 flex-shrink-0">
                     Duração
                   </dt>
                   <dd className="font-sans text-small text-eco-night">{curso.duracao}</dd>
@@ -70,7 +70,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
               )}
               {curso.horarios && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-ink w-20 flex-shrink-0">
                     Horário
                   </dt>
                   <dd className="font-sans text-small text-eco-night">{curso.horarios}</dd>
@@ -78,7 +78,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
               )}
               {curso.preco && (
                 <div className="flex gap-3">
-                  <dt className="font-mono text-label uppercase tracking-widest text-eco-sky w-20 flex-shrink-0">
+                  <dt className="font-mono text-label uppercase tracking-widest text-eco-ink w-20 flex-shrink-0">
                     Valor
                   </dt>
                   <dd className="font-mono text-small text-eco-turquoise font-medium">{curso.preco}</dd>

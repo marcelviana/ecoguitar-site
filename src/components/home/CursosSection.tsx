@@ -8,7 +8,7 @@ import { sanityImg } from '@/lib/sanity-image'
 function CursoCard({ curso }: { curso: Curso }) {
   return (
     <div className="flex flex-col bg-eco-sand-warm border border-eco-border rounded-xl overflow-hidden">
-      <div className="relative aspect-[4/3] bg-eco-turquoise/20">
+      <div className="relative aspect-[4/3] bg-eco-turquoise-lt">
         {curso.imagemCapa ? (
           <Image
             src={sanityImg(curso.imagemCapa, 600)}
@@ -35,7 +35,7 @@ function CursoCard({ curso }: { curso: Curso }) {
           )}
           <h3 className="font-serif text-title text-eco-night mt-1">{curso.titulo}</h3>
           {curso.descricao && (
-            <p className="font-sans text-small text-eco-sky mt-2 line-clamp-2">{curso.descricao}</p>
+            <p className="font-sans text-small text-eco-ink mt-2 line-clamp-2">{curso.descricao}</p>
           )}
           {curso.preco && (
             <p className="font-mono text-small text-eco-turquoise mt-3">{curso.preco}</p>
@@ -71,7 +71,7 @@ export default async function CursosSection() {
         <div className="mt-12 text-center">
           <Link
             href="/cursos"
-            className="font-sans text-body text-eco-turquoise hover:underline underline-offset-4 transition-colors"
+            className="font-sans text-body text-eco-turquoise-dk hover:underline underline-offset-4 transition-colors"
           >
             Ver todos os cursos →
           </Link>

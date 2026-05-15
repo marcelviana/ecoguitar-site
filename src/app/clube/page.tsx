@@ -64,7 +64,7 @@ export default async function ClubePage() {
       {/* Hero */}
       <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">Membros exclusivos</SectionLabel>
+          <SectionLabel tone="turquoise">Membros exclusivos</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">{titulo}</h1>
           <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">{descricao}</p>
         </div>
@@ -168,7 +168,7 @@ export default async function ClubePage() {
             {faqs.map((faq) => (
               <div key={faq.pergunta} className="py-6 flex flex-col gap-3">
                 <h3 className="font-serif text-title text-eco-night">{faq.pergunta}</h3>
-                <p className="font-sans text-body text-eco-sky">{faq.resposta}</p>
+                <p className="font-sans text-body text-eco-ink">{faq.resposta}</p>
               </div>
             ))}
           </div>

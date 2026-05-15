@@ -11,7 +11,7 @@ export default function ClubeSection() {
   return (
     <section className="bg-eco-turquoise py-section">
       <div className="max-w-3xl mx-auto px-6 lg:px-12 text-center">
-        <SectionLabel className="text-eco-sand-light/60">Exclusivo</SectionLabel>
+        <SectionLabel tone="sand">Exclusivo</SectionLabel>
         <h2 className="font-serif text-headline text-white mt-3 mb-6">
           {clube.titulo}
         </h2>

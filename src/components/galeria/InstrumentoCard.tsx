@@ -54,7 +54,7 @@ export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-war
           {instrumento.nome}
         </h3>
         {instrumento.modeloBase && (
-          <p className="font-mono text-label uppercase tracking-widest text-eco-sky">
+          <p className="font-mono text-label uppercase tracking-widest text-eco-ink">
             {instrumento.modeloBase.nome}
           </p>
         )}
@@ -66,7 +66,7 @@ export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-war
           </div>
         )}
         {instrumento.descricao && (
-          <p className="font-sans text-small text-eco-sky line-clamp-2 mt-1">
+          <p className="font-sans text-small text-eco-ink line-clamp-2 mt-1">
             {instrumento.descricao}
           </p>
         )}

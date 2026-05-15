@@ -44,11 +44,11 @@ export default async function GaleriaPage() {
           </>
         )}
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel className="text-eco-turquoise">Galeria</SectionLabel>
+          <SectionLabel tone="turquoise">Galeria</SectionLabel>
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Instrumentos construídos e restaurados no ateliê
           </h1>
-          <p className="font-sans text-body-lg text-eco-sky mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-ink mt-4 max-w-xl">
             Cada peça conta uma história. Veja de perto o trabalho artesanal que nasce nas mãos
             de Pedro Machado na Eco Guitar.
           </p>
@@ -77,7 +77,7 @@ export default async function GaleriaPage() {
               <h2 className="font-serif text-title text-eco-night">
                 Galeria em construção
               </h2>
-              <p className="font-sans text-body text-eco-sky mt-2 max-w-sm">
+              <p className="font-sans text-body text-eco-ink mt-2 max-w-sm">
                 Em breve você poderá ver todos os instrumentos criados e restaurados aqui no ateliê.
               </p>
             </div>

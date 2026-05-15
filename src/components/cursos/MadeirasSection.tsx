@@ -212,7 +212,7 @@ function EspecieModal({ especie, onClose }: ModalProps) {
           type="button"
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-eco-sand-light/80 text-eco-sky hover:text-eco-night transition-colors text-xl leading-none"
+          className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-eco-sand-light/80 text-eco-ink hover:text-eco-night transition-colors text-xl leading-none"
         >
           ×
         </button>
@@ -224,14 +224,14 @@ function EspecieModal({ especie, onClose }: ModalProps) {
               <div>
                 <h2 className="font-serif text-title text-eco-night">{especie.nome}</h2>
                 {especie.nomeCientifico && (
-                  <p className="font-sans text-small text-eco-sky italic mt-0.5">
+                  <p className="font-sans text-small text-eco-ink italic mt-0.5">
                     {especie.nomeCientifico}
                   </p>
                 )}
               </div>
               {especie.usos && especie.usos.length > 0 && (
                 <div>
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-1.5">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-ink mb-1.5">
                     Uso no instrumento
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -248,7 +248,7 @@ function EspecieModal({ especie, onClose }: ModalProps) {
               )}
               {especie.tags && especie.tags.length > 0 && (
                 <div>
-                  <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-1.5">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-ink mb-1.5">
                     Caráter sonoro
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -264,7 +264,7 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                 </div>
               )}
               {especie.origem && (
-                <p className="font-sans text-small text-eco-sky flex items-center gap-1.5">
+                <p className="font-sans text-small text-eco-ink flex items-center gap-1.5">
                   <PinIcon />
                   {especie.origem}
                 </p>
@@ -345,7 +345,7 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                 {/* Curiosidade — fora da imagem */}
                 {especie.curiosidade && (
                   <div className="border-t border-eco-border px-4 pb-4 pt-4">
-                    <p className="font-sans text-small text-eco-sky italic">{especie.curiosidade}</p>
+                    <p className="font-sans text-small text-eco-ink italic">{especie.curiosidade}</p>
                   </div>
                 )}
               </div>
@@ -416,7 +416,7 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                 {/* Curiosidade — full width, abaixo das duas colunas */}
                 {especie.curiosidade && (
                   <div className="col-span-2 border-t border-eco-border mx-6 pb-6 pt-4">
-                    <p className="font-sans text-small text-eco-sky italic">{especie.curiosidade}</p>
+                    <p className="font-sans text-small text-eco-ink italic">{especie.curiosidade}</p>
                   </div>
                 )}
               </div>
@@ -459,7 +459,7 @@ export default function MadeirasSection({ especies }: Props) {
         <h2 className="font-serif text-headline text-eco-night max-w-2xl">
           As madeiras que você pode usar no seu instrumento
         </h2>
-        <p className="font-sans text-body text-eco-sky mt-4 max-w-2xl">
+        <p className="font-sans text-body text-eco-ink mt-4 max-w-2xl">
           Estas são algumas das espécies com que trabalhamos. Cada uma tem personalidade própria —
           e muitas vezes o aluno muda de ideia quando vê a madeira de perto.
         </p>
@@ -474,7 +474,7 @@ export default function MadeirasSection({ especies }: Props) {
               className={`font-mono text-label uppercase tracking-widest px-4 py-2 rounded-full shrink-0 transition-colors duration-200 ${
                 filtroAtivo === f.value
                   ? 'bg-eco-turquoise text-white'
-                  : 'border border-eco-border text-eco-sky bg-transparent hover:border-eco-turquoise hover:text-eco-turquoise'
+                  : 'border border-eco-border text-eco-ink bg-transparent hover:border-eco-turquoise hover:text-eco-turquoise'
               }`}
             >
               {f.label}
@@ -494,7 +494,7 @@ export default function MadeirasSection({ especies }: Props) {
         </div>
 
         {especiesFiltradas.length === 0 && (
-          <p className="font-sans text-body text-eco-sky text-center py-12">
+          <p className="font-sans text-body text-eco-ink text-center py-12">
             Nenhuma espécie encontrada para este uso.
           </p>
         )}

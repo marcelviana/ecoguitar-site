@@ -7,7 +7,7 @@ import { sanityImg } from '@/lib/sanity-image'
 function InstrumentoCard({ instrumento }: { instrumento: Instrumento }) {
   return (
     <div className="flex flex-col bg-eco-night border border-eco-border rounded-xl overflow-hidden">
-      <div className="relative aspect-[16/7] bg-eco-turquoise/20 overflow-hidden">
+      <div className="relative aspect-[16/7] bg-eco-turquoise-lt overflow-hidden">
         {instrumento.imagemUrl ? (
           <Image
             src={sanityImg(instrumento.imagemUrl, 600)}

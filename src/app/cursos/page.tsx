@@ -138,7 +138,7 @@ export default async function CursosPage() {
           <h1 className="font-serif text-display text-eco-white max-w-2xl">
             Construa o instrumento dos seus sonhos
           </h1>
-          <p className="font-sans text-body-lg text-eco-sky mt-6 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-ink mt-6 max-w-xl">
             Com mais de 15 anos de experiência em construção, manutenção, cursos e workshops,
             vamos extrair o máximo do seu instrumento.
           </p>
@@ -165,7 +165,7 @@ export default async function CursosPage() {
                   {r.num}
                 </span>
                 <h3 className="font-serif text-title text-eco-night">{r.titulo}</h3>
-                <p className="font-sans text-body text-eco-sky">{r.texto}</p>
+                <p className="font-sans text-body text-eco-ink">{r.texto}</p>
               </div>
             ))}
           </div>
@@ -181,7 +181,7 @@ export default async function CursosPage() {
           <h2 className="font-serif text-headline text-eco-night mb-4">
             Cursos para todos os perfis
           </h2>
-          <p className="font-sans text-body text-eco-sky mb-10 max-w-lg">
+          <p className="font-sans text-body text-eco-ink mb-10 max-w-lg">
             Escolha a modalidade que encaixa na sua rotina e venha construir com a gente.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">

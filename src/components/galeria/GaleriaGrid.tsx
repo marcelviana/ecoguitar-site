@@ -59,7 +59,7 @@ export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
             className={`font-mono text-label uppercase tracking-widest px-4 py-2 transition-colors ${
               categoriaAtiva === 'todos'
                 ? 'bg-eco-turquoise text-white'
-                : 'border border-eco-border text-eco-sky hover:border-eco-turquoise hover:text-eco-turquoise'
+                : 'border border-eco-border text-eco-ink hover:border-eco-turquoise hover:text-eco-turquoise'
             }`}
           >
             Todos
@@ -71,7 +71,7 @@ export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
               className={`font-mono text-label uppercase tracking-widest px-4 py-2 transition-colors ${
                 categoriaAtiva === id
                   ? 'bg-eco-turquoise text-white'
-                  : 'border border-eco-border text-eco-sky hover:border-eco-turquoise hover:text-eco-turquoise'
+                  : 'border border-eco-border text-eco-ink hover:border-eco-turquoise hover:text-eco-turquoise'
               }`}
             >
               {title}
@@ -81,7 +81,7 @@ export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
       )}
 
       {/* Contador */}
-      <p className="font-mono text-label uppercase tracking-widest text-eco-sky mb-6">
+      <p className="font-mono text-label uppercase tracking-widest text-eco-ink mb-6">
         {filtrados.length} instrumento{filtrados.length !== 1 ? 's' : ''}
       </p>
 
@@ -93,7 +93,7 @@ export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
           ))}
         </div>
       ) : (
-        <p className="font-sans text-body text-eco-sky py-12 text-center">
+        <p className="font-sans text-body text-eco-ink py-12 text-center">
           Nenhum instrumento encontrado nessa categoria.
         </p>
       )}
@@ -109,7 +109,7 @@ export default function GaleriaGrid({ instrumentos, cardBg }: Props) {
           >
             Anterior
           </Button>
-          <span className="font-mono text-label uppercase tracking-widest text-eco-sky">
+          <span className="font-mono text-label uppercase tracking-widest text-eco-ink">
             Página {paginaAtual} de {totalPaginas}
           </span>
           <Button
