@@ -15,7 +15,7 @@ export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-war
       href={`/galeria/${instrumento.slug}`}
       className={`group flex flex-col ${cardBg} border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200`}
     >
-      <div className="relative aspect-[5/4] bg-eco-turquoise/10 overflow-hidden">
+      <div className="relative aspect-[5/4] bg-eco-turquoise-lt overflow-hidden">
         {instrumento.fotoUrl ? (
           <Image
             src={sanityImg(instrumento.fotoUrl, 600)}

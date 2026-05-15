@@ -11,6 +11,7 @@ const colors = [
   { name: 'eco-sky', hex: '#6B8FA8', bg: 'bg-eco-sky', dark: true },
   { name: 'eco-turquoise', hex: '#1AACAC', bg: 'bg-eco-turquoise', dark: true },
   { name: 'eco-turquoise-dk', hex: '#0D7A7A', bg: 'bg-eco-turquoise-dk', dark: true },
+  { name: 'eco-turquoise-lt', hex: '#E2F6F6', bg: 'bg-eco-turquoise-lt', dark: false },
   { name: 'eco-border', hex: '#E8D9BF', bg: 'bg-eco-border', dark: false },
   { name: 'eco-white', hex: '#FFFDF8', bg: 'bg-eco-white', dark: false },
   { name: 'eco-orange', hex: '#E8552E', bg: 'bg-eco-orange', dark: true },
