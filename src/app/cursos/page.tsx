@@ -179,7 +179,7 @@ export default async function CursosPage() {
       <section className="bg-eco-sand-light py-section border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-headline text-eco-night mb-4">
-            Qual curso combina mais com você?
+            Cursos para todos os perfis
           </h2>
           <p className="font-sans text-body text-eco-sky mb-10 max-w-lg">
             Escolha a modalidade que encaixa na sua rotina e venha construir com a gente.
