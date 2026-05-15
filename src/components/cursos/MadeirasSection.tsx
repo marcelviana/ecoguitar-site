@@ -292,14 +292,14 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                     </div>
                   )}
 
-                  {/* Setas */}
+                  {/* Zona das setas — 55% superior, acima do overlay */}
                   {temMultiplasFotos && (
-                    <>
+                    <div className="absolute top-0 left-0 right-0 h-[55%] flex items-center justify-between px-2 pointer-events-none">
                       <button
                         type="button"
                         onClick={prev}
                         aria-label="Foto anterior"
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                        className="pointer-events-auto w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
                       >
                         ‹
                       </button>
@@ -307,15 +307,15 @@ function EspecieModal({ especie, onClose }: ModalProps) {
                         type="button"
                         onClick={next}
                         aria-label="Próxima foto"
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
+                        className="pointer-events-auto w-8 h-8 rounded-full bg-eco-night/50 text-white flex items-center justify-center hover:bg-eco-night/80 transition-colors text-lg leading-none"
                       >
                         ›
                       </button>
-                    </>
+                    </div>
                   )}
 
-                  {/* Overlay com informações */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-eco-sand-light/80 backdrop-blur-md p-4">
+                  {/* Overlay com informações — 45% inferior */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-eco-sand-light/80 backdrop-blur-sm px-4 py-3 overflow-y-auto">
                     {infoBloco}
                   </div>
                 </div>
@@ -349,13 +349,13 @@ function EspecieModal({ especie, onClose }: ModalProps) {
               <div className="hidden sm:grid sm:grid-cols-[1fr_1fr]">
                 {/* Coluna esquerda — imagem + dots */}
                 <div className="self-start">
-                  <div className="relative w-full aspect-[4/5] overflow-hidden rounded-tl-2xl bg-eco-night/5">
+                  <div className="relative w-full aspect-[4/5] overflow-hidden rounded-tl-2xl">
                     {fotos.length > 0 ? (
                       <Image
                         src={sanityImg(fotos[fotoIndex], 800)}
                         alt={`${especie.nome} — foto ${fotoIndex + 1}`}
                         fill
-                        className="object-contain"
+                        className="object-cover"
                         sizes="50vw"
                       />
                     ) : (
