@@ -4,7 +4,8 @@ import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
 import CursoCard from '@/components/cursos/CursoCard'
 import QuizCurso from '@/components/cursos/QuizCurso'
-import { getCursosListagem, getConfiguracao, type CursoListagem } from '@/lib/queries'
+import MadeirasSection from '@/components/cursos/MadeirasSection'
+import { getCursosListagem, getConfiguracao, getEspeciesMadeira, type CursoListagem } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import { sanityImg } from '@/lib/sanity-image'
 
@@ -105,7 +106,11 @@ const CURSOS_FALLBACK: CursoListagem[] = [
 ]
 
 export default async function CursosPage() {
-  const [cursosDb, config] = await Promise.all([getCursosListagem(), getConfiguracao()])
+  const [cursosDb, config, especies] = await Promise.all([
+    getCursosListagem(),
+    getConfiguracao(),
+    getEspeciesMadeira(),
+  ])
   const cursos = cursosDb.length > 0 ? cursosDb : CURSOS_FALLBACK
   const heroImagemUrl = config?.heroBannerCursos ? urlFor(config.heroBannerCursos)?.url() : null
 
@@ -186,6 +191,9 @@ export default async function CursosPage() {
           </div>
         </div>
       </section>
+
+      {/* Madeiras */}
+      <MadeirasSection especies={especies} />
 
       {/* CTA final */}
       <section className="bg-eco-turquoise py-section-sm">

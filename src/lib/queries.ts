@@ -434,3 +434,38 @@ export async function getProcessoEtapas(): Promise<ProcessoEtapa[]> {
     return []
   }
 }
+
+export interface EspecieMadeira {
+  _id: string
+  nome: string
+  nomeCientifico?: string
+  fotos: string[]
+  usos?: string[]
+  tags?: string[]
+  origem?: string
+  curiosidade?: string
+  ordem?: number
+}
+
+const especiesMadeiraQuery = groq`
+  *[_type == "especieMadeira"] | order(ordem asc) {
+    _id,
+    nome,
+    nomeCientifico,
+    "fotos": fotos[].asset->url,
+    usos,
+    tags,
+    origem,
+    curiosidade,
+    ordem,
+  }
+`
+
+export async function getEspeciesMadeira(): Promise<EspecieMadeira[]> {
+  if (!client) return []
+  try {
+    return await client.fetch<EspecieMadeira[]>(especiesMadeiraQuery)
+  } catch {
+    return []
+  }
+}
