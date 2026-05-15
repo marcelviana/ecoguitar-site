@@ -21,15 +21,15 @@ export default async function HomePage() {
       <HeroSection heroBannerImagem={config?.heroBannerImagem} />
       {/* 2. Serviços — eco-white (#FFFDF8, quase branco) */}
       <ServicosSection />
-      {/* 3. Quiz — eco-night (escuro) — card interno é eco-sand-warm; seção escura garante contraste com o card e com Serviços/Galeria (eco-white) adjacentes */}
+      {/* 3. Quiz — eco-night (escuro) — card interno é eco-sand-warm */}
       <QuizCurso cursos={cursos} showCoursesLink />
-      {/* 4. Galeria — eco-white (#FFFDF8) — contrasta com o bege quente do Quiz */}
+      {/* 4. Galeria — eco-white (#FFFDF8) */}
       <GaleriaSection />
-      {/* 5. Depoimentos — eco-night (escuro) — contraste forte com o branco da Galeria */}
+      {/* 5. Depoimentos — eco-night (escuro) */}
       <DepoimentosSection />
-      {/* 6. Luteria / Pedro Machado — eco-sand-warm — clareia após o escuro dos Depoimentos */}
+      {/* 6. Sobre / Pedro Machado — eco-sand-warm */}
       <SobreSection fotoPedro={config?.fotoPedro} />
-      {/* 7. Fale conosco — eco-turquoise — CTA final em cor de destaque da marca */}
+      {/* 7. Fale conosco — eco-turquoise (CTA canônico da marca) */}
       <ContatoCTASection />
     </PageLayout>
   )

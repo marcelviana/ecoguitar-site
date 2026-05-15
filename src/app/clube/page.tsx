@@ -127,8 +127,10 @@ export default async function ClubePage() {
                     <p className="font-serif text-title text-eco-white mt-3">Consulte o valor</p>
                   )}
                   {vagas !== null && vagas !== undefined && (
-                    <p className="font-mono text-label text-eco-sky mt-2">
-                      {vagas} {vagas === 1 ? 'vaga disponível' : 'vagas disponíveis'}
+                    <p className="inline-flex mt-2">
+                      <span className="font-mono text-label uppercase tracking-widest bg-eco-sun/20 text-eco-sun px-2.5 py-1 rounded-full border border-eco-sun/40">
+                        {vagas} {vagas === 1 ? 'vaga disponível' : 'vagas disponíveis'}
+                      </span>
                     </p>
                   )}
                 </div>

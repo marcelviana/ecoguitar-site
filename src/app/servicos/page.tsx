@@ -233,13 +233,13 @@ export default async function ServicosPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-eco-turquoise py-section-sm">
+      <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="font-serif text-headline text-white max-w-md">
               Pronto para dar nova vida ao seu instrumento?
             </h2>
-            <p className="font-sans text-body text-white/70 mt-3 max-w-md">
+            <p className="font-sans text-body text-eco-sky mt-3 max-w-md">
               Entre em contato para agendar uma avaliação gratuita ou tirar suas dúvidas.
             </p>
           </div>

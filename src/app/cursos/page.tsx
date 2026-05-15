@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import PageLayout from '@/components/layout/PageLayout'
 import Button from '@/components/ui/Button'
+import SectionLabel from '@/components/ui/SectionLabel'
 import CursoCard from '@/components/cursos/CursoCard'
 import QuizCurso from '@/components/cursos/QuizCurso'
 import MadeirasSection from '@/components/cursos/MadeirasSection'
@@ -196,13 +197,14 @@ export default async function CursosPage() {
       <MadeirasSection especies={especies} />
 
       {/* CTA final */}
-      <section className="bg-eco-turquoise py-section-sm">
+      <section className="bg-eco-sand-warm py-section-sm border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="font-serif text-title text-white">
+            <SectionLabel tone="sun">Comece a sua jornada</SectionLabel>
+            <h2 className="font-serif text-title text-eco-night mt-2">
               Pronto para começar?
             </h2>
-            <p className="font-sans text-body text-eco-sand-light/70 mt-1">
+            <p className="font-sans text-body text-eco-ink mt-1">
               Fale com Pedro e descubra qual curso é ideal para você.
             </p>
           </div>
