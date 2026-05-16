@@ -9,7 +9,7 @@ interface Props {
   cardBg?: string
 }
 
-export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-warm' }: Props) {
+export default function InstrumentoCard({ instrumento, cardBg = 'bg-eco-sand-light' }: Props) {
   return (
     <Link
       href={`/galeria/${instrumento.slug}`}

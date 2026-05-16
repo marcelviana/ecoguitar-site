@@ -177,7 +177,7 @@ export default async function CursosPage() {
       <QuizCurso cursos={cursos} />
 
       {/* Cards dos cursos */}
-      <section className="bg-eco-sand-warm py-section border-t border-eco-border">
+      <section className="bg-eco-sand-light py-section border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-headline text-eco-night mb-4">
             Cursos para todos os perfis
