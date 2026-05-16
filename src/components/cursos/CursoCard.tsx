@@ -14,7 +14,7 @@ export default function CursoCard({ curso }: { curso: CursoListagem }) {
     MODALIDADE_STYLES[curso.modalidade ?? ''] ?? 'bg-eco-sand-warm text-eco-ink'
 
   return (
-    <article className="flex flex-col bg-eco-sand-warm border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <article className="flex flex-col bg-eco-sand-light border border-eco-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-200">
       <div className="relative aspect-[16/9] bg-eco-turquoise/10">
         {curso.imagemCapa ? (
           <Image
