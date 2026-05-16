@@ -48,7 +48,7 @@ export default async function GaleriaPage() {
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Instrumentos construídos e restaurados no ateliê
           </h1>
-          <p className="font-sans text-body-lg text-eco-ink mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-white/75 mt-4 max-w-xl">
             Cada peça conta uma história. Veja de perto o trabalho artesanal que nasce nas mãos
             de Pedro Machado na Eco Guitar.
           </p>
@@ -90,7 +90,7 @@ export default async function GaleriaPage() {
         <>
           {/* Destaques */}
           {destaques.length > 0 && (
-            <section className="bg-eco-sand-light py-section">
+            <section className="bg-eco-sand-warm py-section">
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <SectionLabel>Em destaque</SectionLabel>
                 <h2 className="font-serif text-headline text-eco-night mt-3 mb-10">
@@ -107,7 +107,7 @@ export default async function GaleriaPage() {
 
           {/* Acervo com filtros e paginação */}
           {demais.length > 0 && (
-            <section className={`py-section ${destaques.length > 0 ? 'bg-eco-sand-warm border-t border-eco-border' : 'bg-eco-sand-light'}`}>
+            <section className={`py-section ${destaques.length > 0 ? 'bg-eco-sand-light border-t border-eco-border' : 'bg-eco-sand-light'}`}>
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 {destaques.length > 0 ? (
                   <>

@@ -139,7 +139,7 @@ export default async function CursosPage() {
           <h1 className="font-serif text-display text-eco-white max-w-2xl">
             Construa o instrumento dos seus sonhos
           </h1>
-          <p className="font-sans text-body-lg text-eco-ink mt-6 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-white/75 mt-6 max-w-xl">
             Com mais de 15 anos de experiência em construção, manutenção, cursos e workshops,
             vamos extrair o máximo do seu instrumento.
           </p>
@@ -152,7 +152,7 @@ export default async function CursosPage() {
       </section>
 
       {/* Por quê construir o SEU instrumento? */}
-      <section className="bg-eco-sand-light py-section">
+      <section className="bg-eco-turquoise-lt py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-headline text-eco-night mb-12 max-w-xl">
             Por quê construir o{' '}
@@ -177,7 +177,7 @@ export default async function CursosPage() {
       <QuizCurso cursos={cursos} />
 
       {/* Cards dos cursos */}
-      <section className="bg-eco-white py-section border-t border-eco-border">
+      <section className="bg-eco-sand-warm py-section border-t border-eco-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <h2 className="font-serif text-headline text-eco-night mb-4">
             Cursos para todos os perfis

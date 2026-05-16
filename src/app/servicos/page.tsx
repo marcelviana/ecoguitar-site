@@ -168,7 +168,7 @@ export default async function ServicosPage() {
           <h1 className="font-serif text-headline text-eco-white mt-3 max-w-2xl">
             Serviços de manutenção e construção de instrumentos
           </h1>
-          <p className="font-sans text-body-lg text-eco-ink mt-4 max-w-xl">
+          <p className="font-sans text-body-lg text-eco-white/75 mt-4 max-w-xl">
             Cada instrumento merece cuidado especializado. Do ajuste fino à construção completa,
             tratamos sua guitarra ou violão com a dedicação que ela merece.
           </p>
