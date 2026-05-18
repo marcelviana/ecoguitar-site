@@ -5,14 +5,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const navLinks = [
-  { label: 'Início', href: '/' },
-  { label: 'Sobre', href: '/sobre' },
-  { label: 'Serviços', href: '/servicos' },
-  { label: 'Cursos', href: '/cursos' },
+  { label: 'Início',    href: '/' },
+  { label: 'Cursos',    href: '/cursos' },
+  { label: 'Serviços',  href: '/servicos' },
   { label: 'Workshops', href: '/workshops' },
-  { label: 'Galeria', href: '/galeria' },
-  { label: 'Clube', href: '/clube' },
-  { label: 'Contato', href: '/contato' },
+  { label: 'Galeria',   href: '/galeria' },
+  { label: 'Clube',     href: '/clube' },
+  { label: 'Sobre',     href: '/sobre' },
+  { label: 'Contato',   href: '/contato' },
 ]
 
 export default function Header({ waLink }: { waLink: string }) {

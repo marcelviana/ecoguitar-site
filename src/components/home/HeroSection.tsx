@@ -51,22 +51,22 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
             Luteria Artesanal
           </p>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-eco-sand-light leading-[1.05] tracking-[-0.02em] mb-6">
-            A sua guitarra é tão única quanto o som que você faz.
+            Seu instrumento nas mãos certas — ou nas suas.
           </h1>
           <p className="font-sans text-body-lg text-eco-sand-light/75 max-w-xl mb-10">
-            Instrumentos construídos sob medida por Pedro Machado em São Paulo. Do projeto ao acabamento, cada peça carrega a identidade de quem vai tocá-la.
+            Cursos de lutheria para quem quer construir do zero. Regulagem e manutenção profissional para quem quer tirar o melhor do que já tem.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button href="/galeria" variant="primary" size="lg">
-              Ver instrumentos
+            <Button href="/cursos" variant="primary" size="lg">
+              Ver cursos
             </Button>
             <Button
-              href="/#sobre"
+              href="/servicos"
               variant="secondary"
               size="lg"
               className="border-eco-sand-light/40 text-eco-sand-light hover:bg-eco-sand-light hover:text-eco-night"
             >
-              Conheça o Pedro
+              Regulagem &amp; Manutenção
             </Button>
           </div>
         </div>

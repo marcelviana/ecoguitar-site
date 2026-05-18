@@ -6,7 +6,7 @@ import { sanityImg } from '@/lib/sanity-image'
 
 const stats = [
   { value: '+150', label: 'cursos ministrados' },
-  { value: '+200', label: 'instrumentos construídos' },
+  { value: '+300', label: 'alunos formados' },
   { value: 'Turmas', label: 'de até 4 pessoas' },
 ]
 
