@@ -248,10 +248,12 @@ export interface Sobre {
   fotoPrincipal?: any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fotosAtelier?: any[]
+  videoZeElias?: string
 }
 
 const sobreQuery = `*[_type == "sobre"][0]{
-  titulo, subtitulo, heroImagem, bio, curiosidades, fotoPrincipal, fotosAtelier
+  titulo, subtitulo, heroImagem, bio, curiosidades, fotoPrincipal, fotosAtelier,
+  videoZeElias
 }`
 
 export async function getSobre(): Promise<Sobre | null> {

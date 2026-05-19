@@ -65,5 +65,11 @@ export default defineType({
       validation: (Rule) => Rule.max(6),
       of: [{ type: 'image', options: { hotspot: true } }],
     }),
+    defineField({
+      name: 'videoZeElias',
+      title: 'Vídeo YouTube — Guitarra do Zé Elias',
+      type: 'string',
+      description: 'Apenas o ID do vídeo (ex: KJ6HKJSFWm8). Não cole a URL completa.',
+    }),
   ],
 })
