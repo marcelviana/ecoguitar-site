@@ -205,7 +205,7 @@ export default async function SobrePage() {
               memória.
             </p>
             <p className="font-sans text-body-lg text-eco-sand-light/80">
-              Pedro construiu o instrumento com essa madeira. E foi exatamente o tipo de encomenda que
+              Ele construiu o instrumento com essa madeira. E é exatamente o tipo de sonho que
               justifica a existência da Eco Guitar: não apenas fazer uma guitarra, mas guardar uma
               história dentro dela.
             </p>
