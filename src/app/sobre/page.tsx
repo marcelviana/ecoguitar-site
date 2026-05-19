@@ -218,7 +218,7 @@ export default async function SobrePage() {
           </div>
           <div className="border-l-4 border-eco-turquoise pl-6 mt-10 max-w-2xl">
             <p className="font-serif text-title text-eco-white italic">
-              "Desde trás da própria madeira, a gente traz a história da família."
+              "Tem gente que traz a própria madeira, traz a história da família."
             </p>
             <span className="font-mono text-label text-eco-sand-light/60 mt-2 block">
               — Pedro Machado, 2019
