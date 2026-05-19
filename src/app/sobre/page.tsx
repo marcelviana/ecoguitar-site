@@ -59,7 +59,7 @@ export default async function SobrePage() {
     sobre?.fotosAtelier && sobre.fotosAtelier.length > 0
       ? sobre.fotosAtelier
       : []
-  const videoZeElias = sobre?.videoZeElias ?? 'KJ6HKJSFWm8'
+  const videoZeElias = sobre?.zeEliasVideoId ?? 'KJ6HKJSFWm8'
 
   return (
     <PageLayout>
@@ -205,7 +205,7 @@ export default async function SobrePage() {
               memória.
             </p>
             <p className="font-sans text-body-lg text-eco-sand-light/80">
-              Ele construiu o instrumento com essa madeira. E é exatamente o tipo de sonho que
+              Pedro construiu o instrumento com essa madeira. E foi exatamente o tipo de encomenda que
               justifica a existência da Eco Guitar: não apenas fazer uma guitarra, mas guardar uma
               história dentro dela.
             </p>
@@ -218,7 +218,7 @@ export default async function SobrePage() {
           </div>
           <div className="border-l-4 border-eco-turquoise pl-6 mt-10 max-w-2xl">
             <p className="font-serif text-title text-eco-white italic">
-              "Tem gente que traz a própria madeira, traz a história da família."
+              "Desde trás da própria madeira, a gente traz a história da família."
             </p>
             <span className="font-mono text-label text-eco-sand-light/60 mt-2 block">
               — Pedro Machado, 2019

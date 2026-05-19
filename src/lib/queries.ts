@@ -237,23 +237,82 @@ export async function getClube(): Promise<Clube | null> {
 }
 
 export interface Sobre {
-  titulo?: string
-  subtitulo?: string
+  // Hero
+  subtitulo?:           string
+  titulo?:              string
+  heroSubtitulo?:       string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  heroImagem?: any
+  heroImagem?:          any
+  // Origem
+  origemLabel?:         string
+  origemTitulo?:        string
+  origemParagrafo1?:    string
+  origemParagrafo2?:    string
+  origemParagrafo3?:    string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  bio?: any[]
-  curiosidades?: { icone?: string; texto: string }[]
+  origemFoto?:          any
+  // Propósito
+  propositoLabel?:      string
+  propositoTitulo?:     string
+  propositoParagrafo1?: string
+  propositoParagrafo2?: string
+  propositoCitacao?:    string
+  propositoParagrafo3?: string
+  // Diferenciais
+  diferenciaisLabel?:   string
+  diferenciaisTitulo?:  string
+  diferenciais?:        { icone?: string; titulo?: string; texto?: string }[]
+  // Zé Elias
+  zeEliasLabel?:        string
+  zeEliasTitulo?:       string
+  zeEliasParagrafo1?:   string
+  zeEliasParagrafo2?:   string
+  zeEliasParagrafo3?:   string
+  zeEliasCitacao?:      string
+  zeEliasCitacaoAutor?: string
+  zeEliasVideoId?:      string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fotoPrincipal?: any
+  zeEliasFoto?:         any
+  // Cursos
+  cursosLabel?:         string
+  cursosTitulo?:        string
+  cursosParagrafo1?:    string
+  cursosParagrafo2?:    string
+  // Pedro
+  pedroLabel?:          string
+  pedroTitulo?:         string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fotosAtelier?: any[]
-  videoZeElias?: string
+  bio?:                 any[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fotoPrincipal?:       any
+  curiosidadesLabel?:   string
+  curiosidadesTitulo?:  string
+  curiosidades?:        { icone?: string; texto: string }[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fotosAtelier?:        any[]
+  // CTA
+  ctaLabel?:            string
+  ctaTitulo?:           string
+  ctaTexto?:            string
+  ctaBotaoTexto?:       string
 }
 
 const sobreQuery = `*[_type == "sobre"][0]{
-  titulo, subtitulo, heroImagem, bio, curiosidades, fotoPrincipal, fotosAtelier,
-  videoZeElias
+  subtitulo, titulo, heroSubtitulo, heroImagem,
+  origemLabel, origemTitulo,
+  origemParagrafo1, origemParagrafo2, origemParagrafo3, origemFoto,
+  propositoLabel, propositoTitulo,
+  propositoParagrafo1, propositoParagrafo2, propositoCitacao, propositoParagrafo3,
+  diferenciaisLabel, diferenciaisTitulo,
+  diferenciais[]{icone, titulo, texto},
+  zeEliasLabel, zeEliasTitulo,
+  zeEliasParagrafo1, zeEliasParagrafo2, zeEliasParagrafo3,
+  zeEliasCitacao, zeEliasCitacaoAutor, zeEliasVideoId, zeEliasFoto,
+  cursosLabel, cursosTitulo, cursosParagrafo1, cursosParagrafo2,
+  pedroLabel, pedroTitulo, bio, fotoPrincipal,
+  curiosidadesLabel, curiosidadesTitulo, curiosidades[]{icone, texto},
+  fotosAtelier,
+  ctaLabel, ctaTitulo, ctaTexto, ctaBotaoTexto
 }`
 
 export async function getSobre(): Promise<Sobre | null> {
