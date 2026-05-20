@@ -1,5 +1,23 @@
 import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
+import { extendTailwindMerge } from 'tailwind-merge'
+
+// Teach twMerge about custom eco color tokens and font-size utilities so it
+// resolves conflicts correctly (e.g. text-body-lg must not displace text-white).
+const ECO_COLORS = [
+  'eco-sand-light', 'eco-sand-warm', 'eco-night', 'eco-sky', 'eco-ink',
+  'eco-turquoise', 'eco-turquoise-dk', 'eco-turquoise-lt', 'eco-border',
+  'eco-white', 'eco-orange', 'eco-sun',
+]
+const ECO_FONT_SIZES = ['display', 'headline', 'title', 'body-lg', 'body', 'small', 'label']
+
+const twMerge = extendTailwindMerge({
+  extend: {
+    classGroups: {
+      'text-color': [{ text: ECO_COLORS }],
+      'font-size': [{ text: ECO_FONT_SIZES }],
+    },
+  },
+})
 
 type Variant = 'primary' | 'secondary' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
@@ -52,6 +70,8 @@ export default function Button({
     variantClasses[variant],
     sizeClasses[size],
     className,
+    // Primary always enforces white text — className overrides cannot change it
+    variant === 'primary' ? 'text-white' : undefined,
   )
 
   if (href) {
