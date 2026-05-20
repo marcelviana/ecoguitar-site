@@ -14,35 +14,103 @@ export const metadata: Metadata = {
     'Regulagem, setup, troca de trastes, restauração, reparo de eletrônica e construção de instrumentos sob medida em São Paulo.',
 }
 
-const WA_LINK = 'https://wa.me/55XXXXXXXXXXX'
+const WA_FALLBACK = 'https://wa.me/5511976947027'
 
-const servicos = [
+// ── Três níveis de regulagem ─────────────────────────────────
+
+const niveisRegulagem = [
   {
-    titulo: 'Regulagem completa',
-    detalhes: ['Ajuste de truss rod', 'Ação das cordas', 'Oitavação', 'Lubrificação das cravelhas'],
-    prazo: '1–2 dias úteis',
+    nome: 'Regulagem Express',
+    subtitulo: 'O essencial para o instrumento voltar a tocar bem.',
+    badge: null,
+    destaque: false,
+    itens: [
+      'Ajuste da ação de cordas',
+      'Ajuste da pestana',
+      'Ajuste do rastilho',
+      'Regulagem das oitavas',
+      'Ajuste de molas (alavanca)',
+      'Troca de cordas (cordas não inclusas)',
+      'Checagem do jack',
+    ],
+    para: 'Guitarra, violão e baixo',
+    ctaTexto: 'Agendar Express',
+    waMsg: 'Olá, gostaria de agendar uma Regulagem Express.',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
-          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
       </svg>
     ),
   },
   {
-    titulo: 'Setup completo',
-    detalhes: ['Regulagem total', 'Limpeza profunda do braço', 'Polimento do corpo', 'Troca de cordas'],
-    prazo: '2–3 dias úteis',
+    nome: 'Regulagem Simples',
+    subtitulo: 'Os ajustes do Express somados a uma limpeza completa e checagem elétrica.',
+    badge: 'Inclui tudo da Express +',
+    destaque: false,
+    itens: [
+      'Ajuste da ação de cordas',
+      'Ajuste da pestana',
+      'Ajuste do rastilho',
+      'Regulagem das oitavas',
+      'Ajuste de molas (alavanca)',
+      'Limpeza e hidratação da escala',
+      'Limpeza completa do instrumento',
+      'Troca de cordas (cordas não inclusas)',
+      'Checagem da parte elétrica',
+    ],
+    para: 'Guitarra, violão e baixo',
+    ctaTexto: 'Agendar Simples',
+    waMsg: 'Olá, gostaria de agendar uma Regulagem Simples.',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
-          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
       </svg>
     ),
   },
   {
-    titulo: 'Troca de trastes',
-    detalhes: ['Extração dos trastes antigos', 'Instalação de novos trastes', 'Nivelamento e arredondamento', 'Polimento final'],
+    nome: 'Regulagem Completa',
+    subtitulo: 'O pacote mais profundo. Para instrumentos que pedem cuidado de fundo.',
+    badge: 'Inclui tudo da Simples +',
+    destaque: true,
+    itens: [
+      'Ajuste da ação de cordas',
+      'Ajuste da pestana',
+      'Ajuste do rastilho',
+      'Regulagem das oitavas',
+      'Ajuste de molas (alavanca)',
+      'Limpeza e hidratação da escala',
+      'Limpeza completa do instrumento',
+      'Nivelamento e coroamento dos trastes',
+      'Ajuste de molas (tremolo ou Floyd Rose)',
+      'Troca de parafusos cromados e pretos do escudo',
+      'Troca de cordas (cordas não inclusas)',
+      'Checagem da parte elétrica',
+    ],
+    para: 'Guitarra, violão e baixo',
+    ctaTexto: 'Agendar Completa',
+    waMsg: 'Olá, gostaria de agendar uma Regulagem Completa.',
+    icon: (
+      <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
+          d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+  },
+]
+
+// ── Outros serviços ──────────────────────────────────────────
+
+const outrosServicos = [
+  {
+    titulo: 'Troca de trastes (refret)',
+    detalhes: [
+      'Extração dos trastes antigos',
+      'Instalação de novos trastes',
+      'Nivelamento e arredondamento',
+      'Polimento final',
+    ],
     prazo: '3–5 dias úteis',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -53,7 +121,12 @@ const servicos = [
   },
   {
     titulo: 'Restauração',
-    detalhes: ['Diagnóstico completo', 'Recuperação estrutural', 'Reparo de rachaduras', 'Acabamento e verniz'],
+    detalhes: [
+      'Diagnóstico completo',
+      'Recuperação estrutural',
+      'Reparo de rachaduras',
+      'Acabamento e verniz',
+    ],
     prazo: 'A combinar',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -64,7 +137,12 @@ const servicos = [
   },
   {
     titulo: 'Reparo de eletrônica',
-    detalhes: ['Soldagem e retoque', 'Troca de captadores', 'Potenciômetros e chaves', 'Blindagem de cavidades'],
+    detalhes: [
+      'Soldagem e retoque',
+      'Troca de captadores',
+      'Potenciômetros e chaves',
+      'Blindagem de cavidades',
+    ],
     prazo: '1–3 dias úteis',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -74,8 +152,29 @@ const servicos = [
     ),
   },
   {
+    titulo: 'Customizações',
+    detalhes: [
+      'Troca de captadores e ferragens',
+      'Conversão para fretless',
+      'Pintura e acabamento',
+      'Modificações na parte elétrica',
+    ],
+    prazo: 'Sob consulta',
+    icon: (
+      <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2}
+          d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+      </svg>
+    ),
+  },
+  {
     titulo: 'Construção sob medida',
-    detalhes: ['Projeto e especificações', 'Seleção de madeiras', 'Construção artesanal', 'Ajuste e entrega final'],
+    detalhes: [
+      'Projeto e especificações',
+      'Seleção de madeiras',
+      'Construção artesanal',
+      'Ajuste e entrega final',
+    ],
     prazo: '3–6 meses',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -86,7 +185,12 @@ const servicos = [
   },
   {
     titulo: 'Regulagem Delivery',
-    detalhes: ['Coleta e entrega na sua localidade', 'Setup completo na oficina', 'Prazo combinado no agendamento', 'Área de cobertura: Grande São Paulo'],
+    detalhes: [
+      'Coleta e entrega na sua localidade',
+      'Setup completo na oficina',
+      'Prazo combinado no agendamento',
+      'Área de cobertura: Grande São Paulo',
+    ],
     prazo: 'Combinar no agendamento',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -97,7 +201,12 @@ const servicos = [
   },
   {
     titulo: 'Atendimento In Loco',
-    detalhes: ['Pedro vai até você', 'Ideal para escolas e estúdios', 'Regulagem e manutenção no local', 'Múltiplos instrumentos no mesmo atendimento'],
+    detalhes: [
+      'Pedro vai até você',
+      'Ideal para escolas e estúdios',
+      'Regulagem e manutenção no local',
+      'Múltiplos instrumentos no mesmo atendimento',
+    ],
     prazo: 'Combinar no agendamento',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -108,7 +217,12 @@ const servicos = [
   },
   {
     titulo: 'Peças & Componentes',
-    detalhes: ['Braços artesanais', 'Corpos em madeiras brasileiras', 'Componentes avulsos', 'Sob encomenda conforme especificação'],
+    detalhes: [
+      'Braços artesanais',
+      'Corpos em madeiras brasileiras',
+      'Componentes avulsos',
+      'Sob encomenda conforme especificação',
+    ],
     prazo: 'Sob consulta',
     icon: (
       <svg aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
@@ -118,6 +232,8 @@ const servicos = [
     ),
   },
 ]
+
+// ── Como funciona ────────────────────────────────────────────
 
 const etapas = [
   {
@@ -145,10 +261,12 @@ const etapas = [
 export default async function ServicosPage() {
   const config = await getConfiguracao()
   const heroImagemUrl = config?.heroBannerServicos ? urlFor(config.heroBannerServicos)?.url() : null
+  const waLink = config?.whatsapp ? `https://wa.me/${config.whatsapp}` : WA_FALLBACK
 
   return (
     <PageLayout>
-      {/* Hero */}
+
+      {/* 1. Hero — eco-night (preservado) */}
       <section className="relative overflow-hidden bg-eco-night py-section-sm">
         {heroImagemUrl && (
           <>
@@ -175,18 +293,108 @@ export default async function ServicosPage() {
         </div>
       </section>
 
-      {/* Grid de serviços */}
+      {/* 2. Três níveis de regulagem — eco-sand-light */}
       <section className="bg-eco-sand-light py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <SectionLabel>Regulagens</SectionLabel>
+          <h2 className="font-serif text-headline text-eco-night mt-3 mb-4 max-w-lg">
+            Três níveis para o seu instrumento.
+          </h2>
+          <p className="font-sans text-body-lg text-eco-ink mb-12 max-w-2xl leading-relaxed">
+            Toda guitarra, baixo ou violão precisa de regulagem periódica para tocar como deve.
+            Oferecemos três pacotes — do mais direto ao mais completo — para você escolher conforme
+            o estado do instrumento e o momento.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {niveisRegulagem.map((nivel) => (
+              <article
+                key={nivel.nome}
+                className={[
+                  'relative flex flex-col gap-5 bg-eco-white rounded-2xl p-6 lg:p-8',
+                  nivel.destaque
+                    ? 'border-2 border-eco-turquoise shadow-md'
+                    : 'border border-eco-border',
+                ].join(' ')}
+              >
+                {nivel.destaque && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="bg-eco-turquoise text-white font-mono text-label uppercase tracking-widest px-4 py-1 rounded-full whitespace-nowrap">
+                      Mais procurado
+                    </span>
+                  </div>
+                )}
+
+                <div className="text-eco-turquoise">{nivel.icon}</div>
+
+                <div className="flex flex-col gap-2 flex-1">
+                  <h3 className="font-serif text-title text-eco-night">{nivel.nome}</h3>
+                  <p className="font-sans text-small text-eco-ink leading-relaxed">{nivel.subtitulo}</p>
+
+                  {nivel.badge && (
+                    <span className="font-mono text-label uppercase tracking-widest text-eco-turquoise mt-1">
+                      {nivel.badge}
+                    </span>
+                  )}
+
+                  <ul className="flex flex-col gap-2 mt-3">
+                    {nivel.itens.map((item) => (
+                      <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-ink">
+                        <span
+                          aria-hidden="true"
+                          className="mt-1.5 w-1.5 h-1.5 rounded-full bg-eco-turquoise flex-shrink-0"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-eco-border pt-4 flex flex-col gap-4">
+                  <p className="font-mono text-label uppercase tracking-widest text-eco-ink">
+                    Para:{' '}
+                    <span className="normal-case tracking-normal font-sans text-small text-eco-night">
+                      {nivel.para}
+                    </span>
+                  </p>
+                  <a
+                    href={`${waLink}?text=${encodeURIComponent(nivel.waMsg)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-eco-turquoise text-white font-sans font-medium text-small px-5 py-2.5 rounded-lg hover:bg-eco-turquoise-dk transition-colors"
+                  >
+                    <WhatsAppIcon />
+                    {nivel.ctaTexto}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Outros serviços — eco-sand-warm */}
+      <section className="bg-eco-sand-warm py-section">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <SectionLabel>Outros serviços</SectionLabel>
+          <h2 className="font-serif text-headline text-eco-night mt-3 mb-4 max-w-xl">
+            Reparos, customizações, construção e atendimento.
+          </h2>
+          <p className="font-sans text-body-lg text-eco-ink mb-12 max-w-2xl leading-relaxed">
+            Além das regulagens, atendemos toda a parte de manutenção mais profunda,
+            customizações e construção sob medida. Também levamos o ateliê até você —
+            em casa, no estúdio ou na escola.
+          </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {servicos.map((servico) => (
+            {outrosServicos.map((servico) => (
               <article
                 key={servico.titulo}
-                className="flex flex-col gap-5 bg-eco-sand-warm border border-eco-border rounded-2xl p-6 lg:p-8"
+                className="flex flex-col gap-5 bg-eco-white border border-eco-border rounded-2xl p-6 lg:p-8"
               >
                 <div className="text-eco-turquoise">{servico.icon}</div>
                 <div className="flex flex-col gap-3 flex-1">
-                  <h2 className="font-serif text-title text-eco-night">{servico.titulo}</h2>
+                  <h3 className="font-serif text-title text-eco-night">{servico.titulo}</h3>
                   <ul className="flex flex-col gap-2">
                     {servico.detalhes.map((item) => (
                       <li key={item} className="flex items-start gap-2 font-sans text-small text-eco-ink">
@@ -206,10 +414,10 @@ export default async function ServicosPage() {
         </div>
       </section>
 
-      {/* Linha do tempo */}
-      <section className="bg-eco-sand-warm border-y border-eco-border py-section">
+      {/* 4. Como funciona — eco-turquoise-lt */}
+      <section className="bg-eco-turquoise-lt py-section">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionLabel>Como funciona</SectionLabel>
+          <SectionLabel tone="turquoise">Como funciona</SectionLabel>
           <h2 className="font-serif text-headline text-eco-night mt-3 mb-12 max-w-lg">
             Do primeiro contato à entrega do instrumento
           </h2>
@@ -217,9 +425,9 @@ export default async function ServicosPage() {
             {etapas.map((etapa, i) => (
               <div key={etapa.numero} className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-display text-eco-turquoise/20 leading-none">{etapa.numero}</span>
+                  <span className="font-mono text-display text-eco-turquoise/30 leading-none">{etapa.numero}</span>
                   {i < etapas.length - 1 && (
-                    <div className="hidden lg:block flex-1 h-px bg-eco-border" aria-hidden="true" />
+                    <div className="hidden lg:block flex-1 h-px bg-eco-turquoise/20" aria-hidden="true" />
                   )}
                 </div>
                 <div>
@@ -232,7 +440,31 @@ export default async function ServicosPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* 5. Banner B2B (Parcerias) — eco-sand-light */}
+      <section className="bg-eco-sand-light py-section-sm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 bg-eco-white rounded-2xl border border-eco-border p-8 lg:p-10">
+            <div className="flex flex-col gap-3 max-w-xl">
+              <SectionLabel>Para escolas, empresas e instituições</SectionLabel>
+              <h2 className="font-serif text-title text-eco-night">
+                Atende uma escola, estúdio ou empresa?
+              </h2>
+              <p className="font-sans text-body text-eco-ink leading-relaxed">
+                Temos um modelo de parceria sem custo direto para instituições — com coleta dos
+                instrumentos no local, atendimento in loco e workshops sob medida. 10% de desconto
+                para alunos, professores e funcionários.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <Button href="/parcerias" variant="secondary" size="md">
+                Conhecer parcerias
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA final — eco-night */}
       <section className="bg-eco-night py-section-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
@@ -245,7 +477,7 @@ export default async function ServicosPage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
             <a
-              href={WA_LINK}
+              href={waLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white text-eco-turquoise font-sans font-medium text-body px-6 py-3 hover:bg-eco-sand-light transition-colors"
@@ -262,6 +494,7 @@ export default async function ServicosPage() {
           </div>
         </div>
       </section>
+
     </PageLayout>
   )
 }

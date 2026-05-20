@@ -104,9 +104,27 @@ Tons escuros (texto claro):
 7. Pedro/Bio — `eco-night`
 8. CTA final — `eco-turquoise`
 
+**/servicos:**
+1. Hero — `eco-night`
+2. Três níveis de regulagem — `eco-sand-light`
+3. Outros serviços — `eco-sand-warm`
+4. Como funciona — `eco-turquoise-lt`
+5. Banner B2B (Parcerias) — `eco-sand-light`
+6. CTA final — `eco-night`
+
 **/clube:**
 1. Hero — `eco-night`
 2. Benefícios — `eco-sand-light`
+
+**/parcerias:**
+1. Hero — `eco-night`
+2. Pitch B2B — `eco-sand-light`
+3. Modalidades de parceria — `eco-sand-warm`
+4. Benefícios — `eco-turquoise-lt`
+5. Como funciona — `eco-night`
+6. Parceiros atuais — `eco-sand-light`
+7. FAQ — `eco-sand-warm`
+8. CTA + Formulário — `eco-turquoise`
 
 ## Linguagem e terminologia
 - Usar sempre **Luteria** (não "Luthieria" nem "Lutheria") ao se referir à arte/ofício
