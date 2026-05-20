@@ -165,11 +165,11 @@ export default async function WorkshopsPage() {
           <div>
             <h2 className="font-serif text-title text-eco-night">Quer um workshop personalizado?</h2>
             <p className="font-sans text-body text-eco-ink mt-1">
-              Grupos e empresas podem solicitar datas e temas específicos.
+              Escolas, grupos e empresas podem solicitar datas e temas específicos no formato da nossa parceria institucional.
             </p>
           </div>
-          <Button href="/contato" variant="primary" size="md">
-            Entrar em contato
+          <Button href="/parcerias" variant="primary" size="md">
+            Conhecer parcerias
           </Button>
         </div>
       </section>

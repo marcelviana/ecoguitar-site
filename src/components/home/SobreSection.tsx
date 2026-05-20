@@ -49,9 +49,13 @@ export default function SobreSection({ fotoPedro }: SobreSectionProps) {
             </div>
 
             {/* Parceiros */}
-            <p className="font-mono text-label uppercase tracking-widest text-eco-ink">
+            <Link
+              href="/parcerias"
+              className="font-mono text-label uppercase tracking-widest text-eco-ink hover:text-eco-turquoise-dk transition-colors inline-flex items-center gap-1 w-fit"
+            >
               Parceiros: School of Rock · Equilibrium · Santa Cruz
-            </p>
+              <span aria-hidden="true">→</span>
+            </Link>
 
             <Link
               href="/sobre"
