@@ -12,17 +12,17 @@ function DepoimentoCard({ depoimento }: { depoimento: Depoimento }) {
       </span>
       <p className="font-sans text-body text-eco-night/80 -mt-4">{depoimento.texto}</p>
       <div className="mt-auto pt-4 border-t border-eco-night/10">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           {depoimento.fotoUrl ? (
             <Image
               src={depoimento.fotoUrl}
               alt={depoimento.nomeAluno}
-              width={40}
-              height={40}
-              className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+              width={64}
+              height={64}
+              className="w-16 h-16 rounded-full object-cover flex-shrink-0"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-eco-turquoise flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 rounded-full bg-eco-turquoise flex items-center justify-center flex-shrink-0">
               <span className="font-sans text-body font-medium text-white">{depoimento.nomeAluno[0]}</span>
             </div>
           )}
