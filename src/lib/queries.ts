@@ -71,7 +71,7 @@ const cursosDestaqueQuery = `*[_type == "curso" && ativo == true][0..2]{
   _id, titulo, descricao, preco, modalidade, "imagemCapa": imagemCapa.asset->url
 }`
 
-const depoimentosQuery = `*[_type == "depoimento" && ativo == true][0..2]{
+const depoimentosQuery = `*[_type == "depoimento" && ativo == true][0..5]{
   _id, nomeAluno, texto, cursoRealizado, "fotoUrl": foto.asset->url
 }`
 

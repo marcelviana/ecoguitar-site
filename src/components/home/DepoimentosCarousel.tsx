@@ -1,20 +1,38 @@
 'use client'
 
+import Image from 'next/image'
 import { useRef, useState, useCallback } from 'react'
 import type { Depoimento } from '@/lib/queries'
 
 function DepoimentoCard({ depoimento }: { depoimento: Depoimento }) {
   return (
-    <div className="flex flex-col gap-4 p-8 border border-eco-sand-light/10 rounded-xl bg-eco-night/50 h-full">
+    <div className="flex flex-col gap-4 p-8 border border-eco-night/10 rounded-xl bg-white h-full">
       <span aria-hidden="true" className="font-serif text-5xl leading-none text-eco-turquoise select-none">
         "
       </span>
-      <p className="font-sans text-body text-eco-sand-light/80 -mt-4">{depoimento.texto}</p>
-      <div className="mt-auto pt-4 border-t border-eco-sand-light/10">
-        <p className="font-sans text-body font-medium text-eco-sand-light">{depoimento.nomeAluno}</p>
-        {depoimento.cursoRealizado && (
-          <p className="font-mono text-small text-eco-sky">{depoimento.cursoRealizado}</p>
-        )}
+      <p className="font-sans text-body text-eco-night/80 -mt-4">{depoimento.texto}</p>
+      <div className="mt-auto pt-4 border-t border-eco-night/10">
+        <div className="flex items-center gap-3">
+          {depoimento.fotoUrl ? (
+            <Image
+              src={depoimento.fotoUrl}
+              alt={depoimento.nomeAluno}
+              width={40}
+              height={40}
+              className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-eco-turquoise flex items-center justify-center flex-shrink-0">
+              <span className="font-sans text-body font-medium text-white">{depoimento.nomeAluno[0]}</span>
+            </div>
+          )}
+          <div>
+            <p className="font-sans text-body font-medium text-eco-night">{depoimento.nomeAluno}</p>
+            {depoimento.cursoRealizado && (
+              <p className="font-mono text-small text-eco-sky">{depoimento.cursoRealizado}</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -76,7 +94,7 @@ export default function DepoimentosCarousel({ depoimentos }: { depoimentos: Depo
               onClick={() => scrollToIndex(Math.max(0, current - 1))}
               disabled={current === 0}
               aria-label="Depoimento anterior"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-eco-sand-light/20 text-eco-sand-light disabled:opacity-30 hover:border-eco-turquoise hover:text-eco-turquoise transition-colors cursor-pointer disabled:cursor-default"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-eco-night/20 text-eco-night disabled:opacity-30 hover:border-eco-turquoise hover:text-eco-turquoise transition-colors cursor-pointer disabled:cursor-default"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -92,7 +110,7 @@ export default function DepoimentosCarousel({ depoimentos }: { depoimentos: Depo
                 className={`h-2 rounded-full transition-all duration-300 ${
                   i === current
                     ? 'w-6 bg-eco-turquoise'
-                    : 'w-2 bg-eco-sand-light/30 hover:bg-eco-sand-light/60'
+                    : 'w-2 bg-eco-night/30 hover:bg-eco-night/60'
                 }`}
               />
             ))}
@@ -101,7 +119,7 @@ export default function DepoimentosCarousel({ depoimentos }: { depoimentos: Depo
               onClick={() => scrollToIndex(Math.min(total - 1, current + 1))}
               disabled={current === total - 1}
               aria-label="Próximo depoimento"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-eco-sand-light/20 text-eco-sand-light disabled:opacity-30 hover:border-eco-turquoise hover:text-eco-turquoise transition-colors cursor-pointer disabled:cursor-default"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-eco-night/20 text-eco-night disabled:opacity-30 hover:border-eco-turquoise hover:text-eco-turquoise transition-colors cursor-pointer disabled:cursor-default"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

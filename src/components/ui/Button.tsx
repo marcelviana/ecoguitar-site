@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { twMerge } from 'tailwind-merge'
 
 type Variant = 'primary' | 'secondary' | 'ghost'
 type Size = 'sm' | 'md' | 'lg'
@@ -46,12 +47,12 @@ export default function Button({
   target,
   rel,
 }: ButtonProps) {
-  const classes = [
+  const classes = twMerge(
     'inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 cursor-pointer',
     variantClasses[variant],
     sizeClasses[size],
     className,
-  ].join(' ')
+  )
 
   if (href) {
     const isExternal = href.startsWith('http') || href.startsWith('https')

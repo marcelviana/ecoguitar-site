@@ -8,11 +8,11 @@ export default async function DepoimentosSection() {
   if (depoimentos.length === 0) return null
 
   return (
-    <section className="bg-eco-night py-section">
+    <section className="bg-eco-sand-warm py-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center text-center mb-16">
-          <SectionLabel tone="turquoise">O que diz quem já fez</SectionLabel>
-          <h2 className="font-serif text-headline text-eco-sand-light mt-3">Depoimentos</h2>
+          <SectionLabel tone="orange">O que diz quem já fez</SectionLabel>
+          <h2 className="font-serif text-headline text-eco-night mt-3">Depoimentos</h2>
         </div>
 
         <DepoimentosCarousel depoimentos={depoimentos} />

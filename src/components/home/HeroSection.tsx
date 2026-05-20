@@ -51,10 +51,10 @@ export default function HeroSection({ heroBannerImagem }: HeroSectionProps) {
             Luteria Artesanal
           </p>
           <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-eco-sand-light leading-[1.05] tracking-[-0.02em] mb-6">
-            Seu instrumento nas mãos certas — ou nas suas.
+            O seu instrumento é tão único quanto o som que você faz.
           </h1>
           <p className="font-sans text-body-lg text-eco-sand-light/75 max-w-xl mb-10">
-            Cursos de lutheria para quem quer construir do zero. Regulagem e manutenção profissional para quem quer tirar o melhor do que já tem.
+            Aprenda a construir do zero com Pedro Machado em São Paulo. Cada detalhe pensado para o seu jeito de tocar.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button href="/cursos" variant="primary" size="lg">
