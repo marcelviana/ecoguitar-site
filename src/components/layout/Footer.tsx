@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Workshops', href: '/workshops' },
   { label: 'Galeria', href: '/galeria' },
   { label: 'Clube do Luthier', href: '/clube' },
+  { label: 'Parcerias', href: '/parcerias' },
   { label: 'Contato', href: '/contato' },
 ]
 

@@ -20,6 +20,8 @@ export interface Configuracao {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroBannerServicos?: any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  heroBannerParcerias?: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fotoPedro?: any
 }
 
@@ -27,6 +29,7 @@ const configuracaoQuery = `*[_type == "configuracao"][0]{
   endereco, whatsapp, email, instagram, youtube,
   heroBannerImagem, heroBannerCursos, heroBannerWorkshops,
   heroBannerGaleria, heroBannerContato, heroBannerServicos,
+  heroBannerParcerias,
   fotoPedro
 }`
 
@@ -528,5 +531,82 @@ export async function getEspeciesMadeira(): Promise<EspecieMadeira[]> {
     return await client.fetch<EspecieMadeira[]>(especiesMadeiraQuery)
   } catch {
     return []
+  }
+}
+
+// ── Parcerias B2B ─────────────────────────────────────────────
+
+export interface Modalidade {
+  titulo?: string
+  descricao?: string
+  itens?: string[]
+}
+
+export interface EtapaParceria {
+  titulo?: string
+  descricao?: string
+}
+
+export interface ParceiroAtual {
+  nome: string
+  logoUrl?: string
+}
+
+export interface FaqItem {
+  pergunta?: string
+  resposta?: string
+}
+
+export interface Parceria {
+  // Hero
+  heroLabel?:       string
+  heroTitulo?:      string
+  heroSubtitulo?:   string
+  // Pitch B2B
+  pitchLabel?:      string
+  pitchTitulo?:     string
+  pitchParagrafo1?: string
+  pitchParagrafo2?: string
+  // Modalidades
+  modalidades?:     Modalidade[]
+  // Benefícios
+  beneficiosLabel?:  string
+  beneficiosTitulo?: string
+  beneficios?:       string[]
+  // Etapas
+  etapasLabel?:     string
+  etapasTitulo?:    string
+  etapas?:          EtapaParceria[]
+  // Parceiros
+  parceirosLabel?:  string
+  parceirosTitulo?: string
+  parceiros?:       ParceiroAtual[]
+  // FAQ
+  faq?:             FaqItem[]
+  // CTA
+  ctaLabel?:        string
+  ctaTitulo?:       string
+  ctaSubtitulo?:    string
+}
+
+const parceriaQuery = groq`*[_type == "parceria"][0]{
+  heroLabel, heroTitulo, heroSubtitulo,
+  pitchLabel, pitchTitulo, pitchParagrafo1, pitchParagrafo2,
+  modalidades[]{titulo, descricao, itens},
+  beneficiosLabel, beneficiosTitulo, beneficios,
+  etapasLabel, etapasTitulo,
+  etapas[]{titulo, descricao},
+  parceirosLabel, parceirosTitulo,
+  parceiros[]{ nome, "logoUrl": logo.asset->url },
+  faq[]{pergunta, resposta},
+  ctaLabel, ctaTitulo, ctaSubtitulo,
+}`
+
+export async function getParceria(): Promise<Parceria | null> {
+  if (!client) return null
+  try {
+    return await client.fetch<Parceria | null>(parceriaQuery)
+  } catch {
+    return null
   }
 }

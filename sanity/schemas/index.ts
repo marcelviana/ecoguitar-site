@@ -5,6 +5,7 @@ import instrumento from './instrumento'
 import depoimento from './depoimento'
 import configuracao from './configuracao'
 import sobre from './sobre'
+import parceria from './parceria'
 import modeloInstrumento from './modeloInstrumento'
 import processo from './processo'
 import categoria from './categoria'
@@ -18,6 +19,7 @@ export const schemaTypes = [
   depoimento,
   configuracao,
   sobre,
+  parceria,
   modeloInstrumento,
   processo,
   categoria,

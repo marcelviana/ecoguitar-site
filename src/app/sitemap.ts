@@ -4,7 +4,7 @@ export const dynamic = 'force-static'
 
 const base = 'https://ecoguitar.com.br'
 
-const routes = ['/', '/sobre', '/servicos', '/cursos', '/workshops', '/galeria', '/clube', '/contato']
+const routes = ['/', '/sobre', '/servicos', '/cursos', '/workshops', '/galeria', '/clube', '/parcerias', '/contato']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

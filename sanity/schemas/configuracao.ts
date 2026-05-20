@@ -73,6 +73,13 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'heroBannerParcerias',
+      title: 'Hero — Parcerias (imagem de fundo)',
+      type: 'image',
+      description: 'Imagem de fundo do hero da página /parcerias. Opcional.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'fotoPedro',
       title: 'Foto do Pedro',
       type: 'image',
